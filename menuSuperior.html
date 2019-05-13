@@ -1,0 +1,80 @@
+<link href="styles/menu.css" rel="stylesheet" />
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+  integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+  crossorigin="anonymous"
+/>
+
+<ul class="ItemsNavegacion" role="navigation">
+  <li class="Logo">
+      <i class="fas Icono Claro fa-book"></i>
+  </li>
+  <li class="Opciones">
+    <button
+      onclick="categoriaDocumentos()"
+      class="botonesBarraMenu Letra Claro"
+    >
+      Documentos
+    </button>
+  </li>
+  <li class="Opciones">
+    <button onclick="categoriaVideos()" class="botonesBarraMenu Letra Claro">
+      Videos
+    </button>
+  </li>
+  <li class="Opciones">
+    <button
+      onclick="categoriaPresentaciones()"
+      class="botonesBarraMenu Letra Claro"
+    >
+      Presentaciones
+    </button>
+  </li>
+  <li class="OpcionesMoviles">
+    <button class="botonesBarraMenu Icono Claro" id="menuDesplegable">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul id="panelExplorar">
+      <li>
+        <button
+          onclick="categoriaDocumentos()"
+          class="botonesBarraMenu Letra Claro"
+        >
+          Documentos
+        </button>
+      </li>
+      <li>
+        <button
+          onclick="categoriaVideos()"
+          class="botonesBarraMenu Letra Claro"
+        >
+          Videos
+        </button>
+      </li>
+      <li>
+        <button
+          onclick="categoriaPresentaciones()"
+          class="botonesBarraMenu Letra Claro"
+        >
+          Presentaciones
+        </button>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<script>
+  $(function() {
+    $("#panelExplorar").hide();
+    $("#menuDesplegable").click(function() {
+      $("#panelExplorar").slideToggle();
+    });
+  });
+  $(window).click(function(e) {
+    // alert(e.target.id);
+    if (e.target.id !== "menuDesplegable") {
+      $("#panelExplorar").slideUp();
+    }
+  });
+</script>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Confirmar cuenta</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="./styles/confirmarCuenta.css" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="Logo">LOGO</a>
+    <div class="contenedorPrincipal">
+      <div class="ConfirmarCuenta">
+        <h1><center>¡Confirma tu cuenta!</center></h1>
+        <p>
+          <center>
+            Por favor verifique su correo electrónico para acceder a todas
+            nuestras funciones.
+          </center>
+        </p>
+        <p>Hemos enviado un correo a</p>
+        <p id="correo"></p>
+      </div>
+      <div class="CorreoNoRecibido">
+        <p>¿No has recibido ningún correo?</p>
+        <button onclick="reenviarConfirmacion()">
+          Reenviar correo de confirmación
+        </button>
+      </div>
+    </div>
+    <div class="Informacion">
+      <center>
+        <p>¿Preguntas? Contáctanos en <u>clickacademyco@gmail.com</u></p>
+        <p>Click Academy 2019.</p>
+      </center>
+    </div>
+    <!--incluir Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <script src="scripts/confirmarCuenta.js"></script>
+  </body>
+</html>

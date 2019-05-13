@@ -1,0 +1,164 @@
+/*Colores*/
+:root {
+  --color-oscuro: black;
+  --color-medio: rgb(42, 43, 43);
+  --color-claro: white;
+  --color-informacion: rgba(17, 17, 17, 0.562);
+  --color-letra: rgb(85, 82, 82);
+}
+
+body,
+html {
+  background: var(--color-medio);
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.big {
+  font-size: 30px;
+}
+
+.Logo {
+  align-self: flex-start;
+}
+
+.contenedorPrincipal {
+  background-color: var(--color-oscuro);
+  color: var(--color-claro);
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  flex-grow: 0.6;
+  padding: 0 50px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  width: 600px;
+  min-height: 500px;
+}
+
+.contenedorPrincipal .Registrar {
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-grow: 0.8;
+}
+
+.contenedorPrincipal .Registrar h1 {
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.contenedorPrincipal .Registrar .CamposFormulario {
+  display: flex;
+  flex-flow: wrap column;
+  align-content: center;
+  width: 100%;
+}
+
+.contenedorPrincipal .Registrar .CamposFormulario input,
+.contenedorPrincipal .Registrar button,
+.contenedorPrincipal .Registrar a {
+  width: 90%;
+  padding: 12px;
+  font-size: 12px;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+
+.contenedorPrincipal .Registrar .CamposFormulario input {
+  background-color: var(--color-medio);
+  color: var(--color-claro);
+  cursor: text;
+  margin-bottom: 10px;
+}
+
+.contenedorPrincipal .Registrar .CamposFormulario input::placeholder {
+  color: var(--color-claro);
+}
+
+.contenedorPrincipal
+  .Registrar
+  .CamposFormulario
+  input:focus::-webkit-input-placeholder {
+  color: var(--color-claro);
+}
+
+.contenedorPrincipal .Registrar .CamposFormulario input:focus {
+  color: var(--color-claro);
+}
+
+.contenedorPrincipal .Registrar button {
+  font-weight: bolder;
+  background: rgb(0, 87, 128);
+  color: white;
+  cursor: pointer;
+}
+
+.contenedorPrincipal .IniciarSesion {
+  flex-grow: 0.2;
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.contenedorPrincipal .IniciarSesion p {
+  color: var(--color-letra);
+  font-size: 14px;
+}
+
+.contenedorPrincipal .IniciarSesion button {
+  border: none;
+  border-radius: 5px;
+  background: none;
+  color: var(--color-letra);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.Informacion {
+  background-color: var(--color-informacion);
+  width: 100%;
+  display: flex;
+  flex-flow: wrap column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 10px;
+  color: var(--color-letra);
+}
+
+.Informacion p {
+  margin: 5px;
+  align-self: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .contenedorPrincipal {
+    width: 100%;
+    height: 100%;
+  }
+
+  #esperarRegistro {
+    cursor: not-allowed;
+  }
+}

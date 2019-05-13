@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ingresar</title>
+    <link rel="stylesheet" href="./styles/IniciarSesionStyle.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!--Sweetalert2-->
+    <script src="./sweetalert2/sweetalert2.all.min.js"></script>
+    <script
+      href="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"
+    ></script>
+  </head>
+  <body>
+    <div class="Logo">LOGO</div>
+    <div class="contenedorPrincipal">
+      <div class="Ingresar">
+        <h1>Ingresar</h1>
+        <div class="DatosFormulario">
+          <input type="email" placeholder="Correo electrónico" id="correo" />
+          <input type="password" placeholder="Contraseña" id="contraseña" />
+        </div>
+
+        <button onclick="ingresar();">Ingresar</button>
+      </div>
+
+      <div class="contenedorSecundario">
+        <button onclick="recuperarContraseña()">
+          ¿Olvidaste tu contraseña?
+        </button>
+
+        <div class="Crear">
+          <h1>
+            ¿Aún no te has registrado?
+          </h1>
+          <button onclick="crearCuenta()">Crear cuenta</button>
+        </div>
+      </div>
+    </div>
+    <div class="Informacion">
+      <p>¿Preguntas? Contáctanos en <u>clickacademyco@gmail.com</u></p>
+      <p>Click Academy 2019.</p>
+    </div>
+
+    <!--incluir Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+
+    <!--Código para el funcionamiento del inicio de sesión-->
+    <script src="./scripts/alertas.js"></script>
+    <script src="./scripts/iniciarSesion.js"></script>
+  </body>
+</html>

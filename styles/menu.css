@@ -1,0 +1,144 @@
+:root {
+  --color-icono-claro: rgb(255, 255, 255);
+  --color-icono-oscuro: rgb(107, 105, 105);
+  --color-i-oscuro: rgb(0, 0, 0);
+  --color-hover: rgb(37, 37, 37);
+}
+
+/*Íconos*/
+
+.Icono {
+  font-size: 18px;
+}
+.Letra {
+  text-decoration: none;
+  font-size: 14px;
+}
+.Claro {
+  color: var(--color-icono-claro);
+}
+.Oscuro {
+  color: var(--color-icono-oscuro);
+}
+.Logo{
+  height: 60px;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Botones*/
+.ItemsNavegacion {
+  list-style-type: none;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+
+/*lista*/
+li {
+  flex: 1;
+  text-align: center;
+}
+li .botonesBarraMenu {
+  /* display: block; */
+  padding: 16px 0;
+}
+li .botonesBarraMenu:hover:not(.activo) {
+  background-color: var(--color-hover);
+}
+
+/*Botones*/
+.botonesBarraMenu {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+}
+
+#barraMenuInferior {
+  background-color: var(--color-i-oscuro);
+  position: fixed;
+  bottom: 0;
+}
+
+#barraMenuInferior .Inferior{
+  background-color: var(--color-i-oscuro);
+  min-height: 60px;
+}
+
+#barraMenuSuperior {
+  background-color: none;
+}
+
+#barraMenuInferior,
+#barraMenuSuperior {
+  list-style-type: none;
+  overflow-x: hidden;
+  min-height: 60px;
+  width: 100%;
+  display: flex;
+  flex-flow: wrap row;
+  background: transparent;
+}
+
+#barraMenuSuperior .OpcionesMoviles,
+#barraMenuSuperior #panelExplorar {
+  display: none;
+}
+
+#barraMenuSuperior #panelExplorar {
+  position: absolute;
+  width: inherit;
+  z-index: 10;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: var(--color-hover);
+  padding: 10px;
+  display: flex;
+  flex-flow: column;
+  align-self: flex-start;
+  justify-self: end;
+  list-style-type: none;
+  padding-right: 15px;
+}
+
+#barraMenuSuperior #panelExplorar .botonesBarraMenu,
+#barraMenuInferior #panelUsuario .botonesBarraMenu {
+  width: 100%;
+  padding: 10px;
+  height: 60px;
+}
+
+#barraMenuInferior #ingresarBoton,
+#barraMenuInferior #miAulaBoton {
+  display: inline;
+}
+
+#barraMenuInferior #panelUsuario {
+  height: 120px;
+  bottom: 50%;
+  position: relative;
+  width: 100%;
+  z-index: 10;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: var(--color-i-oscuro);
+  list-style-type: none;
+}
+
+@media only screen and (max-width: 768px) {
+  #barraMenuSuperior .OpcionesMoviles {
+    display: block;
+  }
+
+  #barraMenuSuperior .Opciones {
+    display: none;
+  }
+}
