@@ -37,11 +37,10 @@ function cargarElementos(elemento) {
   let archivos = new Array();
 
   elemento.forEach(element => {
-
     archivos = element.split(",");
 
     let divMiniatura = document.createElement("DIV");
-      divMiniatura.className = "MiniaturaArchivos";
+    divMiniatura.className = "MiniaturaArchivos";
 
     let tituloMiniatura = document.createTextNode(archivos[1]);
 
@@ -50,7 +49,7 @@ function cargarElementos(elemento) {
     h2.appendChild(tituloMiniatura);
 
     let preview = document.createElement("DIV");
-      preview.className = "ImgMiniatura";
+    preview.className = "ImgMiniatura";
 
     divMiniatura.appendChild(h2);
     divMiniatura.appendChild(preview);
@@ -70,7 +69,6 @@ function cargarElementos(elemento) {
         preview.id = "miniaturaLikesTodos";
         break;
     }
-    
   });
 
   console.log(archivos);
