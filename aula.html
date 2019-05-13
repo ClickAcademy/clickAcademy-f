@@ -8,7 +8,13 @@
 
     <!--Script para incluir barra de menú-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--Estilos-->
     <link href="./styles/aula.css" rel="stylesheet" />
+    <!--Sweetalert2-->
+    <script src="./sweetalert2/sweetalert2.all.min.js"></script>
+    <script
+      href="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"
+    ></script>
 
     <!--Íconos usados-->
   </head>
@@ -17,19 +23,51 @@
     <div id="barraMenuSuperior"></div>
     <div id="barraMenuInferior"></div>
     <!---->
+    <div id="contenedorPrincipal">
+      <div class="informacion">
+        <p>Nombre</p>
+      </div>
+      <div class="banner">
+        <div id="fotoPerfil">
+          <p>Foto</p>
+        </div>
+        <div id="suscripcion" onclick="suscripcion()">
+          <button id="botonSuscripcion">S</button>
+        </div>
+      </div>
 
-    <div class="encabezado">
-      <div id="banner"></div>
-      <div id="fotoPerfil"></div>
-    </div>
-    <div class="contenido">
-        
+      <div class="contenido">
+        <ul id="menuContenidoCanal">
+          <li class="OpcionesContenido">
+            <button>Videos</button>
+          </li>
+          <li class="OpcionesContenido">
+            <button>Documentos</button>
+          </li>
+          <li class="OpcionesContenido">
+            <button>Presentaciones</button>
+          </li>
+          <li class="OpcionesContenido">
+            <button>Información</button>
+          </li>
+        </ul>
+        <div id="contenidoEspecifico"></div>
+      </div>
     </div>
 
     <!--incluir Firebase-->
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
 
+    <script src="./scripts/alertas.js"></script>
     <script src="./scripts/aula.js"></script>
     <script src="./scripts/menu.js"></script>
   </body>
 </html>
+
+<script>
+  $(window).click(function(e) {
+    if (e.target.id == "miAulaBoton") {
+      $("#panelUsuario").slideUp();
+    }
+  });
+</script>
