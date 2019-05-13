@@ -1,0 +1,122 @@
+/*Colores*/
+:root {
+  --color-oscuro: black;
+  --color-medio: rgb(42, 43, 43);
+  --color-claro: white;
+  --color-informacion: rgba(17, 17, 17, 0.562);
+  --color-letra: rgb(85, 82, 82);
+}
+
+body,
+html {
+  background: var(--color-medio);
+  overflow-y: auto;
+  height: 100%;
+  width: 100%;
+  min-height:400px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  text-align: center;
+}
+
+.contenedorPrincipal {
+  color: var(--color-claro);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* flex-grow: 0.8; */
+  min-height: 650px;
+  position: absolute;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.contenedorPrincipal .Archivo {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 0.4;
+  width: 100%;
+}
+
+.contenedorPrincipal .Informacion {
+  display: flex;
+  flex-flow: row wrap;
+  flex-grow: 0.6;
+  width: 100%;
+}
+
+.contenedorPrincipal .Informacion .Previsualizacion {
+  flex-flow: center wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  width: 50%;
+}
+
+.contenedorPrincipal .Informacion .Previsualizacion .MiniaturaArchivo{
+  width: 90%;
+  height: 250px;
+  border: 1px solid black;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.contenedorPrincipal .Informacion .Datos {
+  flex-flow: column wrap;
+  flex-grow: 0.4;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  width: 50%;
+}
+
+.contenedorPrincipal .Informacion .Datos input,
+.contenedorPrincipal .Informacion .Datos button,
+.contenedorPrincipal .Informacion .Datos select {
+  width: 90%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background: var(--color-claro);
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  color: var(--color-letra);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
+}
+
+.contenedorPrincipal .Informacion .Datos button {
+  font-weight: bolder;
+  background: rgb(0, 87, 128);
+  color: white;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .contenedorPrincipal .Informacion {
+    display: flex;
+    flex-flow: wrap column;
+    width: 100%;
+    /* background: red; */
+  }
+
+  .contenedorPrincipal .Informacion .Previsualizacion,
+  .contenedorPrincipal .Informacion .Datos {
+    width: 100%;
+  }
+}

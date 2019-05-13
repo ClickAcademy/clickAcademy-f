@@ -1,0 +1,29 @@
+:root {
+  --color-oscuro: black;
+  --color-medio: rgb(34, 34, 34);
+}
+
+html,
+body {
+  background: var(--color-medio);
+  padding: 0%;
+  height: 140%;
+  min-height: 700px;
+}
+
+html, body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.ListaDocumentos{
+  display: flex;
+  flex-grow: 1;
+}

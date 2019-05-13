@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Registrarse</title>
+    <!--Hoja de estilo-->
+    <link rel="stylesheet" href="./styles/subirArchivo.css" />
+    <!--scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Sweetalert2-->
+    <script src="./sweetalert2/sweetalert2.all.min.js"></script>
+    <script
+      href="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"
+    ></script>
+
+    <!---->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="barraMenuSuperior"></div>
+    <div class="contenedorPrincipal">
+      <div class="Archivo">
+        <h1>Comparte tu conocimiento con la comunidad</h1>
+        <progress></progress>
+      </div>
+      <div class="Informacion">
+        <div class="Previsualizacion">
+          <div class="MiniaturaArchivo"></div>
+        </div>
+        <div class="Datos">
+          <input type="text" placeholder="Nombre" id="nombre" />
+          <input type="text" placeholder="Descripción" id="descripcion" />
+          <input
+            type="text"
+            placeholder="Tabla de contenidos"
+            id="tablaDeContenidos"
+          />
+          <select>
+            <option value="0">Seleccione una opción</option>
+            <option value="0">Seleccione una opción</option>
+            <option value="0">Seleccione una opción</option>
+            <option value="0">Seleccione una opción</option>
+          </select>
+          <button>Subir archivo</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="barraMenuInferior"></div>
+
+    <!--incluir Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <!-- <script src="scripts/alertas.js"></script> -->
+    <script src="./scripts/alertas.js"></script>
+    <script src="./scripts/menu.js"></script>
+    <script src="./scripts/subirArchivo.js"></script>
+  </body>
+</html>

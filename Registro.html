@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Registrarse</title>
+    <!--Hoja de estilo-->
+    <link rel="stylesheet" href="./styles/registro.css" />
+    <!--scripts-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Sweetalert2-->
+    <script src="./sweetalert2/sweetalert2.all.min.js"></script>
+    <script
+      href="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <a class="Logo">LOGO</a>
+
+    <div class="contenedorPrincipal">
+      <div class="IniciarSesion">
+        <p>¿Ya eres parte de Click academy?</p>
+        <button onclick="iniciarSesion()">Inicia sesión</button>
+      </div>
+
+      <div class="Registrar">
+        <h1>¡Únete a nuestra comunidad!</h1>
+        <div class="CamposFormulario">
+          <input type="text" placeholder="Nombre(s) *" id="nombre" />
+          <input type="text" placeholder="Apellidos *" id="apellido" />
+          <input type="text" placeholder="Correo *" id="correo" />
+          <input type="password" placeholder="Contraseña *" id="contraseña" />
+          <input
+            type="password"
+            placeholder="Confirmar contraseña *"
+            id="confirmar_contraseña"
+          />
+        </div>
+        <button onclick="registrar()" id="registrarUsuario">
+          Crear cuenta
+        </button>
+        <a id="esperarRegistro" aria-disabled="true">
+          <i class="fa big fa-spinner fa-spin"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="Informacion">
+      <p>¿Preguntas? Contáctanos en <u>clickacademyco@gmail.com</u></p>
+      <p>Click Academy 2019.</p>
+    </div>
+    <!--incluir Firebase-->
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <!-- <script src="scripts/alertas.js"></script> -->
+    <script src="./scripts/alertas.js"></script>
+    <script src="./scripts/registro.js"></script>
+  </body>
+</html>

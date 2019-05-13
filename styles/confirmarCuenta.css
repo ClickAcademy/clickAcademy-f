@@ -1,0 +1,103 @@
+/*Colores*/
+:root {
+  --color-oscuro: black;
+  --color-medio: rgb(42, 43, 43);
+  --color-claro: white;
+  --color-informacion: rgba(17, 17, 17, 0.562);
+  --color-letra: rgb(85, 82, 82);
+}
+
+body,
+html {
+  background: var(--color-medio);
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.Logo {
+  align-self: flex-start;
+}
+
+.contenedorPrincipal {
+  background-color: var(--color-oscuro);
+  color: var(--color-claro);
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: space-between;
+  flex-grow: 0.1;
+  padding: 0 50px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  width: 500px;
+  min-height: 500px;
+}
+
+.contenedorPrincipal p {
+  cursor: default;
+  text-align: center;
+}
+
+.contenedorPrincipal .ConfirmarCuenta {
+  flex-grow: 0.8;
+}
+
+.contenedorPrincipal .CorreoNoRecibido {
+  flex-grow: 0.2;
+}
+
+.contenedorPrincipal .ConfirmarCuenta,
+.contenedorPrincipal .CorreoNoRecibido {
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.contenedorPrincipal .CorreoNoRecibido button {
+  border: none;
+  border-radius: 5px;
+  background: none;
+  color: var(--color-letra);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.Informacion {
+  background-color: var(--color-informacion);
+  width: 100%;
+  display: flex;
+  flex-flow: wrap column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 16px;
+  color: var(--color-letra);
+}
+
+.Informacion p {
+  margin: 10px;
+  align-self: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .contenedorPrincipal {
+    width: 100%;
+    height: 70%;
+  }
+}

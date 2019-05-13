@@ -1,0 +1,75 @@
+<ul class="ItemsNavegacion">
+  <li class="Opciones">
+    <button onclick="inicio()" class="botonesBarraMenu Inferior">
+      <i class="fas Icono Oscuro fa-home"></i>
+    </a>
+  </li>
+  <li class="Opciones">
+    <button onclick="buscar()" class="botonesBarraMenu Inferior">
+      <i class="fas Icono Oscuro fa-search"></i>
+    </button>
+  </li>
+  <li class="Opciones" id="subirArchivo">
+    <button class="botonesBarraMenu Inferior" onclick="subirArchivo()">
+      <i class="fas Icono Oscuro fa-upload"></i>
+    </button>
+  </li>
+  <li class="MiAula" >
+      <button
+      onclick="miAula()"
+      class="botonesBarraMenu Inferior Letra Claro"
+      id="miAulaBoton"
+    >
+      <i class="Icono Oscuro fas fa-school"></i>
+    </button>
+      <ul id="panelUsuario">
+        <li>
+          <button
+            onclick="miAula()"
+            class="botonesBarraMenu Letra Oscuro"
+          >
+          <i class="Icono Oscuro fas fa-chalkboard-teacher"></i> Mi aula
+          </button>
+        </li>
+        <li>
+          <button
+            onclick="cerrarSesion()"
+            class="botonesBarraMenu Letra Oscuro"
+          >
+          <i class="Icono Oscuro fas fa-sign-out-alt"></i> Salir
+          </button>
+        </li>
+      </ul>
+    <button onclick="ingresarBoton()" class="botonesBarraMenu Inferior Letra Oscuro" id="ingresarBoton">
+        <i class="Icono Oscuro fas fa-school"></i>
+    </button>
+  </li>
+</ul>
+
+<script>
+  $(function() {
+      $("#miAulaBoton").hide();
+      $("#subirArchivo").hide();
+    firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      $("#miAulaBoton").show();
+      $("#subirArchivo").show();
+      $("#ingresarBoton").hide();
+    } else {
+      $("#ingresarBoton").show();
+      $("#ingresarBoton").append("Ingresar");
+    }
+  });
+    $("#panelUsuario").hide();
+    $("#miAulaBoton").click(function() {
+      $("#panelUsuario").slideToggle();
+    });
+  });
+  $(window).click(function(e) {
+    if (e.target.id !== "miAulaBoton") {
+      $("#panelUsuario").slideUp();
+    }
+  });
+</script>
+
+
