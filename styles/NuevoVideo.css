@@ -1,0 +1,288 @@
+/*Colores*/
+
+:root {
+  --color-principal-oscuro: rgb(23, 44, 62);
+  --color-principal-claro: rgb(86, 170, 198);
+  --color-secundario-claro: rgb(205, 226, 253);
+  --color-secundario-claro-transparente: rgba(205, 226, 253, 0.664);
+  --color-terciario-oscuro: rgb(149, 183, 52);
+}
+/**/
+
+body {
+  background: rgb(240, 247, 247);
+  width: 100%;
+  height: 100%;
+  padding: 0%;
+  font-family: "Cardo", serif;
+}
+
+.ContenedorPrincipal {
+  margin-top: 2%;
+  margin-left: 2.5%;
+  height: 85vh;
+  width: 95%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ContenedorPrincipal .ContenedorDividido {
+  height: 100%;
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  font-family: "Istok Web", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/*ESTILO DE LA OPCIÓN SUBIR VÍDEO*/
+.ContenedorPrincipal #SubirVideo {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 15%;
+  margin: 0 auto;
+  background-color: rgb(240, 247, 247);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ContenedorPrincipal #SubirVideo .Borde-diagonal {
+  width: 50%;
+  height: 1%;
+  bottom: 0;
+  background-color: var(--color-principal-claro);
+  -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  border: 5px inset var(--color-principal-claro);
+}
+/*ESTILO DEL BOTÓN*/
+.ContenedorPrincipal #SubirVideo .AgregarVideo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.ContenedorPrincipal #SubirVideo .AgregarVideoIcono {
+  font-size: 2em;
+  float: left;
+}
+/**/
+/*HOVER DEL BOTON Y DEL TEXTO*/
+.ContenedorPrincipal #SubirVideo .AgregarVideo:hover,
+.ContenedorPrincipal #SubirVideo .AgregarVideoTexto:hover {
+  color: var(--color-principal-claro);
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+/**/
+/*ESTILO DEL TEXTO*/
+.ContenedorPrincipal #SubirVideo .AgregarVideoTexto {
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 140%;
+  display: flex;
+  align-items: left;
+}
+
+.ContenedorPrincipal #SubirVideo .posicionar {
+  width: 120%;
+  height: 60%;
+  font-size: 0.5em;
+  text-align: center;
+}
+/**/
+/*ESTILO DE LA BARRA DE PROGRESO*/
+.ContenedorPrincipal #SubirVideo #SeleccionarVideo #uploader {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 80%;
+  height: 10px;
+  margin-bottom: 10px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: var(--color-principal-claro);
+  border-radius: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-image: -webkit-linear-gradient(
+      -45deg,
+      transparent 33%,
+      rgba(0, 0, 0, 0.1) 33%,
+      rgba(0, 0, 0, 0.1) 66%,
+      transparent 66%
+    ),
+    -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+    -webkit-linear-gradient(left, var(--color-terciario-oscuro), var(--color-principal-oscuro));
+
+  border-radius: 14px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+/**/
+/*ESTILO DE SELECCIONAR VIDEO*/
+/*Se oculta el botoón real*/
+.ContenedorPrincipal #SubirVideo .VideoSelecter {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.ContenedorPrincipal #SubirVideo #SeleccionarVideo {
+  background: #081e4900;
+  color: var(--color-principal-oscuro);
+  border: 0px;
+  box-shadow: 0 4px 8px -2px #081e4900;
+  padding: 8px;
+  cursor: pointer;
+}
+/**/
+/*******/
+
+/*PRERVISUALIZACIÓN DEL VIDEO*/
+.ContenedorPrincipal .ContenedorDividido #VideoPreviewDiv {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  height: 60%;
+  width: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ContenedorPrincipal .ContenedorDividido #VideoPreview {
+  background-image: url(../imagenes/tube.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+
+  position: absolute;
+  height: 60%;
+  width: 80%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: outset 4px var(--color-principal-claro);
+  -webkit-box-shadow: 10px 11px 23px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 11px 23px -1px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 11px 23px -1px rgba(0, 0, 0, 0.75);
+}
+
+.ContenedorPrincipal #VideoP {
+  position: absolute;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}
+
+@supports (object-fit: contain) {
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+/****/
+
+/*INFORMACIÓN DEL VÍDEO*/
+.ContenedorPrincipal #InformacionVideo {
+  position: absolute;
+  width: 46%;
+  height: 100%;
+  bottom: 0;
+  right: 0;
+  overflow: hidden;
+  background-color: none;
+}
+
+.ContenedorPrincipal #InformacionVideo #FormularioInformacion {
+  width: 70%;
+  height: 65%;
+  padding-left: 10%;
+}
+
+.ContenedorPrincipal #InformacionVideo .TextoInformacion {
+  display: block;
+  width: 85%;
+  height: 15%;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-left: 6px solid var(--color-terciario-oscuro);
+  outline: none;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+}
+
+.ContenedorPrincipal #InformacionVideo input::-webkit-input-placeholder,
+textarea::placeholder {
+  color: var(--color-principal-oscuro);
+}
+
+.ContenedorPrincipal #InformacionVideo input:hover,
+textarea:hover {
+  border-left: 6px solid var(--color-principal-oscuro) !important;
+  -moz-transform: scale(1.4);
+  -webkit-transform: scale(1.4);
+  -o-transform: scale(1.4);
+  -ms-transform: scale(1.4);
+  transform: scale(1.4);
+}
+
+.ContenedorPrincipal #InformacionVideo input:focus,
+textarea:focus {
+  border-left: 6px solid var(--color-principal-oscuro) !important;
+}
+
+.ContenedorPrincipal #InformacionVideo .BotonInformacion {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 60%;
+  padding: 15px;
+  background: white;
+  color: var(--color-principal-oscuro);
+  border: 1px var(--color-principal-oscuro);
+  box-shadow: 0 2px 4px -1px var(--color-principal-oscuro);
+  border-radius: 5px;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+}
+
+.ContenedorPrincipal #InformacionVideo button:hover {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+  background: #fff;
+  color: var(--color-principal-oscuro);
+  box-shadow: inset 0 2px 4px -1px var(--color-principal-oscuro);
+  cursor: pointer;
+}
+
+/*ESTILO DE LAS OPCIONES DE PRIVACIDAD**/

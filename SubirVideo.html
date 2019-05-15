@@ -1,0 +1,235 @@
+<!--Este html es la pagina del usuario la cual va a poder suvir un archivo en el sistema, esta relacionado en con el archivo de subirArchivo.php, cargarcategorias.php, subirArchivo.js -->
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--Hojas de estilo-->
+    <link rel="stylesheet" href="./styles/menustyle.css" />
+    <link rel="stylesheet" href="./styles/menusesionstyle.css" />
+    <link rel="stylesheet" href="./styles/NuevoVideo.css" />
+    <!---->
+    <!--Tipos de letra-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Black+Ops+One|Cantarell|Cardo&amp;subset=latin-ext"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <!--Función para el menú lateral-->
+    <script>
+      function toggleNavPanel(x, maxW) {
+        var panel = document.getElementById(x);
+        if (panel.style.width == maxW) {
+          panel.style.width = "0px";
+        } else {
+          panel.style.width = maxW;
+        }
+      }
+    </script>
+    <!---->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="BarraNavegacion">
+      <ul>
+        <li class="MenuLateral">
+          <button onclick="toggleNavPanel('SeccionesMenuLateral','250px')">
+            <i class="fas col fa-bars"></i>
+          </button>
+
+          <div id="SeccionesMenuLateral">
+            <a href="PrincipalSesion.html" class="activo"
+              ><i class="fas colactivo fa-university"></i> Inicio
+            </a>
+            <a href="#"><i class="fas col fa-fire"></i> Tendencias </a>
+            <a href="#"
+              ><i class="fas col fa-chalkboard-teacher"></i>Suscripciones</a
+            >
+            <hr />
+
+            <a href="#"><i class="fas col fa-archive"></i>Biblioteca</a>
+            <a href="#"><i class="fas col fa-history"></i> Historial</a>
+            <a href="#"><i class="fas col fa-clock"></i> Ver mas tarde</a>
+            <a href="#"><i class="fas col fa-star"></i> Favoritos</a>
+            <hr />
+
+            <a href="#"><i class="fas col fa-question-circle"></i> Ayuda</a>
+            <hr />
+
+            <p>2019 UccTube</p>
+          </div>
+        </li>
+
+        <li class="logo">
+          <a href="PrincipalSesion.html" class="logo"
+            ><img src="./imagenes/utlogo.png" width="130px" height="55px"
+          /></a>
+        </li>
+
+        <div class="barrabusqueda">
+          <form action="">
+            <input type="text" placeholder="Buscar" name="search" />
+            <button type="submit"><i class="fa fa-search"></i></button>
+          </form>
+        </div>
+
+        <li style="float:right" class="MenuLateralUsuario">
+          <button onclick="toggleNavPanel('SeccionesMenuUsuario','230px')">
+            <i class="fas col fa-user"></i>
+          </button>
+
+          <div id="SeccionesMenuUsuario">
+            <a class="Sections_user">
+              Nombre de Usuario Contraseña
+            </a>
+            <hr />
+            <a class="Sections_user"
+              ><i class="fas col fa-user-tie"></i> Mi canal
+            </a>
+            <hr />
+            <button onclick="logout()" class="Sections_user">
+              <i class="fas col fa-door-open"></i>Salir
+            </button>
+          </div>
+        </li>
+
+        <li style="float:right">
+          <a href="#Bell" title="Notificaciones">
+            <i class="fas col fa-bell"></i>
+          </a>
+        </li>
+
+        <li style="float:right">
+          <a href="#Message">
+            <i class="fas col fa-envelope"></i>
+          </a>
+        </li>
+
+        <li style="float:right">
+          <a href="#Apps" title="Aplicaciones">
+            <i class="fab col fa-buromobelexperte"></i>
+          </a>
+        </li>
+
+        <li style="float:right">
+          <a href="SubirVideo.html" title="Subir videos">
+            <i class="fas col fa-cloud-upload-alt"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!--Opción de subir el vídeo-->
+    <div class="ContenedorPrincipal">
+      <div class="ContenedorDividido">
+        <div id="SubirVideo">
+          <input
+            type="file"
+            value="upload"
+            id="fileButton"
+            class="VideoSelecter"
+          />
+          <label for="fileButton" id="SeleccionarVideo">
+            <div class="AgregarVideo">
+              <i class="AgregarVideoIcono fas fa-cloud-upload-alt"> </i>
+            </div>
+            <div class="AgregarVideoTexto">
+              <div class="posicionar">
+                <h3>Selecciona archivos para subir</h3>
+                <progress value="0" max="100" id="uploader">0%</progress>
+              </div>
+            </div>
+          </label>
+          <!--<div class="Borde-diagonal"></div>-->
+        </div>
+
+        <!--Información del video-->
+        <div id="InformacionVideo" class="ContenedorDividido">
+          <form
+            id="FormularioInformacion"
+            action="https://click-academy.herokuapp.com/SubirArchivo.php"
+            method="POST"
+          >
+            <input
+              type="text"
+              id="nombrevideo"
+              placeholder="Titulo"
+              class="TextoInformacion"
+              name="NombreVideo"
+            />
+            <textarea
+              id="mensaje"
+              rows="5"
+              placeholder="Descripcion"
+              class="TextoInformacion"
+              name="Mensaje"
+            ></textarea>
+
+            <textarea
+              type="text"
+              rows="5"
+              id="categoria"
+              placeholder="Tabla de contenidos"
+              rows="4"
+              class="TextoInformacion"
+              name="tablacontenido"
+            ></textarea>
+
+            <!--  <?php
+            include("conexion.php");     
+            <option value="0">Seleccione una opción</option>   
+            $SQL = "SELECT nombre_categoria FROM categorias " ;
+            $result = pg_query($SQL) or die('Query failed: ' . pg_last_error()); 
+            $rows = pg_numrows($result); 
+            for($i=1;$i<=$rows; $i++){
+                $line = pg_fetch_array($result, null, PGSQL_ASSOC);
+                 echo " <option value='1'> $line[nombre_categoria] </option>  ";
+               }
+            ?> -->
+
+            <div class="selector-categorias">
+              Seleccione una opción
+              <select
+                class="mdb-select md-form colorful-select dropdown-danger"
+              ></select>
+            </div>
+
+            <input
+              type="text"
+              name="caja_valor"
+              id="caja_valor"
+              value=""
+              style="visibility:hidden"
+            />
+
+            <button
+              onclick="ingresardatos();"
+              class="BotonInformacion"
+              type="submit"
+              id="submit"
+            >
+              Subir vídeo
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- incluir firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+
+    <!--Código para el funcionamiento de subir video-->
+    <script src="./scripts/SubirVideo.js"></script>
+  </body>
+</html>

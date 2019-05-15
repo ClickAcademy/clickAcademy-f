@@ -1,0 +1,16 @@
+#viewVideo {
+  text-align: right;
+  margin: 10px;
+  margin-right: 50px;
+}
+
+#VideoPrin {
+  float: left;
+  height: 320px;
+  width: 500px;
+  margin: 50px;
+}
+
+#InfoVideo {
+  float: right;
+}

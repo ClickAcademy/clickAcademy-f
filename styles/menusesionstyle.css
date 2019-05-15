@@ -1,0 +1,69 @@
+/*Colores*/
+
+:root {
+  --color-principal-oscuro: rgb(23, 44, 62);
+  --color-principal-claro: rgb(86, 170, 198);
+  --color-secundario-claro: rgb(205, 226, 253);
+}
+
+/* Barra de navegación superior*/
+
+/*Colores y propiedades*/
+
+.MenuLateralUsuario {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 16px 16px;
+  text-decoration: none;
+}
+
+/*Cursor pasa por encima del ícono*/
+.Sections_user:hover {
+  background-color: var(--color-secundario-claro) !important;
+}
+
+/* Menú desplegable */
+
+.MenuLateralUsuario > button,
+#SeccionesMenuUsuario > button {
+  background: rgba(255, 255, 255, 0);
+  border: 0px;
+  cursor: pointer;
+  font-size: 17px;
+  font-family: "Cardo", serif;
+}
+
+#SeccionesMenuUsuario > button {
+  width: 100%;
+}
+
+.MenuLateralUsuario:hover {
+  background-color: var(--color-secundario-claro);
+}
+
+#SeccionesMenuUsuario {
+  float: right;
+  right: 10px;
+}
+
+.BarraNavegacion .MenuLateralUsuario #SeccionesMenuUsuario {
+  position: absolute;
+  z-index: 100000;
+  height: 100%;
+  width: 0px;
+  background: rgb(255, 255, 255);
+  top: 80px;
+  border: black;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  font-size: 17px;
+  transition: width 0.3s linear 0s;
+}
+
+#SeccionesMenuUsuario > div {
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  height: 238px;
+  margin: 10px;
+}
