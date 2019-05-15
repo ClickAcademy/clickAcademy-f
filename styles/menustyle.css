@@ -1,0 +1,130 @@
+/*Colores*/
+
+:root {
+  --color-principal-oscuro: rgb(23, 44, 62);
+  --color-principal-claro: rgb(86, 170, 198);
+  --color-secundario-claro: rgb(205, 226, 253);
+}
+
+/* Barra de navegación superior*/
+
+/*Colores y propiedades*/
+.BarraNavegacion ul {
+  list-style-type: none;
+  font-size: 25px;
+  max-height: 66px;
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.8);
+}
+
+.BarraNavegacion ul li {
+  float: left;
+}
+
+.BarraNavegacion ul li a,
+.BarraNavegacion .MenuLateral {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 16px 16px;
+  text-decoration: none;
+}
+
+/*Íconos*/
+
+.col {
+  font-size: 25px;
+  color: var(--color-principal-oscuro);
+}
+
+.colactivo {
+  color: var(--color-secundario-claro);
+  font-size: 25px;
+  text-shadow: 2px 2px rgba(255, 255, 255, 0.24);
+}
+
+/*Logo botón*/
+.BarraNavegacion .logo {
+  margin-top: -5px;
+}
+
+/**/
+
+/*Cursor pasa por encima del ícono*/
+.BarraNavegacion ul li a:hover:not(.activo),
+.BarraNavegacion .MenuLateral:hover {
+  background-color: var(--color-secundario-claro);
+}
+
+/*Se ha seleccionado una opción*/
+.activo {
+  background-color: var(--color-principal-oscuro) !important;
+  color: var(--color-secundario-claro) !important;
+  text-shadow: 2px 2px rgba(255, 255, 255, 0.24);
+}
+
+/*Estilo de la barra de búsqueda*/
+
+.BarraNavegacion .barrabusqueda {
+  float: left;
+}
+
+.BarraNavegacion .barrabusqueda button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 14px;
+  margin-right: 16px;
+  background: white;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  color: var(--color-principal-oscuro);
+}
+
+.BarraNavegacion input[type="text"] {
+  padding: 6px;
+  vertical-align: middle;
+  margin-top: 15px;
+  font-size: 17px;
+  border: none;
+}
+
+/* Menú desplegable */
+
+.BarraNavegacion .MenuLateral > button {
+  background: none;
+  border: 0px;
+  cursor: pointer;
+  font-size: 17px;
+  font-family: "Cardo", serif;
+}
+
+.BarraNavegacion .MenuLateral #SeccionesMenuLateral {
+  float: left;
+  left: 10px;
+}
+
+.BarraNavegacion .MenuLateral #SeccionesMenuLateral {
+  position: absolute;
+  z-index: 10000;
+  height: 100%;
+  width: 0px;
+  background: white;
+  top: 80px;
+  border: black;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.8);
+  overflow-x: hidden;
+  overflow-y: scroll;
+  font-size: 17px;
+  transition: width 0.3s linear 0s;
+}
+
+.BarraNavegacion .MenuLateral #SeccionesMenuLateral > div {
+  background: white;
+  padding: 20px;
+  height: 238px;
+  margin: 10px;
+}
