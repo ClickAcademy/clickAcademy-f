@@ -30,7 +30,7 @@ function confirmar(mensaje) {
     });
   });
 }
-function success(mensaje) {
+function success(mensaje, direccion) {
   Swal.fire({
     position: "top-end",
     type: "success",
@@ -38,6 +38,9 @@ function success(mensaje) {
     showConfirmButton: false,
     timer: 1500
   });
+  if (direccion !== "") {
+    location.replace(direccion);
+  }
 }
 
 function alertasPequeñas(mensaje) {

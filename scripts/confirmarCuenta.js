@@ -10,16 +10,18 @@ var config = {
 };
 firebase.initializeApp(config);
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    var user = firebase.auth().currentUser;
-    var confirmado = user.isEmailVerified();
-    if (user != null && confirmado == false) {
-      document.getElementById("correo").innerHTML = user.email;
+$(function() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      var user = firebase.auth().currentUser;
+      var confirmado = user.emailVerified;
+      if (user != null && confirmado == false) {
+        document.getElementById("correo").innerHTML = user.email;
+      }
+    } else {
+      location.replace("index.html");
     }
-  } else {
-    location.replace("index.html");
-  }
+  });
 });
 
 function salir() {

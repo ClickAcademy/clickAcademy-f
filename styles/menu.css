@@ -20,7 +20,7 @@
 .Oscuro {
   color: var(--color-icono-oscuro);
 }
-.Logo{
+.Logo {
   height: 60px;
   width: 100%;
   padding: 10px;
@@ -35,7 +35,7 @@
   width: 100%;
   padding: 0;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-around;
 }
 
@@ -45,7 +45,6 @@ li {
   text-align: center;
 }
 li .botonesBarraMenu {
-  /* display: block; */
   padding: 16px 0;
 }
 li .botonesBarraMenu:hover:not(.activo) {
@@ -70,13 +69,14 @@ li .botonesBarraMenu:hover:not(.activo) {
   bottom: 0;
 }
 
-#barraMenuInferior .Inferior{
+#barraMenuInferior .Inferior {
   background-color: var(--color-i-oscuro);
   min-height: 60px;
 }
 
 #barraMenuSuperior {
   background-color: none;
+  box-shadow: 0 4px 8px -2px #00000065;
 }
 
 #barraMenuInferior,
@@ -95,19 +95,28 @@ li .botonesBarraMenu:hover:not(.activo) {
   display: none;
 }
 
-#barraMenuSuperior #panelExplorar {
-  position: absolute;
-  width: inherit;
+#barraMenuSuperior #panelExplorar,
+#barraMenuInferior #panelUsuario {
   z-index: 10;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  list-style-type: none;
+}
+
+#barraMenuInferior #panelUsuario {
+  height: 120px;
+  bottom: 50%;
+  position: relative;
+  width: 100%;
+  background: var(--color-i-oscuro);
+}
+
+#barraMenuSuperior #panelExplorar {
+  position: absolute;
+  width: 200px;
+  top: 60px;
   background: var(--color-hover);
-  padding: 10px;
   display: flex;
   flex-flow: column;
-  align-self: flex-start;
-  justify-self: end;
-  list-style-type: none;
-  padding-right: 15px;
 }
 
 #barraMenuSuperior #panelExplorar .botonesBarraMenu,
@@ -122,20 +131,10 @@ li .botonesBarraMenu:hover:not(.activo) {
   display: inline;
 }
 
-#barraMenuInferior #panelUsuario {
-  height: 120px;
-  bottom: 50%;
-  position: relative;
-  width: 100%;
-  z-index: 10;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  background: var(--color-i-oscuro);
-  list-style-type: none;
-}
-
 @media only screen and (max-width: 768px) {
   #barraMenuSuperior .OpcionesMoviles {
-    display: block;
+    display: flex;
+    justify-content: center;
   }
 
   #barraMenuSuperior .Opciones {
