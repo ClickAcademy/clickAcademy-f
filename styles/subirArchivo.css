@@ -13,7 +13,6 @@ html {
   overflow-y: auto;
   height: 100%;
   width: 100%;
-  min-height:400px;
 }
 
 body {
@@ -27,7 +26,7 @@ body {
   padding: 0;
 }
 
-h1{
+h1 {
   text-align: center;
 }
 
@@ -36,22 +35,86 @@ h1{
   display: flex;
   flex-direction: column;
   width: 100%;
-  /* flex-grow: 0.8; */
   min-height: 650px;
+  min-width: 320px;
   position: absolute;
   margin-top: 60px;
   margin-bottom: 60px;
 }
 
+/**
+*   Subir archivo
+*/
 .contenedorPrincipal .Archivo {
   display: flex;
   flex-flow: column;
   justify-content: space-around;
   align-items: center;
-  flex-grow: 0.4;
   width: 100%;
+  height: 150px;
+  margin: 20px;
 }
 
+.contenedorPrincipal .Archivo .IconoBusqueda {
+  font-size: 30px;
+}
+
+.contenedorPrincipal .Archivo #SeleccionarArchivo {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+  background: inherit;
+  border: 0px;
+  box-shadow: 0 4px 8px -2px #081e4900;
+  cursor: pointer;
+  height: 100%;
+}
+
+.contenedorPrincipal .Archivo .ArchivoSeleccionar {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.contenedorPrincipal #barraProgreso {
+  -webkit-appearance: none;
+  width: 200px;
+  height: 15px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: var(--color-letra);
+  border-radius: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-image: -webkit-linear-gradient(
+      -45deg,
+      transparent 33%,
+      rgba(0, 0, 0, 0.1) 33%,
+      rgba(0, 0, 0, 0.1) 66%,
+      transparent 66%
+    ),
+    -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(99, 99, 99, 0.25)),
+    -webkit-linear-gradient(left, rgb(0, 217, 255), rgb(0, 87, 250));
+  border-radius: 14px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+.contenedorPrincipal .Archivo .LabelCargar:hover {
+  color: rgb(191, 245, 255);
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+}
+/**
+*   Información achivo
+*/
 .contenedorPrincipal .Informacion {
   display: flex;
   flex-flow: row wrap;
@@ -59,6 +122,9 @@ h1{
   width: 100%;
 }
 
+/**
+*   Previsualización achivo
+*/
 .contenedorPrincipal .Informacion .Previsualizacion {
   flex-flow: center wrap;
   display: flex;
@@ -66,15 +132,19 @@ h1{
   align-items: center;
   flex-grow: 1;
   width: 50%;
+  margin-bottom: 30px;
 }
 
-.contenedorPrincipal .Informacion .Previsualizacion .MiniaturaArchivo{
+.contenedorPrincipal .Informacion .Previsualizacion .MiniaturaArchivo {
   width: 90%;
   height: 250px;
   border: 1px solid black;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
+/**
+*   Información archivo
+**/
 .contenedorPrincipal .Informacion .Datos {
   flex-flow: column wrap;
   flex-grow: 0.4;
@@ -112,7 +182,6 @@ h1{
     display: flex;
     flex-flow: wrap column;
     width: 100%;
-    /* background: red; */
   }
 
   .contenedorPrincipal .Informacion .Previsualizacion,

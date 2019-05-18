@@ -60,7 +60,7 @@ function cargarElementos(elemento) {
 
     switch (categoria) {
       case "Usuarios ":
-        preview.id = "miniaturaUsuariosTodos";
+        preview.id = "miniaturaUsuarios";
         break;
       case "Nuevos":
         preview.id = "miniaturaNuevosTodos";

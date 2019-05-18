@@ -28,14 +28,20 @@
 .ImgMiniatura {
   display: flex;
   background: gainsboro;
-  height: 200px;
-  width: 200px;
   border: 2px outset aqua;
   padding: 10px;
 }
 
-#miniaturaUsuariosTodos {
+#miniaturaUsuarios {
   border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+#miniaturaLikesTodos, 
+#miniaturaNuevosTodos{
+  height: 150px;
+  width: 300px;
 }
 
 .MiniaturaArchivos h2 {
@@ -46,13 +52,12 @@
 }
 
 @media only screen and (max-width: 1200px) {
-    .contenedorPrincipal {
-      width: 100%;
-      height: 100%;
-    }
-  
-    #esperarRegistro {
-      cursor: not-allowed;
-    }
+  .contenedorPrincipal {
+    width: 100%;
+    height: 100%;
+  }
+
+  #esperarRegistro {
+    cursor: not-allowed;
+  }
 }
-  

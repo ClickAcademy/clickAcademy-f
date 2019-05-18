@@ -45,7 +45,6 @@ li {
   text-align: center;
 }
 li .botonesBarraMenu {
-  /* display: block; */
   padding: 16px 0;
 }
 li .botonesBarraMenu:hover:not(.activo) {
@@ -77,6 +76,7 @@ li .botonesBarraMenu:hover:not(.activo) {
 
 #barraMenuSuperior {
   background-color: none;
+  box-shadow: 0 4px 8px -2px #00000065;
 }
 
 #barraMenuInferior,

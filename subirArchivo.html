@@ -27,9 +27,19 @@
     <div id="barraMenuSuperior"></div>
     <div class="contenedorPrincipal">
       <div class="Archivo">
-        <h1>Comparte tu conocimiento con la comunidad</h1>
-        <progress></progress>
+        <input
+          type="file"
+          value="upload"
+          id="botonCargarArchivo"
+          class="ArchivoSeleccionar"
+        />
+        <label for="botonCargarArchivo" id="SeleccionarArchivo" class="LabelCargar">
+          <i class="fas fa-cloud-upload-alt"> </i>
+          <h3>Selecciona archivos para subir</h3>
+          <progress value="0" max="100" id="barraProgreso">0%</progress>
+        </label>
       </div>
+
       <div class="Informacion">
         <div class="Previsualizacion">
           <div class="MiniaturaArchivo"></div>
@@ -39,16 +49,19 @@
           <input type="text" placeholder="Descripción" id="descripcion" />
           <input
             type="text"
+            rows="5"
+            id="tablaContenidos"
             placeholder="Tabla de contenidos"
-            id="tablaDeContenidos"
+            rows="4"
+            class="TextoInformacion"
           />
-          <select>
+          <select id="categoria">
             <option value="0">Seleccione una opción</option>
-            <option value="0">Seleccione una opción</option>
-            <option value="0">Seleccione una opción</option>
-            <option value="0">Seleccione una opción</option>
+            <option value="2">Seleccione una opción</option>
+            <option value="3">Seleccione una opción</option>
+            <option value="4">Seleccione una opción</option>
           </select>
-          <button>Subir archivo</button>
+          <button onclick="almacenarArchivo();">Subir archivo</button>
         </div>
       </div>
     </div>
