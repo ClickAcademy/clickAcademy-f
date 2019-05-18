@@ -21,7 +21,25 @@ $(function() {
       location.replace("index.html");
     }
   });
+  // $("#botonCargarArchivo").on("change", function(evento) {
+  //   evento.preventDefault();
+
+  //   previsualizaciónArchivo(extension, previsualizar);
+  // });
 });
+
+$(document).on("change", ".ArchivoSeleccionar", function(evt) {
+  let archivo_ruta = evt.target.value;
+  let extension = tipoArchivo(archivo_ruta);
+  switch (extension) {
+    case "VIDEO":
+      let $source = $("#ver");
+      $source[0].src = URL.createObjectURL(this.files[0]);
+      $source.parent()[0].load();
+      break;
+  }
+});
+$(document).on();
 
 function almacenarArchivo() {
   validarDatos()
@@ -88,7 +106,7 @@ function validarDatos() {
 function tipoArchivo(archivo) {
   let ruta_separada = archivo.split(".");
   let extension = ruta_separada.pop();
-  let extensionesVideoPermitidas = ["mp4", "wav", "wma", "m4a"];
+  let extensionesVideoPermitidas = ["m4v", "avi", "mpg", "mp4", "mov", "mpeg"];
 
   let tipoArchivo;
 
@@ -105,6 +123,15 @@ function tipoArchivo(archivo) {
       break;
   }
   return tipoArchivo;
+}
+
+function previsualizaciónArchivo(extension, previsualizar) {
+  switch (extension) {
+    case "VIDEO":
+      document
+        .getElementById("ver")
+        .setAttribute("src", URL.createObjectURL(previsualizar));
+  }
 }
 
 function subirArchivo(archivo, extension) {

@@ -14,7 +14,6 @@
     <script
       href="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"
     ></script>
-
     <!---->
     <link
       rel="stylesheet"
@@ -33,7 +32,11 @@
           id="botonCargarArchivo"
           class="ArchivoSeleccionar"
         />
-        <label for="botonCargarArchivo" id="SeleccionarArchivo" class="LabelCargar">
+        <label
+          for="botonCargarArchivo"
+          id="SeleccionarArchivo"
+          class="LabelCargar"
+        >
           <i class="fas fa-cloud-upload-alt"> </i>
           <h3>Selecciona archivos para subir</h3>
           <progress value="0" max="100" id="barraProgreso">0%</progress>
@@ -42,7 +45,12 @@
 
       <div class="Informacion">
         <div class="Previsualizacion">
-          <div class="MiniaturaArchivo"></div>
+          <div class="MiniaturaArchivo">
+            <video id="fitDiv" controls>
+              <source src="" id="ver" />
+              Tu buscador no soporta el video de HTML5
+            </video>
+          </div>
         </div>
         <div class="Datos">
           <input type="text" placeholder="Nombre" id="nombre" />
