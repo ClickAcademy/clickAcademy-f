@@ -4,24 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Inicio</title>
+    <title></title>
 
     <!--Script para incluir barra de menú-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <!--CSS estilo de las cuadrículas de vídeo-->
-    <link href="./styles/index.css" rel="stylesheet" />
+    <!--Estilos-->
+    <link href="./styles/miAula.css" rel="stylesheet" />
     <!--Íconos usados-->
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
-    />
-    <!--Tipo de letra menu-->
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto"
-      rel="stylesheet"
     />
   </head>
   <body>
@@ -30,12 +25,73 @@
     <nav id="barraMenuInferior"></nav>
     <!---->
     <!--Documentos-->
-    <div class="ListaDocumentos"></div>
+    <div id="contenedorPrincipal">
+      <div class="informacion">
+        <p>Nombre</p>
+      </div>
+      <div class="banner">
+        <div id="fotoPerfil">
+          <p>Foto</p>
+        </div>
+      </div>
+
+      <div class="contenido">
+        <ul id="menuContenidoCanal">
+          <li class="OpcionesContenido">
+            <button><i class="fas fa-film"></i></button>
+          </li>
+          <li class="OpcionesContenido">
+            <button><i class="fas fa-file-alt"></i></button>
+          </li>
+          <li class="OpcionesContenido">
+            <button><i class="fas fa-file-powerpoint"></i></button>
+          </li>
+          <li class="OpcionesContenido">
+            <button><i class="fas fa-address-card"></i></button>
+          </li>
+        </ul>
+        <div id="contenidoEspecifico">
+          <div id="tab-4">
+            <div class="informacion-display">
+              <h3>Nombre</h3>
+              <input type="text" id="nombreUsuario" readonly />
+            </div>
+            <div class="informacion-display">
+              <h3>Apellido</h3>
+              <input type="text" id="apellidoUsuario" readonly />
+            </div>
+            <div class="informacion-display">
+              <h3>Género</h3>
+              <input type="text" id="generoUsuario" readonly />
+            </div>
+            <div class="informacion-display">
+              <h3>Fecha de nacimiento</h3>
+              <input type="text" id="nacimientoUsuario" readonly />
+            </div>
+            <div class="informacion-display">
+              <h3>Edad</h3>
+              <input type="text" id="nacimientoUsuario" readonly />
+            </div>
+            <div class="informacion-display">
+              <h3>País</h3>
+              <input type="text" id="paisUsuario" readonly />
+            </div>
+            <div class="informacion-display">
+              <h3>Ciudad</h3>
+              <input type="text" id="ciudadUsuario" readonly />
+            </div>
+            <div class="informacion-display"><button>Editar</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!--incluir Firebase-->
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <script src="./scripts/global.js"></script>
+    <!---->
 
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/miAula.js"></script>
     <script src="./scripts/menu.js"></script>
   </body>
 </html>

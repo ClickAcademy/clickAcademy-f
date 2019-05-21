@@ -20,13 +20,26 @@
     </button>
     <ul id="panelUsuario">
       <li>
-        <button onclick="miAula()" class="botonesBarraMenu Letra Oscuro">
-          <i class="Icono Oscuro fas fa-chalkboard-teacher"></i> Mi aula
+        <button
+          onclick="miAulaBoton()"
+          class="botonesBarraMenu Letra Oscuro"
+          id="toggleBoton"
+        >
+          <i
+            class="Icono Oscuro fas fa-chalkboard-teacher"
+            id="toggleBoton"
+          ></i>
+          Mi aula
         </button>
       </li>
       <li>
-        <button onclick="cerrarSesion()" class="botonesBarraMenu Letra Oscuro">
-          <i class="Icono Oscuro fas fa-sign-out-alt"></i> Salir
+        <button
+          onclick="cerrarSesion()"
+          class="botonesBarraMenu Letra Oscuro"
+          id="toggleBoton"
+        >
+          <i class="Icono Oscuro fas fa-sign-out-alt" id="toggleBoton"></i>
+          Salir
         </button>
       </li>
     </ul>
@@ -46,9 +59,9 @@
     $("#subirArchivo").hide();
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
+        $("#ingresarBoton").hide();
         $("#miAulaBoton").show();
         $("#subirArchivo").show();
-        $("#ingresarBoton").hide();
       } else {
         $("#ingresarBoton").show();
         $("#ingresarBoton").append("Ingresar");
@@ -60,7 +73,7 @@
     });
   });
   $(window).click(function(e) {
-    if (e.target.id != "miAulaBoton") {
+    if (e.target.id != "miAulaBoton" && e.target.id != "toggleBoton") {
       $("#panelUsuario").slideUp();
     }
   });

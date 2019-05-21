@@ -30,17 +30,27 @@ function confirmar(mensaje) {
     });
   });
 }
-function success(mensaje, direccion) {
+
+function successRedirect(mensaje, direccion) {
   Swal.fire({
     position: "top-end",
     type: "success",
     title: mensaje,
-    showConfirmButton: false,
-    timer: 1500
+    showConfirmButton: true
+  }).then(result => {
+    if (result.value) {
+      window.location.replace(direccion);
+    }
   });
-  if (direccion !== "") {
-    location.replace(direccion);
-  }
+}
+
+function success(mensaje) {
+  Swal.fire({
+    position: "top-end",
+    type: "success",
+    title: mensaje,
+    showConfirmButton: false
+  });
 }
 
 function alertasPequeñas(mensaje) {

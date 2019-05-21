@@ -1,18 +1,3 @@
-// Initialize Firebase
-var config = {
-  apiKey: "AIzaSyCvU_j6FWIFRN1TrKx1f-91ky2E5n3AqoM",
-  authDomain: "click-academy.firebaseapp.com",
-  databaseURL: "https://click-academy.firebaseio.com",
-  projectId: "click-academy",
-  storageBucket: "click-academy.appspot.com",
-  messagingSenderId: "372540974455",
-  appId: "1:372540974455:web:de23c4eaf36bfdc0"
-};
-if (!firebase.apps.length) {
-  firebase.initializeApp();
-}
-var url = "https://click-academy.herokuapp.com";
-
 $(function() {
   $("#barraMenuSuperior").load("menuSuperior.html");
   $("#barraMenuInferior").load("menuInferior.html");
@@ -21,11 +6,6 @@ $(function() {
       location.replace("index.html");
     }
   });
-  // $("#botonCargarArchivo").on("change", function(evento) {
-  //   evento.preventDefault();
-
-  //   previsualizaciónArchivo(extension, previsualizar);
-  // });
 });
 
 $(document).on("change", ".ArchivoSeleccionar", function(evt) {
@@ -52,11 +32,8 @@ function almacenarArchivo() {
           datos.push(response);
           urlEsp = url + "./Archivos.php";
           guardarBD(datos, urlEsp)
-            .then(response => {
-              success(
-                "Se ha compartido el archvio exitosamente",
-                "./index.html"
-              );
+            .then(guardado => {
+              successRedirect(guardado, "./index.html");
             })
             .catch(error => {
               errorModal(
@@ -174,10 +151,12 @@ function guardarBD(datos, url) {
       },
       function(respuesta) {
         let resp = parseInt(respuesta.trim());
-        if (resp === "1") {
-          resolve("Se registró");
-        } else if (resp === "0") {
+        if (resp === 1) {
+          resolve("Se ha compartido el archivo exitosamente");
+        } else if (resp === 0) {
           reject("Ha ocurrido un error subiendo el video");
+        } else {
+          reject(respuesta);
         }
       }
     );

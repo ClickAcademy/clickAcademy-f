@@ -1,7 +1,3 @@
-// Initialize Firebase
-
-var url = "https://click-academy.herokuapp.com";
-
 $(function() {
   $("#barraMenuSuperior").load("menuSuperior.html");
   $("#barraMenuInferior").load("menuInferior.html");
