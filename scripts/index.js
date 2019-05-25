@@ -49,8 +49,11 @@ function cargarElementos(elemento) {
 
     divMiniatura.appendChild(h2);
     divMiniatura.appendChild(preview);
-
-    // divMiniatura.onclick = "./Aula.html?" + archivos[1];
+    divMiniatura.setAttribute("data", archivos[0]);
+    divMiniatura.onclick = function() {
+      window.location.href =
+        "./archivo.html?a=" + divMiniatura.getAttribute("data").trim();
+    };
 
     divCategoriaElemento.appendChild(divMiniatura);
 
