@@ -31,37 +31,56 @@
     <nav id="barraMenuSuperior"></nav>
     <!---->
     <!--Documentos-->
-    <div class="ContenidoPrincipal" id="contenido">
-      <div id="titulo"></div>
-      <div id="archivo"></div>
+    <div class="ContenidoPrincipal">
+      <div id="titulo">
+        <p id="tituloArchivo"></p>
+      </div>
+      <div id="archivo">
+        <div id="visualizacion">
+          <video id="" controls>
+            <source id="preview">
+          </video>
+        </div>
+      </div>
       <div id="informacionArchivo">
-        <div id="likes">
-          <button><i class="far fa-thumbs-up"></i></button>
-          <button><i class="far fa-thumbs-down"></i></button>
+        <div id="calificacion">
+          <button id="likes"><i class="far rotate fa-thumbs-up"></i></button>
+          <button id="dislikes">
+            <i class="far rotate fa-thumbs-down"> </i>
+          </button>
         </div>
 
         <div id="info">
-          <div id="descripcion">
+          <div id="abstract">
             <h2>Abstract</h2>
+            <p id="abstractInfo"></p>
           </div>
           <div id="tablaContenido">
             <h2>Tabla de contenido</h2>
+            <p id="tablaContenidoInfo"></p>
           </div>
-          <div id="infoArdicional">
-            <p id="fecha">date</p>
-            <p id="categorias">category</p>
+          <div id="infoAdicional">
+            <p id="fecha">Fecha de publicación:</p>
+            <p id="categorias">Categoría:</p>
           </div>
         </div>
 
         <div id="usuario">
-          <div id="fotoUsuario"></div>
-          <p>Nombre</p>
-          <div id="botones"></div>
+          <div class="fotoUsuarios" id="fotoUsuario"></div>
+          <p id="nombreUsuario"></p>
+          <div id="botonSuscripcion"></div>
         </div>
       </div>
-      <div id="opinionesUsuarios"></div>
+      <div id="opinionesUsuarios">
+        <div id="comentar">
+          <div class="fotoUsuarios" id="fotoUsuarioActual"></div>
+          <div id="hacerComentario">
+            <textarea name="" id="" placeholder="Haz un comentario."></textarea>
+          </div>
+        </div>
+      </div>
     </div>
-
+    <div class="contenidoSecundario"></div>
     <nav id="barraMenuInferior"></nav>
     <!--incluir Firebase-->
     <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>

@@ -7,7 +7,7 @@ $(function() {
 function cargarArchivos() {
   let urlEsp = url + "/Archivos.php";
   $.post(urlEsp, { tipoCarga: "Todo" }, function(respuesta) {
-    let funciones = respuesta.split("}{", 3);
+    let funciones = respuesta.split("}{");
     let archivos = new Array();
     funciones.forEach(element => {
       archivos.push(element.split("¬¬"));
@@ -19,7 +19,6 @@ function cargarArchivos() {
 }
 
 function cargarElementos(elemento) {
-  console.log(elemento);
   let divElemento = document.createElement("DIV");
   divElemento.className = "CategoriasMostrar";
   let divCategoriaElemento = document.createElement("DIV");
@@ -28,7 +27,6 @@ function cargarElementos(elemento) {
   let categoria = elemento[0];
   let titulo = document.createTextNode(categoria);
   h1.appendChild(titulo);
-
   elemento.shift();
   let archivos = new Array();
 
@@ -50,14 +48,30 @@ function cargarElementos(elemento) {
     divMiniatura.appendChild(h2);
     divMiniatura.appendChild(preview);
     divMiniatura.setAttribute("data", archivos[0]);
+    divMiniatura.setAttribute("category", categoria);
     divMiniatura.onclick = function() {
-      window.location.href =
-        "./archivo.html?a=" + divMiniatura.getAttribute("data").trim();
+      let cat = divMiniatura.getAttribute("category").trim();
+      switch (cat) {
+        case "Usuarios":
+          alert("usuario");
+          break;
+        case "Nuevos":
+          window.location.href =
+            "./archivo.html?" + divMiniatura.getAttribute("data").trim();
+          break;
+        case "Random":
+          window.location.href =
+            "./archivo.html?" + divMiniatura.getAttribute("data").trim();
+          break;
+      }
     };
 
     divCategoriaElemento.appendChild(divMiniatura);
 
     switch (categoria) {
+      case "Random":
+        preview.id = "miniaturaRandomTodos";
+        break;
       case "Usuarios ":
         preview.id = "miniaturaUsuarios";
         break;
@@ -69,8 +83,6 @@ function cargarElementos(elemento) {
         break;
     }
   });
-
-  console.log(archivos);
 
   divElemento.appendChild(h1);
   divElemento.appendChild(divCategoriaElemento);
