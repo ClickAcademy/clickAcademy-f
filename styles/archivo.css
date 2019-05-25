@@ -31,9 +31,9 @@ body {
 
 .ContenidoPrincipal {
   display: flex;
-  align-self: flex-start;
+  align-self: center;
   margin-left: 10px;
-  width: 70%;
+  width: 90%;
   min-height: 700px;
   height: auto;
   flex-flow: column wrap;

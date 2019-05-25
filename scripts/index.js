@@ -53,7 +53,8 @@ function cargarElementos(elemento) {
       let cat = divMiniatura.getAttribute("category").trim();
       switch (cat) {
         case "Usuarios":
-          alert("usuario");
+            window.location.href =
+            "./aula.html?" + divMiniatura.getAttribute("data").trim();
           break;
         case "Nuevos":
           window.location.href =
