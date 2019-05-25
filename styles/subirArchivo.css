@@ -155,6 +155,7 @@ progress[value]::-webkit-progress-value {
 }
 
 .contenedorPrincipal .Informacion .Datos input,
+.contenedorPrincipal .Informacion .Datos textarea,
 .contenedorPrincipal .Informacion .Datos button,
 .contenedorPrincipal .Informacion .Datos select {
   width: 90%;

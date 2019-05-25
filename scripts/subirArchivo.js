@@ -14,6 +14,7 @@ $(document).on("change", ".ArchivoSeleccionar", function(evt) {
   switch (extension) {
     case "VIDEO":
       let $source = $("#ver");
+      alert(this.files[0]);
       $source[0].src = URL.createObjectURL(this.files[0]);
       $source.parent()[0].load();
       break;
@@ -100,15 +101,6 @@ function tipoArchivo(archivo) {
       break;
   }
   return tipoArchivo;
-}
-
-function previsualizaciónArchivo(extension, previsualizar) {
-  switch (extension) {
-    case "VIDEO":
-      document
-        .getElementById("ver")
-        .setAttribute("src", URL.createObjectURL(previsualizar));
-  }
 }
 
 function subirArchivo(archivo, extension) {

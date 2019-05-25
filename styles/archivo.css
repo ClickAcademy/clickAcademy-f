@@ -32,75 +32,195 @@ body {
 .ContenidoPrincipal {
   display: flex;
   align-self: center;
+  margin-left: 10px;
   width: 90%;
   min-height: 700px;
   height: auto;
   flex-flow: column wrap;
   align-items: center;
   background: var(--color-contenedorPrincipal);
-  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-bottom: 61px;
 }
 
 .ContenidoPrincipal #titulo {
   width: 100%;
-  min-height: 50px;
+  min-height: 60px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ContenidoPrincipal #titulo #tituloArchivo {
+  color: #faf6f6;
+  font-size: 20px;
 }
 
 .ContenidoPrincipal #archivo {
-  border: 2px solid black;
-  box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.ContenidoPrincipal #archivo #visualizacion {
   width: 450px;
   min-height: 300px;
   height: auto;
+  border: 2px inset black;
+  box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
 }
 
-/**
-* Información archivo
-**/
+@supports (object-fit: contain) {
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
 .ContenidoPrincipal #informacionArchivo {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   min-height: 300px;
   height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.ContenidoPrincipal #informacionArchivo #calificacion {
+  height: 35px;
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.ContenidoPrincipal #informacionArchivo #calificacion button {
+  width: 40px;
+  height: 30px;
+  background: none;
+  border: none;
+  color: gray;
+  font-size: 19px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ContenidoPrincipal #informacionArchivo #calificacion .rotate {
+  transition: transform 0.5s ease 0s;
+}
+
+.ContenidoPrincipal #informacionArchivo #calificacion .rotate:hover {
+  -webkit-transform: rotateZ(720deg);
+  -moz-transform: rotateZ(720deg);
+  transform: rotateZ(720deg);
+  color: white;
+  cursor: pointer;
 }
 
 .ContenidoPrincipal #informacionArchivo #info {
   width: 100%;
   display: flex;
+  padding: 20px;
   flex-direction: column;
   justify-content: space-around;
-  background: sandybrown;
 }
+
+.ContenidoPrincipal #informacionArchivo #info h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: gray;
+}
+
 .ContenidoPrincipal #informacionArchivo #info p {
-  padding: 10px;
+  padding-left: 35px;
+  color: rgb(175, 175, 175);
 }
-.ContenidoPrincipal #informacionArchivo #usuario {
-  display: flex;
-  flex-direction: row wrap;
-  justify-content: space-between;
-  align-items: center;
+
+.ContenidoPrincipal #informacionArchivo #info #abstract,
+.ContenidoPrincipal #informacionArchivo #info #tablaContenido {
   width: 100%;
-  height: 80px;
-  background: darkblue;
-}
-.ContenidoPrincipal #informacionArchivo #usuario #fotoUsuario {
+  min-height: 100px;
   display: flex;
-  z-index: 10;
-  width: 70px;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.ContenidoPrincipal #informacionArchivo #infoAdicional {
+  width: 100%;
+  min-height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ContenidoPrincipal #informacionArchivo #infoAdicional p {
+  color: rgb(95, 95, 95);
+}
+
+.ContenidoPrincipal #informacionArchivo #usuario {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+  color: rgb(175, 175, 175);
+  border: 1px inset rgb(61, 60, 60);
+}
+
+.ContenidoPrincipal #opinionesUsuarios #comentar .fotoUsuarios,
+.ContenidoPrincipal #informacionArchivo #usuario .fotoUsuarios {
+  width: 70px !important;
   height: 70px;
   border-radius: 50%;
   border: 2px solid white;
   box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
-  justify-content: center;
-  align-items: center;
 }
-.ContenidoPrincipal #informacionArchivo #botones {
-  height: 80px;
-  width: 50%;
-  background: darkorange;
-}
+
 .ContenidoPrincipal #opinionesUsuarios {
   background: salmon;
+  margin-top: 20px;
+  width: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-flow: column;
+}
+
+.ContenidoPrincipal #opinionesUsuarios #comentar {
+  background: rgb(168, 142, 140);
+  width: 100%;
+  min-height: 100px;
+  display: flex;
+  flex-flow: row;
+}
+
+.ContenidoPrincipal #opinionesUsuarios #comentar #fotoUsuarioActual {
+  margin: 10px 40px 0 10px;
+}
+
+.ContenidoPrincipal #opinionesUsuarios #comentar #hacerComentario {
+  width: 90%;
+}
+
+.ContenidoPrincipal #opinionesUsuarios #comentar textarea {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 100px;
+  width: 90%;
+  padding: 12px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background: var(--color-claro);
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  color: var(--color-letra);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
 }
