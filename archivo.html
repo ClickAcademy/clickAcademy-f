@@ -4,14 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-
-    <title>Inicio</title>
+    <title>Archivo</title>
 
     <!--Script para incluir barra de menú-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!--CSS estilo de las cuadrículas de vídeo-->
-    <link href="./styles/index.css" rel="stylesheet" />
+    <link href="./styles/archivo.css" rel="stylesheet" />
     <link href="./styles/cargarMiniaturas.css" rel="stylesheet" />
     <!--Íconos usados-->
     <link
@@ -32,7 +31,36 @@
     <nav id="barraMenuSuperior"></nav>
     <!---->
     <!--Documentos-->
-    <div class="ContenidoPrincipal" id="contenido"></div>
+    <div class="ContenidoPrincipal" id="contenido">
+      <div id="titulo"></div>
+      <div id="archivo"></div>
+      <div id="informacionArchivo">
+        <div id="likes">
+          <button><i class="far fa-thumbs-up"></i></button>
+          <button><i class="far fa-thumbs-down"></i></button>
+        </div>
+
+        <div id="info">
+          <div id="descripcion">
+            <h2>Abstract</h2>
+          </div>
+          <div id="tablaContenido">
+            <h2>Tabla de contenido</h2>
+          </div>
+          <div id="infoArdicional">
+            <p id="fecha">date</p>
+            <p id="categorias">category</p>
+          </div>
+        </div>
+
+        <div id="usuario">
+          <div id="fotoUsuario"></div>
+          <p>Nombre</p>
+          <div id="botones"></div>
+        </div>
+      </div>
+      <div id="opinionesUsuarios"></div>
+    </div>
 
     <nav id="barraMenuInferior"></nav>
     <!--incluir Firebase-->
@@ -41,7 +69,7 @@
     <!---->
 
     <script src="./scripts/alertas.js"></script>
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/archivo.js"></script>
     <script src="./scripts/menu.js"></script>
   </body>
 </html>

@@ -1,0 +1,106 @@
+/*Colores*/
+:root {
+  --color-oscuro: black;
+  --color-medio: rgb(42, 43, 43);
+  --color-claro: white;
+  --color-informacion: rgba(17, 17, 17, 0.562);
+  --color-letra: rgb(85, 82, 82);
+  --color-contenedorPrincipal: rgb(53, 51, 51);
+}
+
+html,
+body {
+  background: var(--color-medio);
+  padding: 0%;
+  height: 100%;
+  min-height: 700px;
+}
+
+body {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.ContenidoPrincipal {
+  display: flex;
+  align-self: center;
+  width: 90%;
+  min-height: 700px;
+  height: auto;
+  flex-flow: column wrap;
+  align-items: center;
+  background: var(--color-contenedorPrincipal);
+  padding: 10px;
+  margin-bottom: 61px;
+}
+
+.ContenidoPrincipal #titulo {
+  width: 100%;
+  min-height: 50px;
+}
+
+.ContenidoPrincipal #archivo {
+  border: 2px solid black;
+  box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
+  width: 450px;
+  min-height: 300px;
+  height: auto;
+}
+
+/**
+* Información archivo
+**/
+.ContenidoPrincipal #informacionArchivo {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 300px;
+  height: auto;
+}
+
+.ContenidoPrincipal #informacionArchivo #info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background: sandybrown;
+}
+.ContenidoPrincipal #informacionArchivo #info p {
+  padding: 10px;
+}
+.ContenidoPrincipal #informacionArchivo #usuario {
+  display: flex;
+  flex-direction: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  background: darkblue;
+}
+.ContenidoPrincipal #informacionArchivo #usuario #fotoUsuario {
+  display: flex;
+  z-index: 10;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
+  justify-content: center;
+  align-items: center;
+}
+.ContenidoPrincipal #informacionArchivo #botones {
+  height: 80px;
+  width: 50%;
+  background: darkorange;
+}
+.ContenidoPrincipal #opinionesUsuarios {
+  background: salmon;
+}
