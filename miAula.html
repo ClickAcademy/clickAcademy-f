@@ -11,6 +11,7 @@
 
     <!--Estilos-->
     <link href="./styles/miAula.css" rel="stylesheet" />
+    <link href="./styles/colores.css" rel="stylesheet" />
     <!--Íconos usados-->
     <link
       rel="stylesheet"
@@ -26,59 +27,58 @@
     <!---->
     <!--Documentos-->
     <div id="contenedorPrincipal">
-      <div class="informacion">
-        <p>Nombre</p>
-      </div>
-      <div class="banner">
-        <div id="fotoPerfil">
-          <p>Foto</p>
-        </div>
+      <div id="informacionPrincipal">
+        <p id="nombreUsuario"></p>
+        <img src="./images/default_banner.jpg" id="banner_picture" />
+        <img src="./images/default_profile_picture.png" id="profile_picture" />
       </div>
 
       <div class="contenido">
         <ul id="menuContenidoCanal">
           <li class="OpcionesContenido">
-            <button><i class="fas fa-film"></i></button>
+            <button title="Todos"><i class="fas fa-archive"></i></button>
           </li>
           <li class="OpcionesContenido">
-            <button><i class="fas fa-file-alt"></i></button>
+            <button title="Videos" onclick="mostrarVideos()">
+              <i class="fas fa-film"></i>
+            </button>
           </li>
           <li class="OpcionesContenido">
-            <button><i class="fas fa-file-powerpoint"></i></button>
+            <button title="Documentos"><i class="fas fa-file-alt"></i></button>
           </li>
           <li class="OpcionesContenido">
-            <button><i class="fas fa-address-card"></i></button>
+            <button title="Presentaciones"><i class="fas fa-file-powerpoint"></i></button>
+          </li>
+          <li class="OpcionesContenido">
+            <button title="Información"><i class="fas fa-address-card"></i></button>
           </li>
         </ul>
         <div id="contenidoEspecifico">
+          <div id="tab-0"></div>
           <div id="tab-4">
             <div class="informacion-display">
               <h3>Nombre</h3>
-              <input type="text" id="nombreUsuario" readonly />
+              <input type="text" id="nombreUsuarioTab" readonly />
             </div>
             <div class="informacion-display">
               <h3>Apellido</h3>
-              <input type="text" id="apellidoUsuario" readonly />
+              <input type="text" id="apellidoUsuarioTab" readonly />
             </div>
             <div class="informacion-display">
               <h3>Género</h3>
-              <input type="text" id="generoUsuario" readonly />
+              <input type="text" id="generoUsuarioTab" readonly />
             </div>
             <div class="informacion-display">
               <h3>Fecha de nacimiento</h3>
-              <input type="text" id="nacimientoUsuario" readonly />
-            </div>
-            <div class="informacion-display">
-              <h3>Edad</h3>
-              <input type="text" id="nacimientoUsuario" readonly />
+              <input type="text" id="nacimientoUsuarioTab" readonly />
             </div>
             <div class="informacion-display">
               <h3>País</h3>
-              <input type="text" id="paisUsuario" readonly />
+              <input type="text" id="paisUsuarioTab" readonly />
             </div>
             <div class="informacion-display">
               <h3>Ciudad</h3>
-              <input type="text" id="ciudadUsuario" readonly />
+              <input type="text" id="ciudadUsuarioTab" readonly />
             </div>
             <div class="informacion-display"><button>Editar</button></div>
           </div>

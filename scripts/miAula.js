@@ -5,24 +5,36 @@ $(function() {
     if (!user) {
       location.replace("index.html");
     } else {
-      document.title = user.email;
+      cargarUsuario(user.email);
+      cargarArchivosTodos(user.email);
     }
   });
 });
 
-function aulaUsuario() {
-  return new Promise(function(resolve, reject) {
-    let urlEsp = url + "/Aula.php";
-    $.post(
-      urlEsp, 
-      {infoUsuarioP: "todopersonal"},
-      function(respuesta){
-        if(respuesta==="0"){
-          reject("No se ha podido cargar información");
-        }else{
-          resolve(respuesta);
-        }
+function cargarUsuario(usuario) {
+  let urlEsp = url + "/aula.php";
+  $.post(urlEsp, { buscarUsuarioPersonal: usuario }, function(respuesta) {
+    respuesta = respuesta.split(",");
+
+    respuesta.forEach((element, i) => {
+      if (element === " ") {
+        respuesta[i] = "No especificado";
       }
-    );
+    });
+
+    document.title = respuesta[1] + respuesta[2];
+    let titulonode = document.createTextNode(respuesta[1] + respuesta[2]);
+    document.getElementById("nombreUsuario").appendChild(titulonode);
+    document.getElementById("nombreUsuarioTab").value = respuesta[1].trim();
+    document.getElementById("apellidoUsuarioTab").value = respuesta[2].trim();
+    document.getElementById("generoUsuarioTab").value = respuesta[3];
+    document.getElementById("nacimientoUsuarioTab").value = respuesta[4];
+    document.getElementById("paisUsuarioTab").value = respuesta[5];
+    document.getElementById("ciudadUsuarioTab").value = respuesta[6];
   });
+}
+
+function cargarArchivosTodos(usuario) {
+  let urlEsp = url + "/Archivos.php";
+  $.post(urlEsp, { buscarArchivosUsuario: usuario }, function(respuesta) {});
 }

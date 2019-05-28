@@ -1,16 +1,6 @@
-/*Colores*/
-:root {
-  --color-oscuro: black;
-  --color-medio: rgb(42, 43, 43);
-  --color-claro: white;
-  --color-informacion: rgba(17, 17, 17, 0.562);
-  --color-letra: rgb(85, 82, 82);
-  --color-contenedorPrincipal: rgb(53, 51, 51);
-}
-
 html,
 body {
-  background: var(--color-medio);
+  background: var(--color-oscuro-2);
   padding: 0%;
   height: 100%;
   min-height: 700px;
@@ -38,7 +28,7 @@ body {
   height: auto;
   flex-flow: column wrap;
   align-items: center;
-  background: var(--color-contenedorPrincipal);
+  background: var(--color-oscuro-3);
   padding-left: 10px;
   padding-right: 10px;
   margin-bottom: 61px;
@@ -54,7 +44,7 @@ body {
 }
 
 .ContenidoPrincipal #titulo #tituloArchivo {
-  color: #faf6f6;
+  color: var(--color-claro);
   font-size: 20px;
 }
 
@@ -62,16 +52,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 80%;
   margin-bottom: 20px;
 }
 
 .ContenidoPrincipal #archivo #visualizacion {
-  width: 450px;
+  width: 100%;
   min-height: 300px;
   height: auto;
-  border: 2px inset black;
-  box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
 }
 
 @supports (object-fit: contain) {
@@ -103,7 +91,7 @@ body {
   height: 30px;
   background: none;
   border: none;
-  color: gray;
+  color: var(--color-logo-2);
   font-size: 19px;
   display: flex;
   justify-content: space-between;
@@ -117,7 +105,7 @@ body {
   -webkit-transform: rotateZ(720deg);
   -moz-transform: rotateZ(720deg);
   transform: rotateZ(720deg);
-  color: white;
+  color: var(--color-claro);
   cursor: pointer;
 }
 
@@ -132,12 +120,12 @@ body {
 .ContenidoPrincipal #informacionArchivo #info h2 {
   font-size: 18px;
   font-weight: bold;
-  color: gray;
+  color: var(--color-claro-2);
 }
 
 .ContenidoPrincipal #informacionArchivo #info p {
   padding-left: 35px;
-  color: rgb(175, 175, 175);
+  color: var(--color-medio-3);
 }
 
 .ContenidoPrincipal #informacionArchivo #info #abstract,
@@ -158,7 +146,7 @@ body {
 }
 
 .ContenidoPrincipal #informacionArchivo #infoAdicional p {
-  color: rgb(95, 95, 95);
+  color: var(--color-medio-4);
 }
 
 .ContenidoPrincipal #informacionArchivo #usuario {
@@ -168,7 +156,7 @@ body {
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
-  color: rgb(175, 175, 175);
+  color: var(--color-medio-3);
   border: 1px inset rgb(61, 60, 60);
 }
 
@@ -177,8 +165,8 @@ body {
   width: 70px !important;
   height: 70px;
   border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
+  border: 2px solid var(--color-claro);
+  box-shadow: var(--sombra-estandar);
 }
 
 .ContenidoPrincipal #opinionesUsuarios {
@@ -219,7 +207,7 @@ body {
   border: none;
   border-radius: 5px;
   font-size: 14px;
-  color: var(--color-letra);
+  color: var(--color-medio);
   -webkit-appearance: button;
   appearance: button;
   outline: none;

@@ -7,6 +7,7 @@
     <title>Registrarse</title>
     <!--Hoja de estilo-->
     <link rel="stylesheet" href="./styles/registro.css" />
+    <link href="./styles/colores.css" rel="stylesheet" />
     <!--scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--Sweetalert2-->
@@ -22,8 +23,9 @@
     />
   </head>
   <body>
-    <a class="Logo">LOGO</a>
-
+    <div class="Logo">
+      <a href="index.html"><img src="images/click-03.svg"/></a>
+    </div>
     <div class="contenedorPrincipal">
       <div class="IniciarSesion">
         <p>¿Ya eres parte de Click academy?</p>
@@ -31,7 +33,7 @@
       </div>
 
       <div class="Registrar">
-        <h1>¡Únete a nuestra comunidad!</h1>
+        <h1>¡Únete!</h1>
         <div class="CamposFormulario">
           <input type="text" placeholder="Nombre(s) *" id="nombre" />
           <input type="text" placeholder="Apellidos *" id="apellido" />

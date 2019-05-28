@@ -1,18 +1,9 @@
-/*Colores*/
-:root {
-  --color-oscuro: black;
-  --color-medio: rgb(42, 43, 43);
-  --color-claro: white;
-  --color-informacion: rgba(17, 17, 17, 0.562);
-  --color-letra: rgb(85, 82, 82);
-}
-
 html,
 body {
-  background: var(--color-medio);
-  padding: 0%;
-  height: 140%;
+  background: var(--color-oscuro-2);
+  height: auto;
   min-height: 700px;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
 }
@@ -25,77 +16,65 @@ body {
 
 #contenedorPrincipal {
   width: 90%;
-  height: 100%;
+  min-height: 400px;
+  height: auto;
   align-self: center;
   display: flex;
   flex-flow: column;
-  background: var(--color-letra);
+  background: var(--color-medio);
 }
 
-.banner {
-  flex-grow: 0.2;
+#contenedorPrincipal #informacionPrincipal {
+  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.banner #fotoPerfil {
-  display: flex;
+@supports (object-fit: contain) {
+  img {
+    object-fit: cover;
+  }
+}
+
+#contenedorPrincipal #informacionPrincipal #nombreUsuario {
+  position: absolute;
+  align-self: flex-start;
   z-index: 10;
+  width: 90%;
+  height: 50px;
+  max-height: 50px;
+  background: var(--color-oscuro-opacidad-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--color-medio-3);
+}
+
+#contenedorPrincipal #informacionPrincipal #banner_picture {
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#contenedorPrincipal #informacionPrincipal #profile_picture {
+  position: absolute;
   width: 200px;
   height: 200px;
+  z-index: 10;
   border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
-  justify-content: center;
-  align-items: center;
+  box-shadow: var(--sombra-estandar);
 }
 
-.banner #suscripcion {
-  position: absolute;
-  display: flex;
-  height: 40px;
-  width: 200px;
-  align-self: center;
-  right: 6%;
-  justify-content: center;
-  color: white;
-}
-
-.banner #suscripcion button {
-  font-weight: bolder;
-  background: rgb(0, 87, 128);
-  color: white;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  padding: 15px;
-  width: 90%;
-  transition: 0.3s;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  font-size: 15px;
-  box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
-}
-
-.informacion {
-  height: 60px;
+#contenedorPrincipal .contenido {
   width: 100%;
-  justify-self: center;
-  align-self: flex-end;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
+  min-height: 40px;
+  height: auto;
 }
 
-.contenido {
-  margin-top: 10px;
-  /* background: aqua; */
-  flex-grow: 1;
-  width: 100%;
-}
-.contenido #menuContenidoCanal {
+#contenedorPrincipal .contenido #menuContenidoCanal {
   width: 100%;
   height: 40px;
   display: flex;
@@ -103,42 +82,56 @@ body {
   justify-content: space-around;
   align-content: center;
   list-style-type: none;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  background: var(--color-medio);
+  box-shadow: var(--sombra-2);
+  background: var(--color-oscuro-2);
 }
 
-.contenido #menuContenidoCanal .OpcionesContenido {
+#contenedorPrincipal .contenido #menuContenidoCanal .OpcionesContenido {
   width: 100%;
   height: inherit;
 }
 
-.contenido #menuContenidoCanal .OpcionesContenido button {
+#contenedorPrincipal .contenido #menuContenidoCanal .OpcionesContenido button{
   background: none;
   border: none;
   width: 100%;
   height: inherit;
   cursor: pointer;
-  color: white;
+  color: var(--color-claro);
   font-size: 18px;
 }
 
-.contenido #menuContenidoCanal .OpcionesContenido button:hover {
-  border-bottom: 2px outset white;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+#contenedorPrincipal .contenido #menuContenidoCanal .OpcionesContenido button:hover {
+  border-bottom: 2px outset var(--color-logo-2);
+  box-shadow: var(--sombra-2);
   background-color: var(--color-oscuro);
 }
 
-#tab-1,
-#tab-2,
-#tab-3,
-#tab-4 {
+#contenedorPrincipal .contenido #tab-0{
+  display: flex;
+}
+
+#contenedorPrincipal .contenido #tab-1,
+#contenedorPrincipal .contenido #tab-2,
+#contenedorPrincipal .contenido #tab-3,
+#contenedorPrincipal .contenido #tab-4 {
   width: 100%;
   height: 100%;
-  display: flex;
+  display: none;
   flex-flow: column wrap;
   justify-content: space-around;
   margin-top: 20px;
 }
+
+/* 
+
+
+
+#contenidoEspecifico{
+  display:none;
+}
+
+
 
 .informacion-display {
   display: flex;
@@ -170,4 +163,4 @@ body {
   color: white;
   font-weight: bold;
   font-size: 13px;
-}
+} */
