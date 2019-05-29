@@ -11,6 +11,47 @@ $(function() {
   });
 });
 
+$(document).ready(function() {
+  if (
+    $("#botonTodos").on("click", function() {
+      ocultarPaneles();
+      $("#tab-0").show();
+    })
+  );
+  if (
+    $("#botonVideos").on("click", function() {
+      ocultarPaneles();
+      $("#tab-1").show();
+    })
+  );
+  if (
+    $("#botonDocumentos").on("click", function() {
+      ocultarPaneles();
+      $("#tab-2").show();
+    })
+  );
+  if (
+    $("#botonPresentaciones").on("click", function() {
+      ocultarPaneles();
+      $("#tab-3").show();
+    })
+  );
+  if (
+    $("#botonInformacion").on("click", function() {
+      ocultarPaneles();
+      $("#tab-4").show();
+    })
+  );
+});
+
+function ocultarPaneles() {
+  document.getElementById("tab-0").style.display = "none";
+  document.getElementById("tab-1").style.display = "none";
+  document.getElementById("tab-2").style.display = "none";
+  document.getElementById("tab-3").style.display = "none";
+  document.getElementById("tab-4").style.display = "none";
+}
+
 function cargarUsuario(usuario) {
   let urlEsp = url + "/aula.php";
   $.post(urlEsp, { buscarUsuarioPersonal: usuario }, function(respuesta) {
@@ -35,6 +76,10 @@ function cargarUsuario(usuario) {
 }
 
 function cargarArchivosTodos(usuario) {
-  let urlEsp = url + "/Archivos.php";
-  $.post(urlEsp, { buscarArchivosUsuario: usuario }, function(respuesta) {});
+  let urlEsp = url + "/aula.php";
+  $.post(urlEsp, { buscarArchivosUsuario: usuario }, function(respuesta) {
+    console.log(respuesta);
+  });
 }
+
+function cargarVideos() {}

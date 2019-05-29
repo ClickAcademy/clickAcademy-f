@@ -11,7 +11,7 @@
 
     <!--Estilos-->
     <link href="./styles/miAula.css" rel="stylesheet" />
-    <link href="./styles/colores.css" rel="stylesheet" />
+    <link href="./styles/global.css" rel="stylesheet" />
     <!--Íconos usados-->
     <link
       rel="stylesheet"
@@ -19,6 +19,8 @@
       integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
       crossorigin="anonymous"
     />
+    <!--Letras usadas-->
+    <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700&display=swap" rel="stylesheet">
   </head>
   <body>
     <!---Barra de menú-->
@@ -35,26 +37,30 @@
 
       <div class="contenido">
         <ul id="menuContenidoCanal">
-          <li class="OpcionesContenido">
+          <li class="OpcionesContenido" id="botonTodos">
             <button title="Todos"><i class="fas fa-archive"></i></button>
           </li>
-          <li class="OpcionesContenido">
-            <button title="Videos" onclick="mostrarVideos()">
+          <li class="OpcionesContenido" id="botonVideos">
+            <button title="Videos">
               <i class="fas fa-film"></i>
             </button>
           </li>
-          <li class="OpcionesContenido">
+          <li class="OpcionesContenido"
+          id="botonDocumentos">
             <button title="Documentos"><i class="fas fa-file-alt"></i></button>
           </li>
-          <li class="OpcionesContenido">
+          <li class="OpcionesContenido" id="botonPresentaciones">
             <button title="Presentaciones"><i class="fas fa-file-powerpoint"></i></button>
           </li>
-          <li class="OpcionesContenido">
+          <li class="OpcionesContenido" id="botonInformacion">
             <button title="Información"><i class="fas fa-address-card"></i></button>
           </li>
         </ul>
         <div id="contenidoEspecifico">
-          <div id="tab-0"></div>
+          <div id="tab-0">Todos</div>
+          <div id="tab-1">Videos</div>
+          <div id="tab-2">Documentos</div>
+          <div id="tab-3">Presentaciones</div>
           <div id="tab-4">
             <div class="informacion-display">
               <h3>Nombre</h3>

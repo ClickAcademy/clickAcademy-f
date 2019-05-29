@@ -12,11 +12,19 @@ $(document).on("change", ".ArchivoSeleccionar", function(evt) {
   let archivo_ruta = evt.target.value;
   let extension = tipoArchivo(archivo_ruta);
   switch (extension) {
-    case "VIDEO":
+    case "Video":
       let $source = $("#ver");
       alert(this.files[0]);
       $source[0].src = URL.createObjectURL(this.files[0]);
       $source.parent()[0].load();
+      break;
+    default:
+      errorModal(
+        "Tipo de archivo inválido",
+        "Asegurése de que el archivo que está intentando compartir cumple con los requisitos."
+      );
+      this.value = "";
+      alert(this.value);
       break;
   }
 });
@@ -31,6 +39,7 @@ function almacenarArchivo() {
         .then(response => {
           datos.pop();
           datos.push(response);
+          datos.push(extension);
           urlEsp = url + "./Archivos.php";
           guardarBD(datos, urlEsp)
             .then(guardado => {
@@ -90,14 +99,13 @@ function tipoArchivo(archivo) {
 
   switch (String(extension.toLowerCase())) {
     case "docx":
-      tipoArchivo = "DOCX";
+      tipoArchivo = "Documento";
       break;
     case "pptx":
-      tipoArchivo = "PPTX";
+      tipoArchivo = "Presentación";
       break;
-
     case extensionesVideoPermitidas.indexOf(extension) + 1 && extension:
-      tipoArchivo = "VIDEO";
+      tipoArchivo = "Video";
       break;
   }
   return tipoArchivo;
@@ -139,7 +147,7 @@ function guardarBD(datos, url) {
     $.post(
       url,
       {
-        subirArchivo: datos.join(",")
+        subirArchivo: datos.join("}*{")
       },
       function(respuesta) {
         let resp = parseInt(respuesta.trim());
