@@ -1,17 +1,8 @@
-/*Colores*/
-:root {
-  --color-oscuro: black;
-  --color-medio: rgb(42, 43, 43);
-  --color-claro: white;
-  --color-informacion: rgba(17, 17, 17, 0.562);
-  --color-letra: rgb(85, 82, 82);
-}
-
 html,
 body {
-  background: var(--color-medio);
+  background: var(--color-oscuro-2);
   padding: 0%;
-  height: 140%;
+  height: auto;
   min-height: 700px;
   display: flex;
   flex-direction: column;
@@ -29,7 +20,7 @@ body {
   align-self: center;
   display: flex;
   flex-flow: column;
-  background: var(--color-letra);
+  background: var(--color-medio);
 }
 
 .banner {
@@ -45,8 +36,8 @@ body {
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  border: 2px solid white;
-  box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
+  border: 2px solid var(--color-claro);
+  box-shadow: var(--sombra-estandar);
   justify-content: center;
   align-items: center;
 }
@@ -59,13 +50,13 @@ body {
   align-self: center;
   right: 6%;
   justify-content: center;
-  color: white;
+  color: var(--color-claro);
 }
 
 .banner #suscripcion button {
   font-weight: bolder;
-  background: rgb(0, 87, 128);
-  color: white;
+  background: var(--color-logo);
+  color: var(--color-claro);
   cursor: pointer;
   border: none;
   border-radius: 5px;
@@ -75,7 +66,7 @@ body {
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   font-size: 15px;
-  box-shadow: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
+  box-shadow: var(--sombra-estandar);
 }
 
 .informacion {
@@ -86,12 +77,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: var(--color-claro);
 }
 
 .contenido {
   margin-top: 10px;
-  background: aqua;
   flex-grow: 1;
   width: 100%;
 }
@@ -120,7 +110,6 @@ body {
 }
 
 .contenido #menuContenidoCanal .OpcionesContenido button:hover {
-  border-bottom: 2px outset rgb(58, 115, 238);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  background-color: aliceblue;
+  border-bottom: 2px outset var(--color-logo-2);
+  box-shadow: var(--sombra-2);
 }

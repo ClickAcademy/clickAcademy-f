@@ -1,0 +1,55 @@
+:root {
+  /*Colores*/
+  --color-oscuro: rgb(0, 0, 0);
+  --color-claro: rgb(255, 255, 255);
+  --color-logo: rgb(0, 113, 111);
+  --color-logo-2: rgb(92, 168, 167);
+  --color-oscuro-2: rgb(42, 43, 43); /*Color del body*/
+  --color-oscuro-3: rgb(53, 51, 51); /*Color del contenedor principal*/
+  --color-oscuro-4: rgb(37, 37, 37);
+  --color-oscuro-opacidad: rgba(17, 17, 17, 0.562);
+  --color-oscuro-opacidad-2: rgba(65, 65, 65, 0.897);
+  --color-medio: rgb(85, 82, 82);
+  --color-medio-2: rgb(107, 105, 105);
+  --color-medio-3: rgb(153, 153, 153);
+  --color-medio-4: rgb(130, 130, 130);
+  --color-claro-2: rgb(238, 238, 238);
+
+  /*Sombras*/
+  --sombra-estandar: 10px 10px 5px -1px rgba(0, 0, 0, 0.46);
+  --sombra-2: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* hind
+  /* cmyk(83%, 0%, 27%, 47%)
+  /* rgb(0, 113, 111);*/
+
+/*Barra laterak*/
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
+  border-radius: 10px;
+  background-color: none;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  background-color: none;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: var(--color-logo);
+  background-image: -webkit-linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 0, 0, 0.4) 50%,
+    transparent,
+    transparent
+  );
+}
+
+/*FONT*/
+html, body{
+  font-family: 'Hind', sans-serif;
+}

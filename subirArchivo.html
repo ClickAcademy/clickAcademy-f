@@ -7,6 +7,7 @@
     <title>Registrarse</title>
     <!--Hoja de estilo-->
     <link rel="stylesheet" href="./styles/subirArchivo.css" />
+    <link href="./styles/global.css" rel="stylesheet" />
     <!--scripts-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--Sweetalert2-->
@@ -21,6 +22,11 @@
       integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
       crossorigin="anonymous"
     />
+    <!--Letras usadas-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div id="barraMenuSuperior"></div>
@@ -31,7 +37,6 @@
           value="upload"
           id="botonCargarArchivo"
           class="ArchivoSeleccionar"
-          onchange="validar()"
         />
         <label
           for="botonCargarArchivo"
@@ -47,18 +52,21 @@
       <div class="Informacion">
         <div class="Previsualizacion">
           <div class="MiniaturaArchivo">
-            <video id="fitDiv" controls style="display: none">
+            <video id="fitDiv" controls>
               <source src="" id="ver" />
               Tu buscador no soporta el video de HTML5
-            </video> 
-            <iframe id="DocPre" src="" style="display: none" width="100%" height="100%" ></iframe>
-            <img id="Img" src="" style="display: none" width="100%" height="100%">
+            </video>
           </div>
         </div>
         <div class="Datos">
           <input type="text" placeholder="Nombre" id="nombre" />
           <textarea placeholder="Abstract" id="descripcion"></textarea>
-          <textarea name="" id="tablaContenidos" placeholder="Tabla de contenidos" class="TextoInformacion"></textarea>
+          <textarea
+            name=""
+            id="tablaContenidos"
+            placeholder="Tabla de contenidos"
+            class="TextoInformacion"
+          ></textarea>
           <select id="categoria">
             <option value="0">Seleccione una opción</option>
             <option value="2">Seleccione una opción</option>

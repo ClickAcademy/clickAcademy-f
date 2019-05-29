@@ -9,7 +9,7 @@ function display() {
   archivo = archivo.split("?");
   let urlEsp = url + "/Archivos.php";
   $.post(urlEsp, { buscarArchivo: archivo[1] }, function(respuesta) {
-    respuesta = respuesta.split(", ");
+    respuesta = respuesta.split(" }*{ ");
     // window.history.pushState("", respuesta[1], archivo[0] +"/"+respuesta[1]+"/");
     visualizar("", respuesta[0]);
     document.title = respuesta[1];
@@ -46,42 +46,6 @@ function visualizar(tipoArchivo, archivo) {
   xhr.open("GET", archivo);
   xhr.send();
 }
-//pendiente codigo de likes y dislikes 
-// function usuario(){
-//   var user = firebase.auth().currentUser;
-//   email = user.email;
-//   window.location=url + "/archivo.php?EmailUsuario=email";
-// }
-
-
-
-function likes()
-{
-
-  let archivo = window.location.href;
-  archivo = archivo.split("?");
-  id_archivo = archivo[1];
-
-  var user = firebase.auth().currentUser;
- let correo = user.email;
-  let urlEsp = url + "/Archivos.php";
-  $.post(urlEsp, { likes: correo, id_archivo }, function(respuesta)  {
-    alert(respuesta);
-  });
-}
-
-
-
-function dislikes()
-{
-  var user = firebase.auth().currentUser;
- let correo = user.email;
-  let urlEsp = url + "/Archivos.php";
-  $.post(urlEsp, { dislikes: correo }, function(respuesta)  {
-    alert(respuesta);
-  });
-}
-
 
 
 // direccion descripcion fecha contenidos categoria usuario
