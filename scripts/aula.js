@@ -13,30 +13,28 @@ function revisarSuscripcion() {}
 function cargarUsuario() {
   let usuario = window.location.href;
   usuario = usuario.split("?");
-  let urlEsp = url + "/Archivos.php";
+  let urlEsp = url + "/aula.php";
   $.post(urlEsp, { buscarUsuario: usuario[1] }, function(respuesta) {
-    respuesta = respuesta.split(", ");
-    // window.history.pushState("", respuesta[1], archivo[0] +"/"+respuesta[1]+"/");
-    visualizar("", respuesta[0]);
+    respuesta = respuesta.split(",");
     document.title = respuesta[1];
     let titulonode = document.createTextNode(respuesta[1]);
-    document.getElementById("tituloArchivo").appendChild(titulonode);
-    let abstractnode = document.createTextNode(respuesta[2]);
-    document.getElementById("abstractInfo").appendChild(abstractnode);
-    let fechanode = document.createTextNode(respuesta[3]);
-    document.getElementById("fecha").appendChild(fechanode);
-    let tablanode = document.createTextNode(respuesta[4]);
-    document.getElementById("tablaContenidoInfo").appendChild(tablanode);
-    let categorianode = document.createTextNode(respuesta[5]);
-    document.getElementById("categorias").appendChild(categorianode);
+    document.getElementById("nombreUsuario").appendChild(titulonode);
+    // let generonode = document.createTextNode(respuesta[2]);
+    // document.getElementById("abstractInfo").appendChild(abstractnode);
+    // let fechanode = document.createTextNode(respuesta[3]);
+    // document.getElementById("fecha").appendChild(fechanode);
+    // let tablanode = document.createTextNode(respuesta[4]);
+    // document.getElementById("tablaContenidoInfo").appendChild(tablanode);
+    // let categorianode = document.createTextNode(respuesta[5]);
+    // document.getElementById("categorias").appendChild(categorianode);
 
-    let usuarioNode = document.createTextNode(respuesta[6]);
-    document.getElementById("nombreUsuario").appendChild(usuarioNode);
+    // let usuarioNode = document.createTextNode(respuesta[6]);
+    // document.getElementById("nombreUsuario").appendChild(usuarioNode);
 
-    let likesnode = document.createTextNode(respuesta[7]);
-    document.getElementById("likes").appendChild(likesnode);
-    let dislikesnode = document.createTextNode(respuesta[8]);
-    document.getElementById("dislikes").appendChild(dislikesnode);
+    // let likesnode = document.createTextNode(respuesta[7]);
+    // document.getElementById("likes").appendChild(likesnode);
+    // let dislikesnode = document.createTextNode(respuesta[8]);
+    // document.getElementById("dislikes").appendChild(dislikesnode);
   });
 }
 
@@ -54,3 +52,14 @@ function visualizar(tipoArchivo, archivo) {
   xhr.open("GET", archivo);
   xhr.send();
 }
+
+/**
+ * correo
+ * nombre
+ * genero
+ * fecha
+ * url_banner
+ * url_foto
+ * pais
+ * ciudad
+ */

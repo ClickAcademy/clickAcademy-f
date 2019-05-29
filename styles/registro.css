@@ -1,17 +1,10 @@
-/*Colores*/
-:root {
-  --color-oscuro: black;
-  --color-medio: rgb(42, 43, 43);
-  --color-claro: white;
-  --color-informacion: rgba(17, 17, 17, 0.562);
-  --color-letra: rgb(85, 82, 82);
-}
-
 body,
 html {
-  background: var(--color-medio);
+  background: var(--color-oscuro-2);
   height: 100%;
+  min-height: 500px;
   width: 100%;
+  min-width: 300px;
 }
 
 body {
@@ -32,11 +25,22 @@ body {
 }
 
 .Logo {
-  align-self: flex-start;
+  align-self: center;
+  width: 450px;
+  min-width: 300px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Logo img{
+  width: 450px;
+  min-width: 450px;
 }
 
 .contenedorPrincipal {
-  background-color: var(--color-oscuro);
+  background-color: var(--color-oscuro-3);
   color: var(--color-claro);
   display: flex;
   flex-direction: column-reverse;
@@ -60,7 +64,6 @@ body {
 
 .contenedorPrincipal .Registrar h1 {
   font-size: 20px;
-  font-weight: lighter;
 }
 
 .contenedorPrincipal .Registrar .CamposFormulario {
@@ -107,8 +110,8 @@ body {
 
 .contenedorPrincipal .Registrar button {
   font-weight: bolder;
-  background: rgb(0, 87, 128);
-  color: white;
+  background: var(--color-logo);
+  color: var(--color-claro);
   cursor: pointer;
 }
 
@@ -121,7 +124,7 @@ body {
 }
 
 .contenedorPrincipal .IniciarSesion p {
-  color: var(--color-letra);
+  color: var(--color-medio-2);
   font-size: 14px;
 }
 
@@ -129,7 +132,7 @@ body {
   border: none;
   border-radius: 5px;
   background: none;
-  color: var(--color-letra);
+  color: var(--color-medio-3);
   cursor: pointer;
   text-decoration: underline;
   padding: 10px;
@@ -137,14 +140,15 @@ body {
 }
 
 .Informacion {
-  background-color: var(--color-informacion);
+  background-color: var(--color-oscuro-opacidad);
   width: 100%;
+  min-width: 400px;
   display: flex;
   flex-flow: wrap column;
   align-items: center;
   justify-content: space-around;
   padding: 10px;
-  color: var(--color-letra);
+  color: var(--color-medio-2);
 }
 
 .Informacion p {
@@ -157,7 +161,9 @@ body {
     width: 100%;
     height: 100%;
   }
-
+  .Logo{
+    width: 100%;
+  }
   #esperarRegistro {
     cursor: not-allowed;
   }

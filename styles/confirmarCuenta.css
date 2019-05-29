@@ -9,7 +9,7 @@
 
 body,
 html {
-  background: var(--color-medio);
+  background: var(--color-oscuro-2);
   padding: 0;
   height: 100%;
   width: 100%;
@@ -29,22 +29,30 @@ body {
 }
 
 .Logo {
-  align-self: flex-start;
+  align-self: center;
+  height: 200px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.Logo img{
+  width:420px;
 }
 
 .contenedorPrincipal {
-  background-color: var(--color-oscuro);
+  background-color: var(--color-medio);
   color: var(--color-claro);
   display: flex;
   flex-flow: wrap column;
   justify-content: space-between;
-  flex-grow: 0.1;
   padding: 0 50px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
   width: 500px;
-  min-height: 500px;
+  min-height: 400px;
 }
 
 .contenedorPrincipal p {

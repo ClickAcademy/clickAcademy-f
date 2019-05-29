@@ -1,18 +1,11 @@
-/*Colores*/
-:root {
-  --color-oscuro: black;
-  --color-medio: rgb(42, 43, 43);
-  --color-claro: white;
-  --color-informacion: rgba(17, 17, 17, 0.562);
-  --color-letra: rgb(85, 82, 82);
-}
-
 body,
 html {
-  background: var(--color-medio);
+  background: var(--color-oscuro-2);
   padding: 0;
   height: 100%;
   width: 100%;
+  min-width: 300px;
+  min-height: 500px;
 }
 
 body {
@@ -29,11 +22,22 @@ body {
 }
 
 .Logo {
-  align-self: flex-start;
+  align-self: center;
+  width: 450px;
+  min-width: 300px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
- 
+
+.Logo img{
+  width: 450px;
+  min-width: 450px;
+}
+
 .contenedorPrincipal {
-  background-color: var(--color-oscuro);
+  background-color: var(--color-oscuro-3);
   color: var(--color-claro);
   display: flex;
   flex-direction: column;
@@ -57,6 +61,7 @@ body {
 
 .contenedorPrincipal .Ingresar h1 {
   font-size: 22px;
+  color: var(--color-medio-3);
   align-self: flex-start;
 }
 
@@ -86,8 +91,8 @@ body {
 
 .contenedorPrincipal .Ingresar button {
   font-weight: bolder;
-  background: rgb(0, 87, 128);
-  color: white;
+  background: var(--color-logo);
+  color: var(--color-claro);
   cursor: pointer;
 }
 
@@ -115,7 +120,7 @@ body {
   border: none;
   border-radius: 5px;
   background: none;
-  color: var(--color-letra);
+  color: var(--color-medio-3);
   cursor: pointer;
   text-decoration: underline;
   padding: 10px;
@@ -131,18 +136,19 @@ body {
 
 .contenedorPrincipal .Crear h1 {
   font-size: 15px;
-  color: var(--color-letra);
+  font-weight: lighter;
+  color: var(--color-medio-3);
 }
 
 .Informacion {
-  background-color: var(--color-informacion);
+  background-color: var(--color-oscuro-opacidad);
   width: 100%;
   display: flex;
   flex-flow: wrap column;
   align-items: center;
   justify-content: space-around;
   padding: 16px;
-  color: var(--color-letra);
+  color: var(--color-medio-2);
 }
 
 .Informacion p {
@@ -154,6 +160,10 @@ body {
   .contenedorPrincipal {
     width: 100%;
     height: 100%;
+    min-width: 300px;
+  }
+  .Logo{
+    width: 100%;
   }
   .Informacion {
     width: 100%;

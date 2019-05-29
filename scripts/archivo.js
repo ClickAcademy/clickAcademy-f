@@ -9,7 +9,7 @@ function display() {
   archivo = archivo.split("?");
   let urlEsp = url + "/Archivos.php";
   $.post(urlEsp, { buscarArchivo: archivo[1] }, function(respuesta) {
-    respuesta = respuesta.split(", ");
+    respuesta = respuesta.split(" }*{ ");
     // window.history.pushState("", respuesta[1], archivo[0] +"/"+respuesta[1]+"/");
     visualizar("", respuesta[0]);
     document.title = respuesta[1];
