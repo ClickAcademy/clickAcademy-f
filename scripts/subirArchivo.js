@@ -154,3 +154,47 @@ function guardarBD(datos, url) {
     );
   });
 }
+
+function validar() {
+  $(document).on("change", ".ArchivoSeleccionar", function(evt) {
+    let archivo = evt.target.value;
+    let ruta_separada = archivo.split(".");
+    let extension = ruta_separada.pop();
+    let extensionesVideoPermitidas = ["m4v", "avi", "mpg", "mp4", "mov", "mpeg"];
+    let extensionImagenPermitidas=["png","jpeg","jpg","gif"];
+    pdffile=document.getElementById("botonCargarArchivo").files[0]; 
+    pdffile_url=URL.createObjectURL(pdffile); 
+    switch (String(extension.toLowerCase())) {
+      case "docx":
+  
+          $('#Word').attr('src',pdffile_url); 
+            document.getElementById("Word").style.display = 'block';
+      break;
+  
+      case extensionImagenPermitidas.indexOf(extension)+1 && extension:
+          $('#Img').attr('src',pdffile_url); 
+            document.getElementById("Img").style.display = 'block';
+        break;
+  
+        case "pdf": //pendiente eliminar solo es de prueba
+        $('#DocPre').attr('src',pdffile_url); 
+          document.getElementById("DocPre").style.display = 'block';
+      break;
+  
+      case "pptx":
+          $('#DocPre').attr('src',prueba); 
+        document.getElementById("DocPre").style.display = 'block';
+        break;
+        
+      case extensionesVideoPermitidas.indexOf(extension) + 1 && extension:
+          let $source = $("#ver");
+          $source[0].src = URL.createObjectURL(this.files[0]);
+          $source.parent()[0].load();
+          document.getElementById("fitDiv").style.display = 'block';
+        break;
+    }
+    return tipoArchivo;
+  });
+  }
+  
+  
