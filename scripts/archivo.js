@@ -11,7 +11,7 @@ function display() {
   $.post(urlEsp, { buscarArchivo: archivo[1] }, function(respuesta) {
     respuesta = respuesta.split(" }*{ ");
     // window.history.pushState("", respuesta[1], archivo[0] +"/"+respuesta[1]+"/");
-    visualizar("Imagen", respuesta[0]);
+    visualizar(respuesta[7], respuesta[0]);
     document.title = respuesta[1];
     let titulonode = document.createTextNode(respuesta[1]);
     document.getElementById("tituloArchivo").appendChild(titulonode);
@@ -27,9 +27,9 @@ function display() {
     let usuarioNode = document.createTextNode(respuesta[6]);
     document.getElementById("nombreUsuario").appendChild(usuarioNode);
 
-    let likesnode = document.createTextNode(respuesta[7]);
+    let likesnode = document.createTextNode(respuesta[8]);
     document.getElementById("likes").appendChild(likesnode);
-    let dislikesnode = document.createTextNode(respuesta[8]);
+    let dislikesnode = document.createTextNode(respuesta[9]);
     document.getElementById("dislikes").appendChild(dislikesnode);
   });
 }
@@ -116,6 +116,3 @@ function ArreglarUrl(urlarch) {
     });
   });
 }
-// direccion descripcion fecha contenidos categoria usuario
-
-// https://firebasestorage.googleapis.com/v0/b/click-academy.appspot.com/o/VIDEO%2F2.mp4?alt=media&token=af966cae-4105-4aa5-8d00-b90fad810f86,yeison,pureba2,2019-05-24,1. rueba,Tecnología,yeison ortiz,0,0
