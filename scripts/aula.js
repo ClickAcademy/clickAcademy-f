@@ -19,22 +19,22 @@ function cargarUsuario() {
     document.title = respuesta[1];
     let titulonode = document.createTextNode(respuesta[1]);
     document.getElementById("nombreUsuario").appendChild(titulonode);
-    // let generonode = document.createTextNode(respuesta[2]);
-    // document.getElementById("abstractInfo").appendChild(abstractnode);
-    // let fechanode = document.createTextNode(respuesta[3]);
-    // document.getElementById("fecha").appendChild(fechanode);
-    // let tablanode = document.createTextNode(respuesta[4]);
-    // document.getElementById("tablaContenidoInfo").appendChild(tablanode);
-    // let categorianode = document.createTextNode(respuesta[5]);
-    // document.getElementById("categorias").appendChild(categorianode);
+    let generonode = document.createTextNode(respuesta[2]);
+    document.getElementById("abstractInfo").appendChild(abstractnode);
+    let fechanode = document.createTextNode(respuesta[3]);
+    document.getElementById("fecha").appendChild(fechanode);
+    let tablanode = document.createTextNode(respuesta[4]);
+    document.getElementById("tablaContenidoInfo").appendChild(tablanode);
+    let categorianode = document.createTextNode(respuesta[5]);
+    document.getElementById("categorias").appendChild(categorianode);
 
-    // let usuarioNode = document.createTextNode(respuesta[6]);
-    // document.getElementById("nombreUsuario").appendChild(usuarioNode);
+    let usuarioNode = document.createTextNode(respuesta[6]);
+    document.getElementById("nombreUsuario").appendChild(usuarioNode);
 
-    // let likesnode = document.createTextNode(respuesta[7]);
-    // document.getElementById("likes").appendChild(likesnode);
-    // let dislikesnode = document.createTextNode(respuesta[8]);
-    // document.getElementById("dislikes").appendChild(dislikesnode);
+    let likesnode = document.createTextNode(respuesta[7]);
+    document.getElementById("likes").appendChild(likesnode);
+    let dislikesnode = document.createTextNode(respuesta[8]);
+    document.getElementById("dislikes").appendChild(dislikesnode);
   });
 }
 

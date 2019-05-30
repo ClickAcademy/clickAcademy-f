@@ -37,7 +37,6 @@
           value="upload"
           id="botonCargarArchivo"
           class="ArchivoSeleccionar"
-          onchange="validar()"
         />
         <label
           for="botonCargarArchivo"
@@ -52,13 +51,14 @@
 
       <div class="Informacion">
         <div class="Previsualizacion">
-          <div class="MiniaturaArchivo">
-            <video id="fitDiv" controls style="display: none">
+          <div class="MiniaturaArchivo" id="preview">
+            <a id="DocPre"></a>
+            <video id="fitDiv" controls>
               <source src="" id="ver" />
               Tu buscador no soporta el video de HTML5
-            </video> 
-            <iframe id="DocPre" src="" style="display: none" width="100%" height="100%" ></iframe>
-            <img id="Img" src="" style="display: none" width="100%" height="100%">
+            </video>
+            <iframe id="Pdf" src=""></iframe>
+            <img id="Img" src="" />
           </div>
         </div>
         <div class="Datos">
