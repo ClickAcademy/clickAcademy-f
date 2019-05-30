@@ -9,14 +9,48 @@ $(function() {
 });
 
 $(document).on("change", ".ArchivoSeleccionar", function(evt) {
+  ocultarDivVisualizar();
   let archivo_ruta = evt.target.value;
   let extension = tipoArchivo(archivo_ruta);
+  pdffile = document.getElementById("botonCargarArchivo").files[0];
+  pdffile_url = URL.createObjectURL(pdffile);
   switch (extension) {
     case "Video":
       let $source = $("#ver");
-      alert(this.files[0]);
       $source[0].src = URL.createObjectURL(this.files[0]);
       $source.parent()[0].load();
+      document.getElementById("fitDiv").style.display = "block";
+      break;
+    case "Documento":
+      let a = document.getElementById("DocPre");
+      a.setAttribute(
+        "href",
+        "javascript: verNuevaVentana('" + pdffile_url + "')"
+      );
+      a.setAttribute("id", "DocPre");
+      archivo_ruta = archivo_ruta.split("fakepath");
+      a.innerHTML = "<i class='fas fa-file-alt'>  " + archivo_ruta[1];
+      a.style.display = "block";
+      break;
+    case "Imagen":
+      $("#Img").attr("src", pdffile_url);
+      document.getElementById("Img").style.display = "block";
+      break;
+    case "Presentación":
+      let ap = document.getElementById("DocPre");
+      ap.setAttribute(
+        "href",
+        "javascript: verNuevaVentana('" + pdffile_url + "')"
+      );
+      ap.setAttribute("id", "DocPre");
+      archivo_ruta = archivo_ruta.split("fakepath");
+      ap.innerHTML = "<i class='fas fa-file-alt'>  " + archivo_ruta[1];
+      document.getElementById("preview").appendChild(ap);
+      ap.style.display = "block";
+      break;
+    case "PDF":
+      $("#Pdf").attr("src", pdffile_url);
+      document.getElementById("Pdf").style.display = "block";
       break;
     default:
       errorModal(
@@ -24,11 +58,24 @@ $(document).on("change", ".ArchivoSeleccionar", function(evt) {
         "Asegurése de que el archivo que está intentando compartir cumple con los requisitos."
       );
       this.value = "";
-      alert(this.value);
       break;
   }
 });
 $(document).on();
+
+function verNuevaVentana(archivo) {
+  var nuevaVentana = window.open(archivo, "TituloParaLaNuevaVentana");
+  if (nuevaVentana) {
+    nuevaVentana.focus();
+  }
+}
+
+function ocultarDivVisualizar() {
+  document.getElementById("fitDiv").style.display = "none";
+  document.getElementById("Pdf").style.display = "none";
+  document.getElementById("Img").style.display = "none";
+  document.getElementById("DocPre").style.display = "none";
+}
 
 function almacenarArchivo() {
   validarDatos()
@@ -94,6 +141,7 @@ function tipoArchivo(archivo) {
   let ruta_separada = archivo.split(".");
   let extension = ruta_separada.pop();
   let extensionesVideoPermitidas = ["m4v", "avi", "mpg", "mp4", "mov", "mpeg"];
+  let extensionImagenPermitidas = ["png", "jpeg", "jpg", "gif"];
 
   let tipoArchivo;
 
@@ -104,8 +152,17 @@ function tipoArchivo(archivo) {
     case "pptx":
       tipoArchivo = "Presentación";
       break;
+    case "ppt":
+      tipoArchivo = "Presentación";
+      break;
     case extensionesVideoPermitidas.indexOf(extension) + 1 && extension:
       tipoArchivo = "Video";
+      break;
+    case extensionImagenPermitidas.indexOf(extension) + 1 && extension:
+      tipoArchivo = "Imagen";
+      break;
+    case "pdf":
+      tipoArchivo = "PDF";
       break;
   }
   return tipoArchivo;
@@ -162,47 +219,3 @@ function guardarBD(datos, url) {
     );
   });
 }
-
-function validar() {
-  $(document).on("change", ".ArchivoSeleccionar", function(evt) {
-    let archivo = evt.target.value;
-    let ruta_separada = archivo.split(".");
-    let extension = ruta_separada.pop();
-    let extensionesVideoPermitidas = ["m4v", "avi", "mpg", "mp4", "mov", "mpeg"];
-    let extensionImagenPermitidas=["png","jpeg","jpg","gif"];
-    pdffile=document.getElementById("botonCargarArchivo").files[0]; 
-    pdffile_url=URL.createObjectURL(pdffile); 
-    switch (String(extension.toLowerCase())) {
-      case "docx":
-  
-          $('#Word').attr('src',pdffile_url); 
-            document.getElementById("Word").style.display = 'block';
-      break;
-  
-      case extensionImagenPermitidas.indexOf(extension)+1 && extension:
-          $('#Img').attr('src',pdffile_url); 
-            document.getElementById("Img").style.display = 'block';
-        break;
-  
-        case "pdf": //pendiente eliminar solo es de prueba
-        $('#DocPre').attr('src',pdffile_url); 
-          document.getElementById("DocPre").style.display = 'block';
-      break;
-  
-      case "pptx":
-          $('#DocPre').attr('src',prueba); 
-        document.getElementById("DocPre").style.display = 'block';
-        break;
-        
-      case extensionesVideoPermitidas.indexOf(extension) + 1 && extension:
-          let $source = $("#ver");
-          $source[0].src = URL.createObjectURL(this.files[0]);
-          $source.parent()[0].load();
-          document.getElementById("fitDiv").style.display = 'block';
-        break;
-    }
-    return tipoArchivo;
-  });
-  }
-  
-  

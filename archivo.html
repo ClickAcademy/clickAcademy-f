@@ -43,16 +43,34 @@
       </div>
       <div id="archivo">
         <div id="visualizacion">
-          <video id="" controls>
-            <source id="preview" />
+          <video id="fitDiv" controls>
+            <source src="" id="ver" />
+            Tu buscador no soporta el video de HTML5
           </video>
+          <iframe
+            id="DocPre"
+            src=""
+          ></iframe>
+          <iframe
+            src=""
+            frameborder="0"
+            id="DOC"
+          ></iframe>
+          <img
+            id="Img"
+            src=""
+          />
         </div>
       </div>
       <div id="informacionArchivo">
         <div id="calificacion">
-          <button id="likes" onclick="likes();" ><i class="far rotate fa-thumbs-up" ></i></button>
-          <button id="dislikes" onchange="dislikes()"><i class="far rotate fa-thumbs-down"> </i> </button>
-          </div>
+          <button id="likes" onclick="likes();">
+            <i class="far rotate fa-thumbs-up"></i>
+          </button>
+          <button id="dislikes" onchange="dislikes()">
+            <i class="far rotate fa-thumbs-down"> </i>
+          </button>
+        </div>
 
         <div id="info">
           <div id="abstract">
