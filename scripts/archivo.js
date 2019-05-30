@@ -11,7 +11,7 @@ function display() {
   $.post(urlEsp, { buscarArchivo: archivo[1] }, function(respuesta) {
     respuesta = respuesta.split(" }*{ ");
     // window.history.pushState("", respuesta[1], archivo[0] +"/"+respuesta[1]+"/");
-    visualizar("Presentación", respuesta[0]);
+    visualizar("Imagen", respuesta[0]);
     document.title = respuesta[1];
     let titulonode = document.createTextNode(respuesta[1]);
     document.getElementById("tituloArchivo").appendChild(titulonode);
@@ -69,10 +69,7 @@ function visualizar(tipoArchivo, archivo) {
         .then(response => {
           let doc = document.getElementById("DOC");
           doc.src =
-            // "http://docs.google.com/gview?url=" + response + "&embedded=true";
-            "http://view.officeapps.live.com/op/view.aspx?src=" +
-            response +
-            "&embedded=true";
+            "http://docs.google.com/gview?url=" + response + "&embedded=true";
           document.getElementById("DOC").style.display = "block";
         })
         .catch(error => {
@@ -85,7 +82,7 @@ function visualizar(tipoArchivo, archivo) {
       pdf.style.display = "block";
       break;
     case "Imagen":
-      $("#Img").attr("src", pdffile_url);
+      $("#Img").attr("src", archivo);
       document.getElementById("Img").style.display = "block";
       break;
     default:
