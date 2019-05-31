@@ -6,6 +6,7 @@ $(function() {
       location.replace("index.html");
     }
   });
+  cargarCategorias();
 });
 
 $(document).on("change", ".ArchivoSeleccionar", function(evt) {
@@ -114,15 +115,13 @@ function validarDatos() {
     datos[0] = document.getElementById("nombre").value;
     datos[1] = document.getElementById("descripcion").value;
     datos[2] = document.getElementById("tablaContenidos").value;
-    let categoriaOpciones = document.getElementById("categoria");
-    datos[3] = categoriaOpciones.options[categoriaOpciones.selectedIndex].text;
+    datos[3] = document.getElementById("categoria").value;
     datos[4] = firebase.auth().currentUser.email;
     datos[5] = document.getElementById("botonCargarArchivo").files[0];
     datos[6] = document.getElementById("botonCargarArchivo").value;
-
     let validar = false;
     datos.forEach(element => {
-      if (element == "") {
+      if (element == "" || element == "undefined") {
         validar = false;
       } else {
         validar = true;
@@ -217,5 +216,19 @@ function guardarBD(datos, url) {
         }
       }
     );
+  });
+}
+
+function cargarCategorias() {
+  urlEsp = url + "./Archivos.php";
+  $.post(urlEsp, { categoriasMostrar: "" }, function(respuesta) {
+    cat = respuesta.split("¬¬ ");
+    cat.forEach(element => {
+      categoriaDividida = element.split(",");
+      option = document.createElement("option");
+      option.setAttribute("value", categoriaDividida[1]);
+      option.setAttribute("label", categoriaDividida[0]);
+      document.getElementById("categoria").appendChild(option);
+    });
   });
 }
