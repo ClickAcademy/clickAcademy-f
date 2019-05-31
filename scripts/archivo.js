@@ -10,7 +10,6 @@ function display() {
   let urlEsp = url + "/Archivos.php";
   $.post(urlEsp, { buscarArchivo: archivo[1] }, function(respuesta) {
     respuesta = respuesta.split(" }*{ ");
-    // window.history.pushState("", respuesta[1], archivo[0] +"/"+respuesta[1]+"/");
     visualizar(respuesta[7], respuesta[0]);
     document.title = respuesta[1];
     let titulonode = document.createTextNode(respuesta[1]);
@@ -64,7 +63,6 @@ function visualizar(tipoArchivo, archivo) {
         });
       break;
     case "Presentación":
-      alert(archivo);
       ArreglarUrl(archivo)
         .then(response => {
           let doc = document.getElementById("DOC");
@@ -77,9 +75,19 @@ function visualizar(tipoArchivo, archivo) {
         });
       break;
     case "PDF":
-      let pdf = document.getElementById("DocPre");
-      $("#DocPre").attr("src", archivo);
-      pdf.style.display = "block";
+      // let pdf = document.getElementById("DocPre");
+      ArreglarUrl(archivo)
+      .then(response => {
+        let doc = document.getElementById("DOC");
+        doc.src =
+          "http://docs.google.com/gview?url=" + response + "&embedded=true";
+          $("#DOC").attr("src", archivo);
+          pdf.style.display = "block";
+      })
+      .catch(error => {
+        errorModal(error, "No se ha podido mostrar el archivo");
+      });
+      
       break;
     case "Imagen":
       $("#Img").attr("src", archivo);
@@ -114,5 +122,37 @@ function ArreglarUrl(urlarch) {
 
       contentType: "application/json"
     });
+  });
+}
+
+function likes() {
+  let archivo = window.location.href;
+  archivo = archivo.split("?");
+  id_archivo = archivo[1];
+  var user = firebase.auth().currentUser;
+  let correo = user.email;
+  let urlEsp = url + "/Archivos.php";
+  datos = new Array();
+  datos[0] = correo;
+  datos[1] = id_archivo;
+  var enviarDatos = datos.toString();
+  $.post(urlEsp, { likes: enviarDatos }, function(respuesta) {
+    alert("Entro" + respuesta);
+  });
+}
+
+function dislikes() {
+  let archivo = window.location.href;
+  archivo = archivo.split("?");
+  id_archivo = archivo[1];
+  var user = firebase.auth().currentUser;
+  let correo = user.email;
+  let urlEsp = url + "/Archivos.php";
+  datos = new Array();
+  datos[0] = correo;
+  datos[1] = id_archivo;
+  var enviarDatos = datos.toString();
+  $.post(urlEsp, { dislikes: enviarDatos }, function(respuesta) {
+    alert(respuesta);
   });
 }
