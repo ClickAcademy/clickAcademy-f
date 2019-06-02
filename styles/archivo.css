@@ -76,6 +76,7 @@ body {
 #DOC {
   display: none;
   height: 400px;
+  width: 600px;;
 }
 
 .contenedorPrincipal #archivo #visualizacion #DocPre {

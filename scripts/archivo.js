@@ -55,7 +55,7 @@ function visualizar(tipoArchivo, archivo) {
         .then(response => {
           let doc = document.getElementById("DOC");
           doc.src =
-            "http://docs.google.com/gview?url=" + response + "&embedded=true";
+            "https://docs.google.com/gview?url=" + response + "&embedded=true";
           document.getElementById("DOC").style.display = "block";
         })
         .catch(error => {
@@ -67,7 +67,7 @@ function visualizar(tipoArchivo, archivo) {
         .then(response => {
           let doc = document.getElementById("DOC");
           doc.src =
-            "http://docs.google.com/gview?url=" + response + "&embedded=true";
+            "https://docs.google.com/gview?url=" + response + "&embedded=true";
           document.getElementById("DOC").style.display = "block";
         })
         .catch(error => {
@@ -77,17 +77,15 @@ function visualizar(tipoArchivo, archivo) {
     case "PDF":
       // let pdf = document.getElementById("DocPre");
       ArreglarUrl(archivo)
-      .then(response => {
-        let doc = document.getElementById("DOC");
-        doc.src =
-          "http://docs.google.com/gview?url=" + response + "&embedded=true";
-          $("#DOC").attr("src", archivo);
-          pdf.style.display = "block";
-      })
-      .catch(error => {
-        errorModal(error, "No se ha podido mostrar el archivo");
-      });
-      
+        .then(response => {
+          let doc = document.getElementById("DOC");
+          doc.src =
+            "https://docs.google.com/gview?url=" + response + "&embedded=true";
+          document.getElementById("DOC").style.display = "block";
+        })
+        .catch(error => {
+          errorModal(error, "No se ha podido mostrar el archivo");
+        });
       break;
     case "Imagen":
       $("#Img").attr("src", archivo);
