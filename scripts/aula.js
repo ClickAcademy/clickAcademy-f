@@ -119,9 +119,9 @@ function cargarUsuario(usuario) {
     let titulonode = document.createTextNode(respuesta[1] + respuesta[2]);
     document.getElementById("nombreUsuario").appendChild(titulonode);
     document.getElementById("generoUsuarioTab").value = respuesta[3];
-    document.getElementById("nacimientoUsuarioTab").value = respuesta[4];
-    document.getElementById("paisUsuarioTab").value = respuesta[5];
-    document.getElementById("ciudadUsuarioTab").value = respuesta[6];
+    document.getElementById("profile_picture").setAttribute("src", respuesta[6]);
+    document.getElementById("paisUsuarioTab").value = respuesta[7];
+    document.getElementById("ciudadUsuarioTab").value = respuesta[8];
   });
 }
 

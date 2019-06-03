@@ -76,9 +76,15 @@ function cargarElementos(elemento) {
     switch (categoria) {
       case "Random":
         preview.id = "miniaturaRandomTodos";
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-video");
+        preview.appendChild(p);
         break;
       case "Usuarios ":
         preview.id = "miniaturaUsuarios";
+        let imagen = document.createElement("img");
+        imagen.setAttribute("src", archivos[2]);
+        preview.appendChild(imagen);
         break;
       case "Nuevos":
         preview.id = "miniaturaNuevosTodos";

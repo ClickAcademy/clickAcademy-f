@@ -62,7 +62,6 @@ $(document).on("change", ".ArchivoSeleccionar", function(evt) {
       break;
   }
 });
-$(document).on();
 
 function verNuevaVentana(archivo) {
   var nuevaVentana = window.open(archivo, "TituloParaLaNuevaVentana");

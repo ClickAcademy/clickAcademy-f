@@ -47,7 +47,7 @@ function verificarConfirmacionCuenta(user) {
  *  -> Error
  */
 function confirmarCuenta() {
-  confirmar("Su cuenta no ha sido verificada ¿Desea verificarla ahora?").then(
+  confirmar("Su cuenta no ha sido verificada ¿Desea verificarla ahora?", "Aceptar").then(
     response => {
       var user = firebase.auth().currentUser;
       user

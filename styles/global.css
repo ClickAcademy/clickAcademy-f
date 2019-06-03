@@ -3,6 +3,7 @@
   --color-oscuro: rgb(0, 0, 0);
   --color-claro: rgb(255, 255, 255);
   --color-logo: rgb(0, 113, 111);
+  --color-logo-opaco: rgba(0, 113, 111, 0.226);
   --color-logo-2: rgb(92, 168, 167);
   --color-oscuro-2: rgb(42, 43, 43); /*Color del body*/
   --color-oscuro-3: rgb(53, 51, 51); /*Color del contenedor principal*/
