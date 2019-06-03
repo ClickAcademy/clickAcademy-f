@@ -12,7 +12,7 @@ function errorModal(error, mensaje) {
   });
 }
 
-function confirmar(mensaje) {
+function confirmar(mensaje, confirm) {
   return new Promise(function(resolve, reject) {
     Swal.fire({
       title: mensaje,
@@ -20,7 +20,7 @@ function confirmar(mensaje) {
       showCancelButton: true,
       confirmButtonColor: "#00716f",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Registrarse",
+      confirmButtonText: confirm,
       cancelButtonText: "Cancelar"
     }).then(result => {
       if (result.value) {

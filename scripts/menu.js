@@ -30,8 +30,18 @@ function cerrarSesion() {
 
 function buscar() {}
 
-function categoriaDocumentos() {}
+function categoriaDocumentos() {
+  location.href = "./docs.html";
+}
 
-function categoriaVideos() {}
+function categoriaVideos() {
+  location.href = "./videos.html";
+}
 
-function categoriaPresentaciones() {}
+function categoriaPresentaciones() {
+  location.href = "./presentaciones.html";
+}
+
+function categoriaImagenes() {
+  location.href = "./imgs.html";
+}

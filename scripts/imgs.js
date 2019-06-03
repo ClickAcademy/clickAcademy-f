@@ -6,7 +6,7 @@ $(function() {
 
 function cargarArchivos() {
   let urlEsp = url + "/Archivos.php";
-  $.post(urlEsp, { tipoCarga: "Todo" }, function(respuesta) {
+  $.post(urlEsp, { tipoCarga: "Imagenes" }, function(respuesta) {
     let funciones = respuesta.split("}{");
     let archivos = new Array();
     funciones.forEach(element => {
@@ -64,10 +64,6 @@ function cargarElementos(elemento) {
           window.location.href =
             "./archivo.html?" + divMiniatura.getAttribute("data").trim();
           break;
-        case "Favoritos":
-          window.location.href =
-            "./archivo.html?" + divMiniatura.getAttribute("data").trim();
-          break;
       }
     };
 
@@ -83,7 +79,7 @@ function cargarElementos(elemento) {
       case "Nuevos":
         preview.id = "miniaturaNuevosTodos";
         break;
-      case "Favoritos":
+      case "Más likes":
         preview.id = "miniaturaLikesTodos";
         break;
     }
