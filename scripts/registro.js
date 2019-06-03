@@ -162,11 +162,28 @@ function RegistrarFirebase(datos, url) {
     .auth()
     .createUserWithEmailAndPassword(datos[2], datos[3])
     .then(function() {
+      asignarDefault();
       guardarBD(datos, url);
     })
     .catch(function(error) {
       errorModal(error.message, "Ha ocurrido un error en el registro");
       esperarRegistro(false);
+    });
+}
+
+function asignarDefault() {
+  var user = firebase.auth().currentUser;
+
+  user
+    .updateProfile({
+      photoURL:
+        "https://firebasestorage.googleapis.com/v0/b/click-academy.appspot.com/o/Profile%2Fdefault_profile_picture.png?alt=media&token=ad5ad50b-bfd7-4a03-886f-6bafdcecebb2"
+    })
+    .then(function() {
+      console.log("Picture updated");
+    })
+    .catch(function(error) {
+      console.log(error);
     });
 }
 

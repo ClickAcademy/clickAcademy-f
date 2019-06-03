@@ -244,21 +244,51 @@ body {
   box-shadow: inset 2px 2px 20px 6px rgba(255, 0, 0, 0.212);
 }
 
-.DangerZone .botones{
+.DangerZone .botones {
   width: 100%;
 }
 
-.DangerZone .botones #eliminarDZ{
+.DangerZone .botones #eliminarDZ {
   background-color: rgb(102, 24, 24);
   width: 40%;
 }
 
-.DangerZone .botones #editarInformacionDZ{
+.DangerZone .botones #editarInformacionDZ,
+.ImagenesUsuario .botones #cambiosFotos,
+.ImagenesUsuario .botones #cancelarFotos {
   width: 40%;
 }
 
 .ImagenesUsuario {
+  height: auto;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.ImagenesUsuario .FotosUsuario {
   height: 300px;
+  display: flex;
+  flex-flow: column wrap;
+}
+
+.ImagenesUsuario #perfilCambio {
+  height: 200px;
+  width: 200px;
+}
+
+.ImagenesUsuario #bannerCambio {
+  height: 200px;
+  width: 300px;
+}
+.ImagenesUsuario .inputFoto{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:disabled{
+  background: var(--color-logo-opaco);
+  cursor: not-allowed;
 }
 
 /* @media only screen and (max-width: 1200px) {

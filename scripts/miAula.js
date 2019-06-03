@@ -1,10 +1,14 @@
 $(function() {
   $("#barraMenuSuperior").load("menuSuperior.html");
   $("#barraMenuInferior").load("menuInferior.html");
+  $("#cambiosFotos").attr("disabled", true);
+  $("#cancelarFotos").attr("disabled", true);
   firebase.auth().onAuthStateChanged(function(user) {
     if (!user) {
       location.replace("index.html");
     } else {
+      $("#profile_picture").attr("src", user.photoURL);
+      $("#perfilCambio").attr("src", user.photoURL);
       cargarUsuario(user.email);
       cargarArchivos(user.email, "Todos")
         .then(response => {
@@ -126,111 +130,108 @@ function cargarUsuario(usuario) {
     document.getElementById("nombreUsuarioTab").value = respuesta[1].trim();
     document.getElementById("apellidoUsuarioTab").value = respuesta[2].trim();
     document.getElementById("generoUsuarioTab").value = respuesta[3];
-    document.getElementById("nacimientoUsuarioTab").value = respuesta[4];
-    document.getElementById("paisUsuarioTab").value = respuesta[5];
-    document.getElementById("ciudadUsuarioTab").value = respuesta[6];
+    document.getElementById("paisUsuarioTab").value = respuesta[7];
+    document.getElementById("ciudadUsuarioTab").value = respuesta[8];
   });
 }
 
-// function establecerMiniaturas(archivos, tab) {
-//   let elemento = archivos.split("}@{");
-//   elemento.splice(0, 1);
+function establecerMiniaturas(archivos, tab) {
+  let elemento = archivos.split("}@{");
+  elemento.splice(0, 1);
 
-//   let divCategoriaElemento = document.createElement("DIV");
-//   divCategoriaElemento.className = "ArchivosCategoria";
-//   let archive = new Array();
+  let divCategoriaElemento = document.createElement("DIV");
+  divCategoriaElemento.className = "ArchivosCategoria";
+  let archive = new Array();
 
-//   elemento.forEach(element => {
-//     archive = element.split("}*{");
+  elemento.forEach(element => {
+    archive = element.split("}*{");
 
-//     let divMiniatura = document.createElement("DIV");
-//     divMiniatura.className = "MiniaturaArchivos";
+    let divMiniatura = document.createElement("DIV");
+    divMiniatura.className = "MiniaturaArchivos";
 
-//     let tituloMiniatura = document.createTextNode(archive[1]);
+    let tituloMiniatura = document.createTextNode(archive[1]);
 
-//     let h2 = document.createElement("H2");
+    let h2 = document.createElement("H2");
 
-//     h2.appendChild(tituloMiniatura);
+    h2.appendChild(tituloMiniatura);
 
-//     let preview = document.createElement("DIV");
-//     preview.className = "ImgMiniatura";
+    let preview = document.createElement("DIV");
+    preview.className = "ImgMiniatura";
 
-//     divMiniatura.appendChild(h2);
-//     divMiniatura.appendChild(preview);
-//     divMiniatura.setAttribute("data", archive[0]);
-//     divMiniatura.onclick = function() {
-//       window.location.href =
-//       "./archivo.html?" + divMiniatura.getAttribute("data").trim();
-//     };
+    divMiniatura.appendChild(h2);
+    divMiniatura.appendChild(preview);
+    divMiniatura.setAttribute("data", archive[0]);
+    divMiniatura.onclick = function() {
+      window.location.href =
+        "./archivo.html?" + divMiniatura.getAttribute("data").trim();
+    };
 
-//     divCategoriaElemento.appendChild(divMiniatura);
-//   });
-//   document.getElementById(tab).appendChild(divCategoriaElemento);
-// }
+    divCategoriaElemento.appendChild(divMiniatura);
+  });
+  document.getElementById(tab).appendChild(divCategoriaElemento);
+}
 
-// function cargarArchivos(usuario, categoria) {
-//   return new Promise(function(resolve, reject) {
-//     let urlEsp = url + "/aula.php";
-//     switch (categoria) {
-//       case "Todos":
-//         $.post(urlEsp, { buscarArchivosUsuarioTodos: usuario }, function(
-//           respuesta
-//         ) {
-//           if (respuesta.trim() == "") {
-//             reject("Parece que no has compartido ningún archivo");
-//           } else {
-//             resolve(respuesta);
-//           }
-//         });
-//         break;
-//       case "Videos":
-//         $.post(urlEsp, { buscarArchivosUsuarioVideos: usuario }, function(
-//           respuesta
-//         ) {
-//           if (respuesta.trim() == "") {
-//             reject("Parece que no has compartido ningún video");
-//           } else {
-//             resolve(respuesta);
-//           }
-//         });
-//         break;
-//       case "Imagenes":
-//         $.post(urlEsp, { buscarArchivosUsuarioImagenes: usuario }, function(
-//           respuesta
-//         ) {
-//           if (respuesta.trim() == "") {
-//             reject("Parece que no has compartido ninguna imagen");
-//           } else {
-//             resolve(respuesta);
-//           }
-//         });
-//         break;
-//       case "Presentaciones":
-//         $.post(
-//           urlEsp,
-//           { buscarArchivosUsuarioPresentaciones: usuario },
-//           function(respuesta) {
-//             if (respuesta.trim() == "") {
-//               reject("Parece que no has compartido ninguna presentación");
-//             } else {
-//               resolve(respuesta);
-//             }
-//           }
-//         );
-//         break;
-//       case "Documentos":
-//         $.post(urlEsp, { buscarArchivosUsuarioDocumentos: usuario }, function(
-//           respuesta
-//         ) {
-//           if (respuesta.trim() == "") {
-//             reject("Parece que no has compartido ningún documento");
-//           } else {
-//             resolve(respuesta);
-//           }
-//         });
-//         break;
-//     }
-//   });
-// }
-
-
+function cargarArchivos(usuario, categoria) {
+  return new Promise(function(resolve, reject) {
+    let urlEsp = url + "/aula.php";
+    switch (categoria) {
+      case "Todos":
+        $.post(urlEsp, { buscarArchivosUsuarioTodos: usuario }, function(
+          respuesta
+        ) {
+          if (respuesta.trim() == "") {
+            reject("Parece que no has compartido ningún archivo");
+          } else {
+            resolve(respuesta);
+          }
+        });
+        break;
+      case "Videos":
+        $.post(urlEsp, { buscarArchivosUsuarioVideos: usuario }, function(
+          respuesta
+        ) {
+          if (respuesta.trim() == "") {
+            reject("Parece que no has compartido ningún video");
+          } else {
+            resolve(respuesta);
+          }
+        });
+        break;
+      case "Imagenes":
+        $.post(urlEsp, { buscarArchivosUsuarioImagenes: usuario }, function(
+          respuesta
+        ) {
+          if (respuesta.trim() == "") {
+            reject("Parece que no has compartido ninguna imagen");
+          } else {
+            resolve(respuesta);
+          }
+        });
+        break;
+      case "Presentaciones":
+        $.post(
+          urlEsp,
+          { buscarArchivosUsuarioPresentaciones: usuario },
+          function(respuesta) {
+            if (respuesta.trim() == "") {
+              reject("Parece que no has compartido ninguna presentación");
+            } else {
+              resolve(respuesta);
+            }
+          }
+        );
+        break;
+      case "Documentos":
+        $.post(urlEsp, { buscarArchivosUsuarioDocumentos: usuario }, function(
+          respuesta
+        ) {
+          if (respuesta.trim() == "") {
+            reject("Parece que no has compartido ningún documento");
+          } else {
+            resolve(respuesta);
+          }
+        });
+        break;
+    }
+  });
+}
