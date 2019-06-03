@@ -53,7 +53,7 @@ function cargarElementos(elemento) {
       let cat = divMiniatura.getAttribute("category").trim();
       switch (cat) {
         case "Usuarios":
-            window.location.href =
+          window.location.href =
             "./aula.html?" + divMiniatura.getAttribute("data").trim();
           break;
         case "Nuevos":
@@ -61,6 +61,10 @@ function cargarElementos(elemento) {
             "./archivo.html?" + divMiniatura.getAttribute("data").trim();
           break;
         case "Random":
+          window.location.href =
+            "./archivo.html?" + divMiniatura.getAttribute("data").trim();
+          break;
+        case "Favoritos":
           window.location.href =
             "./archivo.html?" + divMiniatura.getAttribute("data").trim();
           break;
@@ -79,7 +83,7 @@ function cargarElementos(elemento) {
       case "Nuevos":
         preview.id = "miniaturaNuevosTodos";
         break;
-      case "Más likes":
+      case "Favoritos":
         preview.id = "miniaturaLikesTodos";
         break;
     }

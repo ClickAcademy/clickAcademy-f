@@ -2,64 +2,262 @@ $(function() {
   $("#barraMenuSuperior").load("menuSuperior.html");
   $("#barraMenuInferior").load("menuInferior.html");
 
-  cargarUsuario();
-  revisarSuscripcion();
-});
-
-function suscripcion() {}
-
-function revisarSuscripcion() {}
-
-function cargarUsuario() {
   let usuario = window.location.href;
   usuario = usuario.split("?");
+
+  cargarUsuario(usuario[1]);
+  cargarArchivos(usuario[1], "Todos")
+    .then(response => {
+      establecerMiniaturas(response, "tab-0");
+    })
+    .catch(errt => {
+      let msg = document.createTextNode(errt);
+      let hm = document.createElement("h2");
+      hm.appendChild(msg);
+      document.getElementById("tab-0").appendChild(hm);
+    });
+  cargarArchivos(usuario[1], "Videos")
+    .then(response => {
+      establecerMiniaturas(response, "tab-1");
+    })
+    .catch(errv => {
+      let msg = document.createTextNode(errv);
+      let hm = document.createElement("h2");
+      hm.appendChild(msg);
+      document.getElementById("tab-1").appendChild(hm);
+    });
+  cargarArchivos(usuario[1], "Imagenes")
+    .then(response => {
+      establecerMiniaturas(response, "tab-2");
+    })
+    .catch(erri => {
+      let msg = document.createTextNode(erri);
+      let hm = document.createElement("h2");
+      hm.appendChild(msg);
+      document.getElementById("tab-2").appendChild(hm);
+    });
+  cargarArchivos(usuario[1], "Documentos")
+    .then(response => {
+      establecerMiniaturas(response, "tab-3");
+    })
+    .catch(errd => {
+      let msg = document.createTextNode(errd);
+      let hm = document.createElement("h2");
+      hm.appendChild(msg);
+      document.getElementById("tab-3").appendChild(hm);
+    });
+  cargarArchivos(usuario[1], "Presentaciones")
+    .then(response => {
+      establecerMiniaturas(response, "tab-4");
+    })
+    .catch(errp => {
+      let msg = document.createTextNode(errp);
+      let hm = document.createElement("h2");
+      hm.appendChild(msg);
+      document.getElementById("tab-4").appendChild(hm);
+    });
+});
+
+$(document).ready(function() {
+  if (
+    $("#botonTodos").on("click", function() {
+      ocultarPaneles();
+      $("#tab-0").show();
+    })
+  );
+  if (
+    $("#botonVideos").on("click", function() {
+      ocultarPaneles();
+      $("#tab-1").show();
+    })
+  );
+  if (
+    $("#botonImagenes").on("click", function() {
+      ocultarPaneles();
+      $("#tab-2").show();
+    })
+  );
+  if (
+    $("#botonDocumentos").on("click", function() {
+      ocultarPaneles();
+      $("#tab-3").show();
+    })
+  );
+  if (
+    $("#botonPresentaciones").on("click", function() {
+      ocultarPaneles();
+      $("#tab-4").show();
+    })
+  );
+  if (
+    $("#botonInformacion").on("click", function() {
+      ocultarPaneles();
+      $("#tab-5").show();
+    })
+  );
+});
+
+function ocultarPaneles() {
+  document.getElementById("tab-0").style.display = "none";
+  document.getElementById("tab-1").style.display = "none";
+  document.getElementById("tab-2").style.display = "none";
+  document.getElementById("tab-3").style.display = "none";
+  document.getElementById("tab-4").style.display = "none";
+  document.getElementById("tab-5").style.display = "none";
+}
+
+function cargarUsuario(usuario) {
   let urlEsp = url + "/aula.php";
-  $.post(urlEsp, { buscarUsuario: usuario[1] }, function(respuesta) {
+  $.post(urlEsp, { buscarUsuario: usuario }, function(respuesta) {
     respuesta = respuesta.split(",");
-    document.title = respuesta[1];
-    let titulonode = document.createTextNode(respuesta[1]);
+    respuesta.forEach((element, i) => {
+      if (element === " ") {
+        respuesta[i] = "No especificado";
+      }
+    });
+    document.title = respuesta[1] + respuesta[2];
+    let titulonode = document.createTextNode(respuesta[1] + respuesta[2]);
     document.getElementById("nombreUsuario").appendChild(titulonode);
-    let generonode = document.createTextNode(respuesta[2]);
-    document.getElementById("abstractInfo").appendChild(abstractnode);
-    let fechanode = document.createTextNode(respuesta[3]);
-    document.getElementById("fecha").appendChild(fechanode);
-    let tablanode = document.createTextNode(respuesta[4]);
-    document.getElementById("tablaContenidoInfo").appendChild(tablanode);
-    let categorianode = document.createTextNode(respuesta[5]);
-    document.getElementById("categorias").appendChild(categorianode);
-
-    let usuarioNode = document.createTextNode(respuesta[6]);
-    document.getElementById("nombreUsuario").appendChild(usuarioNode);
-
-    let likesnode = document.createTextNode(respuesta[7]);
-    document.getElementById("likes").appendChild(likesnode);
-    let dislikesnode = document.createTextNode(respuesta[8]);
-    document.getElementById("dislikes").appendChild(dislikesnode);
+    document.getElementById("generoUsuarioTab").value = respuesta[3];
+    document.getElementById("nacimientoUsuarioTab").value = respuesta[4];
+    document.getElementById("paisUsuarioTab").value = respuesta[5];
+    document.getElementById("ciudadUsuarioTab").value = respuesta[6];
   });
 }
 
-function visualizar(tipoArchivo, archivo) {
-  var xhr = new XMLHttpRequest();
-  let arch = document.getElementById("preview");
-  xhr.responseType = "blob";
-  xhr.onload = function() {
-    arch.src = URL.createObjectURL(this.response);
-    $("#preview")
-      .parent()[0]
-      .load(arch.src);
-  };
+function establecerMiniaturas(archivos, tab) {
+  let elemento = archivos.split("}@{");
+  elemento.splice(0, 1);
+  console.log(elemento);
 
-  xhr.open("GET", archivo);
-  xhr.send();
+  let divCategoriaElemento = document.createElement("DIV");
+  divCategoriaElemento.className = "ArchivosCategoria";
+  let archive = new Array();
+
+  elemento.forEach(element => {
+    archive = element.split("}*{");
+
+    let divMiniatura = document.createElement("DIV");
+    divMiniatura.className = "MiniaturaArchivos";
+
+    let tituloMiniatura = document.createTextNode(archive[1]);
+
+    let h2 = document.createElement("H2");
+
+    h2.appendChild(tituloMiniatura);
+
+    let preview = document.createElement("DIV");
+    preview.className = "ImgMiniatura";
+
+    divMiniatura.appendChild(h2);
+    divMiniatura.appendChild(preview);
+    divMiniatura.setAttribute("data", archive[0]);
+    // divMiniatura.setAttribute("category", categoria);
+    divMiniatura.onclick = function() {
+      let cat = divMiniatura.getAttribute("category").trim();
+      switch (cat) {
+        case "Usuarios":
+          window.location.href =
+            "./aula.html?" + divMiniatura.getAttribute("data").trim();
+          break;
+        case "Nuevos":
+          window.location.href =
+            "./archivo.html?" + divMiniatura.getAttribute("data").trim();
+          break;
+        case "Random":
+          window.location.href =
+            "./archivo.html?" + divMiniatura.getAttribute("data").trim();
+          break;
+      }
+    };
+
+    divCategoriaElemento.appendChild(divMiniatura);
+
+    // switch (categoria) {
+    //   case "Random":
+    //     preview.id = "miniaturaRandomTodos";
+    //     break;
+    //   case "Usuarios ":
+    //     preview.id = "miniaturaUsuarios";
+    //     break;
+    //   case "Nuevos":
+    //     preview.id = "miniaturaNuevosTodos";
+    //     break;
+    //   case "Más likes":
+    //     preview.id = "miniaturaLikesTodos";
+    //     break;
+    // }
+  });
+  document.getElementById(tab).appendChild(divCategoriaElemento);
 }
 
-/**
- * correo
- * nombre
- * genero
- * fecha
- * url_banner
- * url_foto
- * pais
- * ciudad
- */
+function cargarArchivos(usuario, categoria) {
+  return new Promise(function(resolve, reject) {
+    let urlEsp = url + "/aula.php";
+    switch (categoria) {
+      case "Todos":
+        $.post(urlEsp, { buscarArchivosUsuarioExternoTodos: usuario }, function(
+          respuesta
+        ) {
+          if (respuesta.trim() === "") {
+            reject("Ups, no hemos encontrado archivos en esta aula");
+          } else {
+            resolve(respuesta);
+          }
+        });
+        break;
+      case "Videos":
+        $.post(
+          urlEsp,
+          { buscarArchivosUsuarioExternoVideos: usuario },
+          function(respuesta) {
+            if (respuesta.trim() == "") {
+              reject("Ups, no hemos encontrado videos en esta aula");
+            } else {
+              resolve(respuesta);
+            }
+          }
+        );
+        break;
+      case "Imagenes":
+        $.post(
+          urlEsp,
+          { buscarArchivosUsuarioExternoImagenes: usuario },
+          function(respuesta) {
+            if (respuesta.trim() == "") {
+              reject("Ups, no hemos encontrado imágenes en esta aula");
+            } else {
+              resolve(respuesta);
+            }
+          }
+        );
+        break;
+      case "Presentaciones":
+        $.post(
+          urlEsp,
+          { buscarArchivosUsuarioExternoPresentaciones: usuario },
+          function(respuesta) {
+            if (respuesta.trim() == "") {
+              reject("Ups, no hemos encontrado presentaciones en esta aula");
+            } else {
+              resolve(respuesta);
+            }
+          }
+        );
+        break;
+      case "Documentos":
+        $.post(
+          urlEsp,
+          { buscarArchivosUsuarioExternoDocumentos: usuario },
+          function(respuesta) {
+            if (respuesta.trim() == "") {
+              reject("Ups, no hemos encontrado documentos en esta aula");
+            } else {
+              resolve(respuesta);
+            }
+          }
+        );
+        break;
+    }
+  });
+}

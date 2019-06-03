@@ -4,55 +4,100 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Aula</title>
+    <title></title>
 
     <!--Script para incluir barra de menú-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <!--Estilos-->
-    <link href="./styles/aula.css" rel="stylesheet" />
+    <link href="./styles/aulas.css" rel="stylesheet" />
     <link href="./styles/global.css" rel="stylesheet" />
+    <!--Íconos usados-->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <!--Letras usadas-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
     <!--Sweetalert2-->
     <script src="./sweetalert2/sweetalert2.all.min.js"></script>
     <script
       href="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"
     ></script>
-
-    <!--Íconos usados-->
   </head>
   <body>
     <!---Barra de menú-->
-    <div id="barraMenuSuperior"></div>
-    <div id="barraMenuInferior"></div>
+    <nav id="barraMenuSuperior"></nav>
+    <nav id="barraMenuInferior"></nav>
     <!---->
+    <!--Documentos-->
     <div id="contenedorPrincipal">
-      <div class="informacion">
+      <div id="informacionPrincipal">
         <p id="nombreUsuario"></p>
-      </div>
-      <div class="banner">
-        <div id="fotoPerfil">
-          <p>Foto</p>
-        </div>
-        <div id="suscripcion" onclick="suscripcion()">
-          <button id="botonSuscripcion">S</button>
-        </div>
+        <img src="./images/default_banner.jpg" id="banner_picture" />
+        <img src="./images/default_profile_picture.png" id="profile_picture" />
       </div>
 
       <div class="contenido">
         <ul id="menuContenidoCanal">
-          <li class="OpcionesContenido">
-            <button>Videos</button>
+          <li class="OpcionesContenido" id="botonTodos">
+            <button title="Todos"><i class="fas fa-archive"></i></button>
           </li>
-          <li class="OpcionesContenido">
-            <button>Documentos</button>
+          <li class="OpcionesContenido" id="botonVideos">
+            <button title="Videos">
+              <i class="fas fa-film"></i>
+            </button>
           </li>
-          <li class="OpcionesContenido">
-            <button>Presentaciones</button>
+          <li class="OpcionesContenido" id="botonImagenes">
+            <button title="Imágenes">
+              <i class="fas fa-image"></i>
+            </button>
           </li>
-          <li class="OpcionesContenido">
-            <button>Información</button>
+          <li class="OpcionesContenido" id="botonDocumentos">
+            <button title="Documentos"><i class="fas fa-file-alt"></i></button>
+          </li>
+          <li class="OpcionesContenido" id="botonPresentaciones">
+            <button title="Presentaciones">
+              <i class="fas fa-file-powerpoint"></i>
+            </button>
+          </li>
+          <li class="OpcionesContenido" id="botonInformacion">
+            <button title="Información">
+              <i class="fas fa-address-card"></i>
+            </button>
           </li>
         </ul>
-        <div id="contenidoEspecifico"></div>
+        <div id="contenidoEspecifico">
+          <div id="tab-0"><h3>Todos</h3></div>
+          <div id="tab-1"><h3>Videos</h3></div>
+          <div id="tab-2"><h3>Imágenes</h3></div>
+          <div id="tab-3"><h3>Documentos</h3></div>
+          <div id="tab-4"><h3>Presentaciones</h3></div>
+          <div id="tab-5">
+            <h3>Información personal</h3>
+            <div class="informacion-display">
+              <h3>Género</h3>
+              <input type="text" id="generoUsuarioTab" readonly />
+            </div>
+            <div class="informacion-display">
+              <h3>Fecha de nacimiento</h3>
+              <input type="text" id="nacimientoUsuarioTab" readonly />
+            </div>
+            <div class="informacion-display">
+              <h3>País</h3>
+              <input type="text" id="paisUsuarioTab" readonly />
+            </div>
+            <div class="informacion-display">
+              <h3>Ciudad</h3>
+              <input type="text" id="ciudadUsuarioTab" readonly />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -66,11 +111,3 @@
     <script src="./scripts/menu.js"></script>
   </body>
 </html>
-
-<script>
-  $(window).click(function(e) {
-    if (e.target.id == "miAulaBoton") {
-      $("#panelUsuario").slideUp();
-    }
-  });
-</script>

@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <!--Estilos-->
-    <link href="./styles/miAula.css" rel="stylesheet" />
+    <link href="./styles/aulas.css" rel="stylesheet" />
     <link href="./styles/global.css" rel="stylesheet" />
     <!--Íconos usados-->
     <link
@@ -20,7 +20,15 @@
       crossorigin="anonymous"
     />
     <!--Letras usadas-->
-    <link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <!--Sweetalert2-->
+    <script src="./sweetalert2/sweetalert2.all.min.js"></script>
+    <script
+      href="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"
+    ></script>
   </head>
   <body>
     <!---Barra de menú-->
@@ -45,48 +53,104 @@
               <i class="fas fa-film"></i>
             </button>
           </li>
-          <li class="OpcionesContenido"
-          id="botonDocumentos">
+          <li class="OpcionesContenido" id="botonImagenes">
+            <button title="Imágenes">
+              <i class="fas fa-image"></i>
+            </button>
+          </li>
+          <li class="OpcionesContenido" id="botonDocumentos">
             <button title="Documentos"><i class="fas fa-file-alt"></i></button>
           </li>
           <li class="OpcionesContenido" id="botonPresentaciones">
-            <button title="Presentaciones"><i class="fas fa-file-powerpoint"></i></button>
+            <button title="Presentaciones">
+              <i class="fas fa-file-powerpoint"></i>
+            </button>
           </li>
           <li class="OpcionesContenido" id="botonInformacion">
-            <button title="Información"><i class="fas fa-address-card"></i></button>
+            <button title="Información">
+              <i class="fas fa-address-card"></i>
+            </button>
           </li>
         </ul>
         <div id="contenidoEspecifico">
-          <div id="tab-0">Todos</div>
-          <div id="tab-1">Videos</div>
-          <div id="tab-2">Documentos</div>
-          <div id="tab-3">Presentaciones</div>
-          <div id="tab-4">
-            <div class="informacion-display">
-              <h3>Nombre</h3>
-              <input type="text" id="nombreUsuarioTab" readonly />
+          <div id="tab-0"><h3>Todos</h3></div>
+          <div id="tab-1"><h3>Videos</h3></div>
+          <div id="tab-2"><h3>Imágenes</h3></div>
+          <div id="tab-3"><h3>Documentos</h3></div>
+          <div id="tab-4"><h3>Presentaciones</h3></div>
+          <div id="tab-5">
+            <h3>Información personal</h3>
+            <div class="Informacion">
+              <div class="informacion-display">
+                <h3>Nombre</h3>
+                <input type="text" id="nombreUsuarioTab" readonly />
+              </div>
+              <div class="informacion-display">
+                <h3>Apellido</h3>
+                <input type="text" id="apellidoUsuarioTab" readonly />
+              </div>
+              <div class="informacion-display">
+                <h3>Género</h3>
+                <input type="text" id="generoUsuarioTab" readonly />
+              </div>
+              <div class="informacion-display">
+                <h3>Fecha de nacimiento</h3>
+                <input type="text" id="nacimientoUsuarioTab" readonly />
+              </div>
+              <div class="informacion-display">
+                <h3>País</h3>
+                <input type="text" id="paisUsuarioTab" readonly />
+              </div>
+              <div class="informacion-display">
+                <h3>Ciudad</h3>
+                <input type="text" id="ciudadUsuarioTab" readonly />
+              </div>
+              <div class="informacion-display botones">
+                <button
+                  onclick="habilitarEdicionPublica()"
+                  id="editarInformacion"
+                >
+                  Editar
+                </button>
+                <button id="guardarCambios" onclick="guardarCambiosPublica()">
+                  Guardar cambios
+                </button>
+                <button id="cancelar" onclick="cancelarCambiosPublica()">
+                  Cancelar
+                </button>
+              </div>
             </div>
-            <div class="informacion-display">
-              <h3>Apellido</h3>
-              <input type="text" id="apellidoUsuarioTab" readonly />
+            <div class="ImagenesUsuario">
+              <div class="informacion-display">
+                <img />
+                <button id="cambiarPerfil">
+                  Nueva foto de perfil
+                </button>
+              </div>
+              <img />
             </div>
-            <div class="informacion-display">
-              <h3>Género</h3>
-              <input type="text" id="generoUsuarioTab" readonly />
+            <div class="DangerZone">
+              <div class="informacion-display">
+                <h3>Correo</h3>
+                <input type="text" id="correoUsuarioTab" readonly />
+              </div>
+              <div class="informacion-display">
+                <h3>Nueva contraseña</h3>
+                <input type="text" id="contraseñaUsuarioTab" readonly />
+              </div>
+              <div class="informacion-display botones">
+                  <button onclick="EliminarDZ()" id="eliminarDZ">Eliminar cuenta</button>
+                <button onclick="habilitarEdicionDZ()" id="editarInformacionDZ">
+                  Editar
+                </button>
+                <button id="guardarCambiosDZ" onclick="guardarCambiosDZ()">
+                  Guardar cambios
+                </button>
+                <button id="cancelarDZ" onclick="cancelarCambiosDZ()">
+                  Cancelar
+                </button>
+              </div>
             </div>
-            <div class="informacion-display">
-              <h3>Fecha de nacimiento</h3>
-              <input type="text" id="nacimientoUsuarioTab" readonly />
-            </div>
-            <div class="informacion-display">
-              <h3>País</h3>
-              <input type="text" id="paisUsuarioTab" readonly />
-            </div>
-            <div class="informacion-display">
-              <h3>Ciudad</h3>
-              <input type="text" id="ciudadUsuarioTab" readonly />
-            </div>
-            <div class="informacion-display"><button>Editar</button></div>
           </div>
         </div>
       </div>
@@ -97,7 +161,9 @@
     <script src="./scripts/global.js"></script>
     <!---->
 
+    <script src="./scripts/alertas.js"></script>
     <script src="./scripts/miAula.js"></script>
+    <script src="./scripts/miAulaCambios.js"></script>
     <script src="./scripts/menu.js"></script>
   </body>
 </html>

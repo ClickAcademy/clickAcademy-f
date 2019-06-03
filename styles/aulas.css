@@ -1,13 +1,12 @@
 html,
-body { 
+body {
   background: var(--color-oscuro-2);
   height: auto;
   min-height: 700px;
-  min-width: 300px;
+  min-width: 350px;
   display: flex;
   flex-direction: column;
 }
-
 * {
   box-sizing: border-box;
   margin: 0;
@@ -16,8 +15,10 @@ body {
 
 #contenedorPrincipal {
   width: 90%;
+  min-width: 350px;
   min-height: 400px;
   height: auto;
+  margin-bottom: 60px;
   align-self: center;
   display: flex;
   flex-flow: column;
@@ -91,7 +92,7 @@ body {
   height: inherit;
 }
 
-#contenedorPrincipal .contenido #menuContenidoCanal .OpcionesContenido button{
+#contenedorPrincipal .contenido #menuContenidoCanal .OpcionesContenido button {
   background: none;
   border: none;
   width: 100%;
@@ -101,14 +102,22 @@ body {
   font-size: 18px;
 }
 
-#contenedorPrincipal .contenido #menuContenidoCanal .OpcionesContenido button:hover {
+#contenedorPrincipal
+  .contenido
+  #menuContenidoCanal
+  .OpcionesContenido
+  button:hover {
   border-bottom: 2px outset var(--color-logo-2);
   box-shadow: var(--sombra-2);
   background-color: var(--color-oscuro);
 }
 
-#contenedorPrincipal .contenido #tab-0{
+#contenedorPrincipal .contenido #tab-0 {
   display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
 }
 
 #contenedorPrincipal .contenido #tab-1,
@@ -121,50 +130,140 @@ body {
   display: none;
   flex-flow: column wrap;
   justify-content: space-around;
+  align-items: center;
   margin-top: 20px;
 }
-
-#contenedorPrincipal .contenido #tab-2,
-#contenedorPrincipal .contenido #tab-3,
-#contenedorPrincipal .contenido #tab-4 {
-  display:none;
-}
-
-
 
 .informacion-display {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 10px 30px 10px 30px;
 }
 
 .informacion-display input {
-  flex: 0.7;
-  height: 20px;
+  height: 30px;
+  width: 50%;
+  font-size: 15px;
+  color: var(--color-claro-2);
   cursor: default;
-  background: inherit;
+  background: var(--color-oscuro-opacidad-2);
   border: none;
+  padding: 10px;
 }
 
 .informacion-display h3 {
-  flex: 0.5;
+  width: 30% !important;
   font-size: 14px;
   font-weight: 500;
-  color: white;
+  color: var(--color-claro);
 }
 
-.informacion-display button {
+.botones {
   width: 100%;
-  height: 30px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.botones button {
+  height: 40px;
   border: none;
   background: var(--color-logo);
   color: white;
   font-weight: bold;
   font-size: 13px;
+  cursor: pointer;
 }
 
-.informacion-display #guardarCambios,
-.informacion-display #cancelar{
-  display:none;
+.botones #editarInformacion {
+  width: 90%;
 }
+.botones #guardarCambios,
+.botones #guardarCambiosDZ,
+.botones #cancelarDZ,
+.botones #cancelar {
+  width: 45%;
+  display: none;
+}
+
+/**
+*   Miniaturas de archivos
+*/
+.ArchivosCategoria {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  margin: 10px 5px 10px 5px;
+  width: 100%;
+  height: auto;
+}
+.ArchivosCategoria .MiniaturaArchivos {
+  display: flex;
+  flex-flow: column-reverse nowrap;
+  justify-content: space-around;
+  width: 300px;
+  margin: 10px 0 20px 0;
+  cursor: pointer;
+}
+#contenidoEspecifico h2 {
+  font-size: 15px;
+  font-weight: lighter;
+  color: var(--color-claro-2);
+  margin: 10px;
+  text-align: center;
+  width: 100%;
+}
+#contenidoEspecifico h3 {
+  font-size: 17px;
+  color: var(--color-medio-3);
+  height: 40px;
+  width: 100%;
+  text-align: center;
+}
+.ArchivosCategoria .MiniaturaArchivos .ImgMiniatura {
+  display: flex;
+  border: 2px outset var(--color-logo-2);
+  margin-right: 5px;
+  height: 150px;
+}
+
+.Informacion,
+.ImagenesUsuario,
+.DangerZone {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  box-shadow: inset 5px 5px 20px 6px var(--color-oscuro-opacidad-2);
+  margin: 10px 50px 10px 50px;
+  padding: 40px 0;
+}
+
+.DangerZone {
+  box-shadow: inset 2px 2px 20px 6px rgba(255, 0, 0, 0.212);
+}
+
+.DangerZone .botones{
+  width: 100%;
+}
+
+.DangerZone .botones #eliminarDZ{
+  background-color: rgb(102, 24, 24);
+  width: 40%;
+}
+
+.DangerZone .botones #editarInformacionDZ{
+  width: 40%;
+}
+
+.ImagenesUsuario {
+  height: 300px;
+}
+
+/* @media only screen and (max-width: 1200px) {
+      .contenedorPrincipal {
+        width: 100%;
+        height: 100%;
+      }
+    } */

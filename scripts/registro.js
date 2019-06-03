@@ -18,29 +18,31 @@ function esperarRegistro(estado) {
  * Función para registrar un usuario nuevo
  */
 function registrar() {
-  confirmar("¡Confirma tu registro en Click academy!").then(response => {
-    esperarRegistro(true);
-    let datos = [5];
-    datos[0] = document.getElementById("nombre").value;
-    datos[1] = document.getElementById("apellido").value;
-    datos[2] = document.getElementById("correo").value;
-    datos[3] = document.getElementById("contraseña").value;
-    datos[4] = document.getElementById("confirmar_contraseña").value;
-    if (validar(datos) === true) {
-      let urlEsp = url + "/Registro.php";
-      usuarioRegistrado(datos, urlEsp)
-        .then(response => {
-          RegistrarFirebase(datos, urlEsp);
-        })
-        .catch(function(error) {
-          error(error.message, "Ha ocurrido un error en el registro.");
-          esperarRegistro(false);
-        });
-    } else {
-      esperarRegistro(false);
-      errorModal(null, "Revisa los datos ingresados");
+  confirmar("¡Confirma tu registro en Click academy!", "Registrarse").then(
+    response => {
+      esperarRegistro(true);
+      let datos = [5];
+      datos[0] = document.getElementById("nombre").value;
+      datos[1] = document.getElementById("apellido").value;
+      datos[2] = document.getElementById("correo").value;
+      datos[3] = document.getElementById("contraseña").value;
+      datos[4] = document.getElementById("confirmar_contraseña").value;
+      if (validar(datos) === true) {
+        let urlEsp = url + "/Registro.php";
+        usuarioRegistrado(datos, urlEsp)
+          .then(response => {
+            RegistrarFirebase(datos, urlEsp);
+          })
+          .catch(function(error) {
+            error(error.message, "Ha ocurrido un error en el registro.");
+            esperarRegistro(false);
+          });
+      } else {
+        esperarRegistro(false);
+        errorModal(null, "Revisa los datos ingresados");
+      }
     }
-  });
+  );
 }
 
 /**
