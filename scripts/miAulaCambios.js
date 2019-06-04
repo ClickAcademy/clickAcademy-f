@@ -162,6 +162,7 @@ function guardarCambiosPublica() {
 function habilitarEdicionDZ() {
   document.getElementById("correoUsuarioTab").removeAttribute("readonly");
   document.getElementById("contraseñaUsuarioTab").removeAttribute("readonly");
+  document.getElementById("contraseñaUsuarioTabN").removeAttribute("readonly");
   document.getElementById("guardarCambiosDZ").style.display = "block";
   document.getElementById("cancelarDZ").style.display = "block";
   document.getElementById("editarInformacionDZ").style.display = "none";
@@ -171,7 +172,11 @@ function cancelarCambiosDZ() {
   confirmar("Se perderán todos los cambios realizados", "Confirmar").then(
     response => {
       document.getElementById("correoUsuarioTab").readOnly = true;
+      document.getElementById("correoUsuarioTab").value = "";
       document.getElementById("contraseñaUsuarioTab").readOnly = true;
+      document.getElementById("contraseñaUsuarioTab").value = "";
+      document.getElementById("contraseñaUsuarioTabN").readOnly = true;
+      document.getElementById("contraseñaUsuarioTabN").value = "";
 
       document.getElementById("guardarCambiosDZ").style.display = "none";
       document.getElementById("cancelarDZ").style.display = "none";
@@ -185,15 +190,16 @@ function cancelarCambiosDZ() {
 }
 function guardarCambiosDZ() {
   confirmar("Se guardarán los cambios", "Confirmar").then(response => {
-    let datos = [6];
+    let datos = [4];
     datos[0] = document.getElementById("correoUsuarioTab").value;
     datos[1] = document.getElementById("contraseñaUsuarioTab").value;
-    datos[6] = usuarioGlobal;
+    datos[2] = document.getElementById("contraseñaUsuarioTabN").value;
+    datos[3] = usuarioGlobal;
     if (validarDZ(datos) === true) {
       let urlEsp = url + "/Registro.php";
       actualizarFirebase(datos)
         .then(resolve => {
-          guardarBD(datos, urlEsp);
+          recargarDZ();
         })
         .catch(reject => {
           errorModal(
@@ -206,10 +212,24 @@ function guardarCambiosDZ() {
     }
   });
 
+  function recargarDZ() {
+    document.getElementById("correoUsuarioTab").readOnly = true;
+    document.getElementById("correoUsuarioTab").value = "";
+    document.getElementById("contraseñaUsuarioTab").readOnly = true;
+    document.getElementById("contraseñaUsuarioTab").value = "";
+    document.getElementById("contraseñaUsuarioTabN").readOnly = true;
+    document.getElementById("contraseñaUsuarioTabN").value = "";
+
+    document.getElementById("guardarCambiosDZ").style.display = "none";
+    document.getElementById("cancelarDZ").style.display = "none";
+    document.getElementById("editarInformacionDZ").style.display = "block";
+    document.getElementById("eliminarDZ").style.display = "block";
+  }
   function validarDZ(datos) {
     let seguir = true;
     let i0 = false,
-      i1 = false;
+      i2 = false;
+    i1 = false;
 
     for (x = 0; x < datos.length; x++) {
       if (datos[x] === "") {
@@ -220,6 +240,9 @@ function guardarCambiosDZ() {
           case 1:
             i1 = true;
             break;
+          case 2:
+            i2 = true;
+            break;
         }
         vacio = true;
         seguir = false;
@@ -229,29 +252,46 @@ function guardarCambiosDZ() {
     }
 
     if (i0 === true) {
-      document.getElementById("nombreUsuarioTab").style.borderBottom =
+      document.getElementById("correoUsuarioTab").style.borderBottom =
         "3px solid red";
     } else {
-      document.getElementById("nombreUsuarioTab").style.borderBottom = "none";
+      document.getElementById("correoUsuarioTab").style.borderBottom = "none";
     }
 
     if (i1 === true) {
-      document.getElementById("apellidoUsuarioTab").style.borderBottom =
+      document.getElementById("contraseñaUsuarioTab").style.borderBottom =
         "3px solid red";
     } else {
-      document.getElementById("apellidoUsuarioTab").style.borderBottom = "none";
+      document.getElementById("contraseñaUsuarioTab").style.borderBottom =
+        "none";
     }
+
+    if (i2 === true) {
+      document.getElementById("contraseñaUsuarioTabN").style.borderBottom =
+        "3px solid red";
+    } else {
+      document.getElementById("contraseñaUsuarioTabN").style.borderBottom =
+        "none";
+    }
+
     return seguir;
   }
 
   function actualizarFirebase(datos) {
     return new Promise(function(resolve, reject) {
+      let credential = firebase.auth.EmailAuthProvider.credential(
+        datos[0],
+        datos[1]
+      );
+
       var user = firebase.auth().currentUser;
       user
-        .updateEmail(datos[0])
+        .reauthenticateAndRetrieveDataWithCredential(credential)
         .then(function() {
+          // User re-authenticated.
+          var user = firebase.auth().currentUser;
           user
-            .updatePassword(datos[1])
+            .updatePassword(datos[2])
             .then(function() {
               resolve("Se actualizaron los datos del usuario");
             })
@@ -260,43 +300,12 @@ function guardarCambiosDZ() {
             });
         })
         .catch(function(error) {
+          // An error happened.
           reject(error);
         });
     });
   }
-
-  function guardarBD(datos, url) {
-    $.post(
-      url,
-      {
-        actualizarDatos: datos
-      },
-      function(respuesta) {
-        if (respuesta.trim() === "1") {
-          document.getElementById("nombreUsuarioTab").readOnly = true;
-          document.getElementById("apellidoUsuarioTab").readOnly = true;
-          document.getElementById("generoUsuarioTab").readOnly = true;
-          document.getElementById("nacimientoUsuarioTab").readOnly = true;
-          document.getElementById("paisUsuarioTab").readOnly = true;
-          document.getElementById("ciudadUsuarioTab").readOnly = true;
-
-          document.getElementById("guardarCambios").style.display = "none";
-          document.getElementById("cancelar").style.display = "none";
-          document.getElementById("editarInformacion").style.display = "block";
-          firebase.auth().onAuthStateChanged(function(user) {
-            cargarUsuario(user.email);
-          });
-          alertasPequeñas("Haz actualizado tu información");
-        } else if (respuesta.trim() === "0") {
-          errorModal("", "Ha ocurrido un error en el registro");
-        }
-      }
-    );
-  }
-
   function eliminarFirebase() {}
-
-  function eliminarBD(datos, url) {}
 }
 function cambiarFotoPerfil() {
   confirmar("Se cambiará la foto de perfil", "Aceptar").then(r => {
