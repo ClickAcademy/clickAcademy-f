@@ -12,4 +12,4 @@ var firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
-var url = "https://click-academy.herokuapp.com";
+var url = "https://clickacademyco.herokuapp.com/";

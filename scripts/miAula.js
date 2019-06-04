@@ -141,6 +141,9 @@ function establecerMiniaturas(archivos, tab) {
 
   let divCategoriaElemento = document.createElement("DIV");
   divCategoriaElemento.className = "ArchivosCategoria";
+
+  let divcontenido = document.createElement("DIV");
+  divcontenido.setAttribute("id", "divContenido");
   let archive = new Array();
 
   elemento.forEach(element => {
@@ -158,7 +161,6 @@ function establecerMiniaturas(archivos, tab) {
     let preview = document.createElement("DIV");
     preview.className = "ImgMiniatura";
     miniatura(preview, archive[2]);
-
     divMiniatura.appendChild(h2);
     divMiniatura.appendChild(preview);
     divMiniatura.setAttribute("data", archive[0]);
@@ -204,8 +206,10 @@ function establecerMiniaturas(archivos, tab) {
       }
     }
 
-    divCategoriaElemento.appendChild(divMiniatura);
+    divcontenido.appendChild(divMiniatura);
   });
+
+  divCategoriaElemento.appendChild(divcontenido);
   document.getElementById(tab).appendChild(divCategoriaElemento);
 }
 

@@ -206,10 +206,12 @@ body {
   height: auto;
   width: 90%;
 }
+
 .ArchivosCategoria .MiniaturaArchivos {
   display: flex;
-  flex-flow: column-reverse nowrap;
+  flex-flow: column-reverse wrap;
   justify-content: space-around;
+  align-items: center;
   width: 300px;
   margin: 10px 0 20px 0;
   cursor: pointer;
