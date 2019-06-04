@@ -2,6 +2,7 @@ $(function() {
   $("#barraMenuSuperior").load("menuSuperior.html");
   $("#barraMenuInferior").load("menuInferior.html");
   display();
+  CargarComentarios();
 });
 
 function display() {
@@ -292,3 +293,78 @@ function eliminarArchivo() {
     });
   }
 }
+
+// inicio codigo del comentario
+function comentario() {
+  let archivo = window.location.href;
+  archivo = archivo.split("?");
+  id_archivo = archivo[1];
+  var user = firebase.auth().currentUser;
+  let correo = user.email;
+  var comentario = document.getElementById("comentario").value.trim();
+  if (!!comentario.length) {
+    let urlEsp = url + "/Archivos.php";
+    datos = new Array();
+    datos[0] = correo;
+    datos[1] = id_archivo;
+    datos[2] = comentario;
+
+    var enviarDatos = datos.toString();
+    $.post(urlEsp, { comentario: enviarDatos }, function(respuesta) {
+      if(respuesta.trim()=="1"){
+        alertasPequeñas("Se publicó tu comentario");
+        document.getElementById("OpinionesArchivo").innerHTML= "";
+        CargarComentarios();
+        document.getElementById("comentario").value="";
+      }else{
+        errorModal("No se ha podido publicar el comentario");
+      }
+    });
+  } else {
+    alert("El campo está vacío!");
+  }
+}
+
+function CargarComentarios() {
+  let archivo = window.location.href;
+  archivo = archivo.split("?");
+  id_archivo = archivo[1];
+  let urlEsp = url + "/Archivos.php";
+  $.post(urlEsp, { CargarComentarios: id_archivo }, function(respuesta) {
+    datos = respuesta.split("]*@[");
+    datos.pop();
+    datos.forEach(element => {
+      addElement(element);
+    });
+  });
+}
+
+function addElement(dato) {
+  var da = dato.split("}*@{");
+
+  let divGeneral = document.createElement("DIV");
+  divGeneral.setAttribute("id", "comentariosArchivo");
+  
+  let fotoComentario = document.createElement("IMG");
+  fotoComentario.setAttribute("id", "foto");
+  fotoComentario.setAttribute("src", da[0]);
+
+  let divComentario = document.createElement("DIV");
+  divComentario.setAttribute("id", "comentarioDiv");
+  
+  let textComentario = document.createElement("textarea");
+  textComentario.setAttribute("id", "textoComentario");
+  textComentario.value = da[3];
+  textComentario.readOnly = true;
+
+  let nombreUsuario = document.createElement("P");
+  nombreUsuario.setAttribute("id", "nombreUsuario");
+  nombreUsuario.innerHTML = da[1] + " " + da[2];
+
+  divComentario.appendChild(nombreUsuario);
+  divComentario.appendChild(textComentario);
+  divGeneral.appendChild(fotoComentario);
+  divGeneral.appendChild(divComentario);
+  document.getElementById("OpinionesArchivo").appendChild(divGeneral);
+}
+// fin codigo del comentario
