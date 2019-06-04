@@ -233,8 +233,7 @@ body {
   flex-flow: column wrap;
 }
 
-.ContenidoPrincipal #opinionesUsuarios #comentar textarea,
-#comentarioDiv textarea{
+.ContenidoPrincipal #opinionesUsuarios #comentar textarea{
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -321,4 +320,23 @@ body {
 #comentarioDiv textarea:read-only {
   background: var(--color-medio-3);
   color: var(--color-osuro);
+}
+
+#comentarioDiv textarea{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: auto;
+  width: 90%;
+  padding: 12px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  background: var(--color-claro);
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  color: var(--color-medio);
+  -webkit-appearance: button;
+  appearance: button;
+  outline: none;
 }

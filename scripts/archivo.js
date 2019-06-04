@@ -32,9 +32,9 @@ function display() {
     document.getElementById("nombreUsuario").appendChild(usuarioNode);
 
     let likesnode = document.createTextNode(respuesta[10]);
-    document.getElementById("likes").appendChild(likesnode);
+    document.getElementById("likeCount").appendChild(likesnode);
     let dislikesnode = document.createTextNode(respuesta[11]);
-    document.getElementById("dislikes").appendChild(dislikesnode);
+    document.getElementById("dislikeCount").appendChild(dislikesnode);
   });
 }
 
@@ -42,7 +42,9 @@ function usuarioActual() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user.email) {
       urlEsp = url + "./aula.php";
-      $.post(urlEsp, { buscarUsuarioPersonal: user.email }, function(respuesta) {
+      $.post(urlEsp, { buscarUsuarioPersonal: user.email }, function(
+        respuesta
+      ) {
         respuesta = respuesta.split(",");
         let usuario = document.getElementById("fotoUsuarioActual");
         let foto = document.createElement("IMG");
@@ -156,7 +158,9 @@ function likes() {
   datos[1] = id_archivo;
   var enviarDatos = datos.toString();
   $.post(urlEsp, { likes: enviarDatos }, function(respuesta) {
-    alert("Entro" + respuesta);
+    respuesta = respuesta.split("}*@{");
+    document.getElementById("dislikeCount").innerHTML = respuesta[0];
+    document.getElementById("likeCount").innerHTML = respuesta[1];
   });
 }
 
@@ -172,7 +176,9 @@ function dislikes() {
   datos[1] = id_archivo;
   var enviarDatos = datos.toString();
   $.post(urlEsp, { dislikes: enviarDatos }, function(respuesta) {
-    alert(respuesta);
+    respuesta = respuesta.split("}*@{");
+    document.getElementById("dislikeCount").innerHTML = respuesta[0];
+    document.getElementById("likeCount").innerHTML = respuesta[1];
   });
 }
 

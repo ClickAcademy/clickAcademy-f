@@ -12,6 +12,11 @@ function busquedaBD() {
     if (respuesta == "0") {
       alertas("No hemos encontrado coincidencias");
     } else {
+      let h1 = document.createElement("H1");
+      let titulo = document.createTextNode("Mostrando resultados para '"+parametro[1]+"'");
+      h1.appendChild(titulo);
+      document.getElementById("contenido").appendChild(h1);
+      document.title = parametro[1];
       establecerMiniaturas(respuesta);
     }
   });
