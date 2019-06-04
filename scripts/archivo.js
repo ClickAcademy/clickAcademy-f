@@ -11,7 +11,7 @@ function display() {
   let urlEsp = url + "/Archivos.php";
   $.post(urlEsp, { buscarArchivo: archivo[1] }, function(respuesta) {
     respuesta = respuesta.split(" }*{ ");
-    // visualizar(respuesta[7], respuesta[0]);
+    visualizar(respuesta[7], respuesta[0]);
     revisarUsuario(respuesta[8]);
     document.title = respuesta[1];
     let titulonode = document.createTextNode(respuesta[1]);
