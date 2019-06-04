@@ -1,0 +1,51 @@
+html,
+body {
+  background: var(--color-oscuro-2);
+  height: auto;
+  min-height: 700px;
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#contenido {
+  width: 90%;
+  min-width: 350px;
+  min-height: 400px;
+  height: auto;
+  margin-bottom: 60px;
+  align-self: center;
+  display: flex;
+  flex-flow: column;
+  background: var(--color-medio);
+}
+
+.ArchivosCategoria {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: start;
+  height: auto;
+  width: 90%;
+}
+
+.ArchivosCategoria .MiniaturaArchivos {
+  display: flex;
+  flex-flow: column-reverse nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 300px;
+  margin: 10px 0 20px 0;
+  cursor: pointer;
+}
+
+h1{
+  padding: 30px;
+  font-size: 30px;
+  color: var(--color-claro-2);
+  font-weight: 500;
+}
