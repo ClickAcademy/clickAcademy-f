@@ -119,7 +119,9 @@ function cargarUsuario(usuario) {
     let titulonode = document.createTextNode(respuesta[1] + respuesta[2]);
     document.getElementById("nombreUsuario").appendChild(titulonode);
     document.getElementById("generoUsuarioTab").value = respuesta[3];
-    document.getElementById("profile_picture").setAttribute("src", respuesta[6]);
+    document
+      .getElementById("profile_picture")
+      .setAttribute("src", respuesta[6]);
     document.getElementById("paisUsuarioTab").value = respuesta[7];
     document.getElementById("ciudadUsuarioTab").value = respuesta[8];
   });
@@ -128,7 +130,6 @@ function cargarUsuario(usuario) {
 function establecerMiniaturas(archivos, tab) {
   let elemento = archivos.split("}@{");
   elemento.splice(0, 1);
-  console.log(elemento);
 
   let divCategoriaElemento = document.createElement("DIV");
   divCategoriaElemento.className = "ArchivosCategoria";
@@ -152,41 +153,12 @@ function establecerMiniaturas(archivos, tab) {
     divMiniatura.appendChild(h2);
     divMiniatura.appendChild(preview);
     divMiniatura.setAttribute("data", archive[0]);
-    // divMiniatura.setAttribute("category", categoria);
     divMiniatura.onclick = function() {
-      let cat = divMiniatura.getAttribute("category").trim();
-      switch (cat) {
-        case "Usuarios":
-          window.location.href =
-            "./aula.html?" + divMiniatura.getAttribute("data").trim();
-          break;
-        case "Nuevos":
-          window.location.href =
-            "./archivo.html?" + divMiniatura.getAttribute("data").trim();
-          break;
-        case "Random":
-          window.location.href =
-            "./archivo.html?" + divMiniatura.getAttribute("data").trim();
-          break;
-      }
+      window.location.href =
+        "./archivo.html?" + divMiniatura.getAttribute("data").trim();
     };
 
     divCategoriaElemento.appendChild(divMiniatura);
-
-    // switch (categoria) {
-    //   case "Random":
-    //     preview.id = "miniaturaRandomTodos";
-    //     break;
-    //   case "Usuarios ":
-    //     preview.id = "miniaturaUsuarios";
-    //     break;
-    //   case "Nuevos":
-    //     preview.id = "miniaturaNuevosTodos";
-    //     break;
-    //   case "Más likes":
-    //     preview.id = "miniaturaLikesTodos";
-    //     break;
-    // }
   });
   document.getElementById(tab).appendChild(divCategoriaElemento);
 }

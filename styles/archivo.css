@@ -76,7 +76,7 @@ body {
 #DOC {
   display: none;
   height: 400px;
-  width: 600px;;
+  width: 600px;
 }
 
 .contenedorPrincipal #archivo #visualizacion #DocPre {
@@ -244,4 +244,33 @@ body {
   -webkit-appearance: button;
   appearance: button;
   outline: none;
+}
+
+#botonEliminar {
+  background: rgb(102, 24, 24) !important;
+  color: var(--color-claro-2) !important;
+  width: 90px !important;
+  justify-content: center !important;
+  
+}
+
+#botonEditar {
+  background: var(--color-logo) !important;
+  color: var(--color-claro-2) !important;
+  width: 90px !important;
+  justify-content: center !important;
+  margin-bottom: 10px;
+}
+
+#botonesCalificacion{
+  width: 80%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#divBotones{
+  z-index: 1000;
+  width: 20%;
 }

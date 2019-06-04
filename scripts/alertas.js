@@ -8,7 +8,8 @@ function errorModal(error, mensaje) {
     title: "Oops...",
     text: mensaje,
     footer: error,
-    confirmButtonColor: "#00716f"
+    confirmButtonColor: "#00716f",
+    allowOutsideClick: false
   });
 }
 
@@ -21,7 +22,8 @@ function confirmar(mensaje, confirm) {
       confirmButtonColor: "#00716f",
       cancelButtonColor: "#d33",
       confirmButtonText: confirm,
-      cancelButtonText: "Cancelar"
+      cancelButtonText: "Cancelar",
+      allowOutsideClick: false
     }).then(result => {
       if (result.value) {
         resolve(true);
@@ -37,7 +39,8 @@ function successRedirect(mensaje, direccion) {
     type: "success",
     title: mensaje,
     showConfirmButton: true,
-    confirmButtonColor: "#00716f"
+    confirmButtonColor: "#00716f",
+    allowOutsideClick: false
   }).then(result => {
     if (result.value) {
       window.location.replace(direccion);
@@ -50,7 +53,8 @@ function success(mensaje) {
     position: "top-end",
     type: "success",
     title: mensaje,
-    showConfirmButton: false
+    showConfirmButton: false,
+    allowOutsideClick: false
   });
 }
 
@@ -73,7 +77,8 @@ function alertas(mensaje) {
     Swal.fire({
       title: mensaje,
       timer: 1500,
-      confirmButtonColor: "#00716f"
+      confirmButtonColor: "#00716f",
+      allowOutsideClick: false
     }).then(result => {
       resolve(true);
     });
