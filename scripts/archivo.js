@@ -2,6 +2,7 @@ $(function() {
   $("#barraMenuSuperior").load("menuSuperior.html");
   $("#barraMenuInferior").load("menuInferior.html");
   display();
+  usuarioActual();
   CargarComentarios();
 });
 
@@ -26,12 +27,30 @@ function display() {
     document.getElementById("categorias").appendChild(categorianode);
 
     let usuarioNode = document.createTextNode(respuesta[6]);
+    let fotoUsuarioNode = document.getElementById("profile_picture");
+    fotoUsuarioNode.setAttribute("src", respuesta[9]);
     document.getElementById("nombreUsuario").appendChild(usuarioNode);
 
-    let likesnode = document.createTextNode(respuesta[9]);
+    let likesnode = document.createTextNode(respuesta[10]);
     document.getElementById("likes").appendChild(likesnode);
-    let dislikesnode = document.createTextNode(respuesta[10]);
+    let dislikesnode = document.createTextNode(respuesta[11]);
     document.getElementById("dislikes").appendChild(dislikesnode);
+  });
+}
+
+function usuarioActual() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user.email) {
+      urlEsp = url + "./aula.php";
+      $.post(urlEsp, { buscarUsuarioPersonal: user.email }, function(respuesta) {
+        respuesta = respuesta.split(",");
+        let usuario = document.getElementById("fotoUsuarioActual");
+        let foto = document.createElement("IMG");
+        foto.setAttribute("src", respuesta[6]);
+        foto.setAttribute("id", "fotoPersonalComentario");
+        usuario.appendChild(foto);
+      });
+    }
   });
 }
 
@@ -311,12 +330,12 @@ function comentario() {
 
     var enviarDatos = datos.toString();
     $.post(urlEsp, { comentario: enviarDatos }, function(respuesta) {
-      if(respuesta.trim()=="1"){
+      if (respuesta.trim() == "1") {
         alertasPequeñas("Se publicó tu comentario");
-        document.getElementById("OpinionesArchivo").innerHTML= "";
+        document.getElementById("OpinionesArchivo").innerHTML = "";
         CargarComentarios();
-        document.getElementById("comentario").value="";
-      }else{
+        document.getElementById("comentario").value = "";
+      } else {
         errorModal("No se ha podido publicar el comentario");
       }
     });
@@ -344,14 +363,14 @@ function addElement(dato) {
 
   let divGeneral = document.createElement("DIV");
   divGeneral.setAttribute("id", "comentariosArchivo");
-  
+
   let fotoComentario = document.createElement("IMG");
   fotoComentario.setAttribute("id", "foto");
   fotoComentario.setAttribute("src", da[0]);
 
   let divComentario = document.createElement("DIV");
   divComentario.setAttribute("id", "comentarioDiv");
-  
+
   let textComentario = document.createElement("textarea");
   textComentario.setAttribute("id", "textoComentario");
   textComentario.value = da[3];

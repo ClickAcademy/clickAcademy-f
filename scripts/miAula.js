@@ -157,6 +157,7 @@ function establecerMiniaturas(archivos, tab) {
 
     let preview = document.createElement("DIV");
     preview.className = "ImgMiniatura";
+    miniatura(preview, archive[2]);
 
     divMiniatura.appendChild(h2);
     divMiniatura.appendChild(preview);
@@ -165,6 +166,43 @@ function establecerMiniaturas(archivos, tab) {
       window.location.href =
         "./archivo.html?" + divMiniatura.getAttribute("data").trim();
     };
+
+    function miniatura(preview, archivo) {
+      if (archivo === "TA-5ce165c476dfc7.01202288") {
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-video");
+        p.setAttribute("id", "iconoImagen");
+        preview.appendChild(p);
+      }
+
+      if (archivo === "TA-5c3f65c476ecc7.01202468") {
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-word");
+        p.setAttribute("id", "iconoImagen");
+        preview.appendChild(p);
+      }
+
+      if (archivo === "TA-4ad165c476ecc7.01202288") {
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-image");
+        p.setAttribute("id", "iconoImagen");
+        preview.appendChild(p);
+      }
+
+      if (archivo === "TA-6cb165c476ecc7.01202288") {
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-powerpoint");
+        p.setAttribute("id", "iconoImagen");
+        preview.appendChild(p);
+      }
+
+      if (archivo === "TA-6fa345c476ecc7.01202288") {
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-pdf");
+        p.setAttribute("id", "iconoImagen");
+        preview.appendChild(p);
+      }
+    }
 
     divCategoriaElemento.appendChild(divMiniatura);
   });

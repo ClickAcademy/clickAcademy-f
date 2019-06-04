@@ -195,7 +195,7 @@ body {
 
 .ContenidoPrincipal #opinionesUsuarios #comentar .fotoUsuarios,
 .ContenidoPrincipal #informacionArchivo #usuario .fotoUsuarios,
-#foto {
+#foto, #fotoPersonalComentario {
   width: 70px !important;
   height: 70px;
   border-radius: 50%;

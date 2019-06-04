@@ -64,6 +64,7 @@ li .botonesBarraMenu:hover:not(.activo) {
   background-color: var(--color-oscuro);
   position: fixed;
   bottom: 0;
+  z-index: 1000000;
 }
 
 #barraMenuInferior .Inferior {
