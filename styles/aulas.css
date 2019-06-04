@@ -41,7 +41,7 @@ body {
 #contenedorPrincipal #informacionPrincipal #nombreUsuario {
   position: absolute;
   align-self: flex-start;
-  z-index: 10;
+  z-index: 2;
   width: 90%;
   height: 50px;
   max-height: 50px;
@@ -64,7 +64,7 @@ body {
   position: absolute;
   width: 200px;
   height: 200px;
-  z-index: 10;
+  z-index: 1;
   border-radius: 50%;
   box-shadow: var(--sombra-estandar);
 }
@@ -191,13 +191,20 @@ body {
 /**
 *   Miniaturas de archivos
 */
-.ArchivosCategoria {
+.ArchivosCategoria{
+  display: flex;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+#divContenido {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-around;
-  margin: 10px 5px 10px 5px;
-  width: 100%;
+  justify-content: start;
   height: auto;
+  width: 90%;
 }
 .ArchivosCategoria .MiniaturaArchivos {
   display: flex;
@@ -222,12 +229,26 @@ body {
   width: 100%;
   text-align: center;
 }
+
 .ArchivosCategoria .MiniaturaArchivos .ImgMiniatura {
-  display: flex;
-  border: 2px outset var(--color-logo-2);
-  margin-right: 5px;
   height: 150px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+#iconoImagen {
+  font-size: 120px;
+  color: var(--color-medio-3);
+  -moz-transform: rotate(352deg);
+  -webkit-transform: rotate(352deg);
+  -o-transform: rotate(352deg);
+  -ms-transform: rotate(352deg);
+  transform: rotate(352deg);
+  z-index: 0;
+}
+
 
 .Informacion,
 .ImagenesUsuario,
