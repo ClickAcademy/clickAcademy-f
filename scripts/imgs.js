@@ -45,6 +45,11 @@ function cargarElementos(elemento) {
     let preview = document.createElement("DIV");
     preview.className = "ImgMiniatura";
 
+    let p = document.createElement("i");
+    p.setAttribute("class", "fas fa-file-image");
+    p.setAttribute("id", "iconoImagen");
+    preview.appendChild(p);
+
     divMiniatura.appendChild(h2);
     divMiniatura.appendChild(preview);
     divMiniatura.setAttribute("data", archivos[0]);

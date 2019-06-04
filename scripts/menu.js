@@ -28,7 +28,10 @@ function cerrarSesion() {
   }
 }
 
-function buscar() {}
+function buscarBD() {
+  let busqueda = document.getElementById("textoBusqueda").value;
+  window.location.href = "./busqueda.html?"+busqueda;
+}
 
 function categoriaDocumentos() {
   location.href = "./docs.html";

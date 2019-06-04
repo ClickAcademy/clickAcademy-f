@@ -24,7 +24,7 @@
   overflow-y: hidden;
 }
 
-.Logo img{
+.Logo img {
   height: 110px;
 }
 /*Botones*/
@@ -43,7 +43,7 @@ li {
 }
 li .botonesBarraMenu {
   padding: 16px 0;
-  height:60px;
+  height: 60px;
 }
 li .botonesBarraMenu:hover:not(.activo) {
   background-color: var(--color-oscuro-4);
@@ -88,7 +88,8 @@ li .botonesBarraMenu:hover:not(.activo) {
 }
 
 #barraMenuSuperior .OpcionesMoviles,
-#barraMenuSuperior #panelExplorar {
+#barraMenuSuperior #panelExplorar,
+#barraMenuInferior #panelBusqueda {
   display: none;
 }
 
@@ -126,6 +127,32 @@ li .botonesBarraMenu:hover:not(.activo) {
 #barraMenuInferior #ingresarBoton,
 #barraMenuInferior #miAulaBoton {
   display: inline;
+}
+
+#barraMenuInferior #panelBusqueda {
+  background: var(--color-oscuro);
+  height: 40px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#barraMenuInferior #panelBusqueda input {
+  height: 30px;
+  width: 70%;
+  background: var(--color-medio-2);
+  border: none;
+  font-size: 20px;
+}
+
+#barraMenuInferior #panelBusqueda button {
+  width: 20%;
+  height: 30px;
+  font-size: 18px;
+  background: none;
+  color: var(--color-medio-2);
+  border: none;
 }
 
 @media only screen and (max-width: 768px) {

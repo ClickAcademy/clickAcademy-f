@@ -11,9 +11,19 @@
     </button>
   </li>
   <li class="Opciones">
-    <button onclick="buscar()" class="botonesBarraMenu Inferior">
+    <button
+      onclick="buscar()"
+      class="botonesBarraMenu Inferior"
+      id="busquedaBoton"
+    >
       <i class="fas Icono Oscuro fa-search"></i>
     </button>
+    <div id="panelBusqueda">
+      <input id="textoBusqueda" />
+      <button id="botonBusqueda" onclick="buscarBD()">
+        <i class="fas fa-location-arrow"></i>
+      </button>
+    </div>
   </li>
   <li class="Opciones" id="subirArchivo">
     <button class="botonesBarraMenu Inferior" onclick="subirArchivo()">
@@ -74,8 +84,12 @@
       }
     });
     $("#panelUsuario").hide();
+    $("#panelBusqueda").hide();
     $("#miAulaBoton").click(function() {
       $("#panelUsuario").slideToggle();
+    });
+    $("#busquedaBoton").click(function() {
+      $("#panelBusqueda").slideToggle();
     });
   });
   $(window).click(function(e) {

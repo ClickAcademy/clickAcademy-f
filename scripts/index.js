@@ -31,7 +31,7 @@ function cargarElementos(elemento) {
   let archivos = new Array();
 
   elemento.forEach(element => {
-    archivos = element.split(",");
+    archivos = element.split(" }*@{ ");
 
     let divMiniatura = document.createElement("DIV");
     divMiniatura.className = "MiniaturaArchivos";
@@ -76,9 +76,7 @@ function cargarElementos(elemento) {
     switch (categoria) {
       case "Random":
         preview.id = "miniaturaRandomTodos";
-        let p = document.createElement("i");
-        p.setAttribute("class", "fas fa-file-video");
-        preview.appendChild(p);
+        miniatura(preview);
         break;
       case "Usuarios ":
         preview.id = "miniaturaUsuarios";
@@ -88,10 +86,50 @@ function cargarElementos(elemento) {
         break;
       case "Nuevos":
         preview.id = "miniaturaNuevosTodos";
+        miniatura(preview);
         break;
       case "Favoritos":
         preview.id = "miniaturaLikesTodos";
+        miniatura(preview);
         break;
+    }
+    function miniatura(preview) {
+      let archivo = archivos[3].trim();
+
+      if (archivo === "TA-5ce165c476dfc7.01202288") {
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-video");
+        p.setAttribute("id", "iconoImagen");
+        preview.appendChild(p);
+      }
+
+      if (archivo === "TA-5c3f65c476ecc7.01202468") {
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-word");
+        p.setAttribute("id", "iconoImagen");
+        preview.appendChild(p);
+      }
+
+      if (archivo === "TA-4ad165c476ecc7.01202288") {
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-image");
+        p.setAttribute("id", "iconoImagen");
+        preview.appendChild(p);
+      }
+
+      if (archivo === "TA-6cb165c476ecc7.01202288") {
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-powerpoint");
+        p.setAttribute("id", "iconoImagen");
+        preview.appendChild(p);
+      }
+
+      if (archivo === "TA-6fa345c476ecc7.01202288") {
+        let p = document.createElement("i");
+        p.setAttribute("class", "fas fa-file-pdf");
+        p.setAttribute("id", "iconoImagen");
+        preview.appendChild(p);
+      }
     }
   });
 
